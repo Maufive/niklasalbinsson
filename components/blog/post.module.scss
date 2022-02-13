@@ -1,0 +1,16 @@
+.blogPost {
+  margin-bottom: 2rem;
+
+  h3 a {
+    font-size: var(--font-size-4);
+    transition: color 0.15s ease-in;
+    &:hover,
+    &:focus {
+      color: var(--primary);
+    }
+  }
+
+  small {
+    color: var(--colors-typeface-tertiary);
+  }
+}

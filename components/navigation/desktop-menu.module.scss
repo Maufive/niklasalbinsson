@@ -1,0 +1,41 @@
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--site-width);
+  margin: 0 auto;
+  position: relative;
+}
+
+.navLinks {
+  display: flex;
+  padding: 0 var(--padding-2);
+}
+
+.navLink {
+  position: relative;
+  color: var(--link-color);
+  font-weight: 400;
+  margin-right: 3rem;
+  cursor: pointer;
+  transition: color 0.15s ease-out;
+
+  :hover {
+    color: var(--link-active-color);
+  }
+}
+
+.navLinkActive {
+  color: var(--link-active-color);
+  font-weight: 700;
+}
+
+.progressBar {
+  position: absolute;
+  bottom: 0px;
+  height: 2px;
+  transform-origin: left;
+  width: 100%;
+  background: var(--brand-gradient);
+}

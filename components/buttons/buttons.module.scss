@@ -1,0 +1,33 @@
+.buttonLink {
+  display: flex;
+  color: var(--primary);
+  font-size: var(--font-size-3);
+  width: fit-content;
+  transition: all 0.15s ease-in;
+  border-bottom: 2px solid transparent;
+
+  svg {
+    width: 20px;
+    transition: opacity 0.15s ease-in, transform 0.15s ease-in;
+    opacity: 0;
+    transform: translateX(0px);
+  }
+
+  &:hover {
+    color: var(--primary-light);
+    border-color: var(--primary-light);
+    svg {
+      opacity: 1;
+      transform: translateX(3px);
+    }
+  }
+
+  &:focus {
+    color: var(--primary-light);
+    border-color: var(--primary-light);
+    svg {
+      opacity: 1;
+      transform: translateX(3px);
+    }
+  }
+}

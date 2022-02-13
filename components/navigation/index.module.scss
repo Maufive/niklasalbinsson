@@ -1,0 +1,17 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  transition: background-color 0.2s ease 0s, border-color 0.2s ease 0s;
+  backdrop-filter: blur(8px);
+  background: var(--colors-background-header);
+  border-bottom: 1px solid var(--colors-border-primary);
+  box-shadow: var(--shadow-1);
+  height: 64px;
+}
