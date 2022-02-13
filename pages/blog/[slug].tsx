@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+// eslint-disable-next-line import/no-unresolved
 import { useMDXComponent } from 'next-contentlayer/hooks';
-import components from 'components/MDXComponents';
 import { Post } from '.contentlayer/types';
 import { allPosts } from '.contentlayer/data';
 import type { NextPage, GetStaticProps, GetStaticPaths } from 'next';
@@ -20,7 +21,6 @@ const PostPage: NextPage<{ post: Post }> = ({ post }) => {
             Published on{' '}
             <time dateTime={post.publishedAt}>{formattedPublishDate}</time>
             <span>&middot;</span> {post.readingTime.text}
-            {/* <HitCounter slug={post.slug} /> */}
           </p>
         </PageHeader>
         <Component />

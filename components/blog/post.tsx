@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import type { Post as PostType } from '.contentlayer/types';
 import Link from 'next/link';
 import { formatDate } from 'utils/formatDate';
