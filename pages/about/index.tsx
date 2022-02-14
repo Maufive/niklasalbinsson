@@ -86,7 +86,7 @@ const About: NextPage = () => (
         </p>
         <p>
           My geniune interest for web development is what kept me focused, and
-          to this day I strive to get a <i>little</i> better every day.
+          to this day I strive to get a little better every day.
         </p>
       </section>
     </article>

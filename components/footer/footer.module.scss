@@ -22,12 +22,11 @@
   margin-bottom: 1rem;
   width: fit-content;
   cursor: pointer;
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 0.15s;
+  transition: border-color 0.15s ease-in;
+  border-bottom: 2px solid transparent;
 
   :hover {
-    background-color: var(--colors-background-secondary);
+    border-color: var(--primary);
   }
 }
 
