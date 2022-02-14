@@ -74,7 +74,8 @@ const About: NextPage = () => (
         </h2>
         <p>
           My name is Niklas, and I am currently working as a frontend developer
-          at ComeOn Group. In my day-to-day work I use <b>React</b> with{' '}
+          at ComeOn Group where me and my team are building a Sportsbook
+          application. In my day-to-day work I use <b>React</b> with{' '}
           <b>TypeScript</b> and <b>Redux</b>.
         </p>
         <p>
