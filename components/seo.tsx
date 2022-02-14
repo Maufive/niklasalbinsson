@@ -1,5 +1,6 @@
 import { FC } from 'react';
-import { DefaultSeo } from 'next-seo';
+import { DefaultSeo, NextSeo } from 'next-seo';
+import { useRouter } from 'next/router';
 
 const config = {
   title: 'Niklas Albinsson - Software developer',
@@ -25,5 +26,27 @@ const config = {
 };
 
 const Seo: FC = () => <DefaultSeo {...config} />;
+
+const CustomSeo: FC<{ title?: string; description?: string }> = ({
+  title = '',
+  description,
+}) => {
+  const router = useRouter();
+  const seoTitle = `${title} | Niklas Albinsson`;
+
+  return (
+    <NextSeo
+      {...config}
+      title={seoTitle || config.title}
+      description={description || config.description}
+      openGraph={{
+        title: seoTitle,
+        url: `https://niklasalbinsson.dev${router.asPath}`,
+      }}
+    />
+  );
+};
+
+export { CustomSeo };
 
 export default Seo;

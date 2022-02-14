@@ -51,6 +51,7 @@
   .title {
     font-weight: 700;
     color: var(--colors-typeface-primary);
+    max-width: 320px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -60,12 +61,20 @@
     &:focus {
       color: var(--primary);
     }
+
+    @media (min-width: 768px) {
+      max-width: 100%;
+    }
   }
 
   .artist {
     color: var(--colors-typeface-secondary);
+    max-width: 320px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    @media (min-width: 768px) {
+      max-width: 100%;
+    }
   }
 }

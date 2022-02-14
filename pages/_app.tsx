@@ -7,14 +7,12 @@ import { AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/router';
 import Navigation from 'components/navigation';
 import Footer from 'components/footer/footer';
-import DefaultSeo from 'components/seo';
 
 function AppContainer({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   return (
-    <ThemeProvider defaultTheme="system">
-      <DefaultSeo />
+    <ThemeProvider defaultTheme="dark">
       <Navigation />
       <AnimatePresence initial={false}>
         <Component {...pageProps} key={router.route} />

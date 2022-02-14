@@ -1,7 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { useState, ChangeEvent } from 'react';
 import type { NextPage, GetStaticProps } from 'next';
-import { AnimatePresence } from 'framer-motion';
 import { pick } from '@contentlayer/client';
 import { allPosts } from '.contentlayer/data';
 import type { Post } from '.contentlayer/types';
@@ -10,7 +9,10 @@ import PostList from 'components/blog/post-list';
 import PageHeader from 'components/page-header';
 import Page from 'components/page/page';
 import Input from 'components/input';
-import BlogPost from 'components/blog/post';
+import { CustomSeo } from 'components/seo';
+
+const BLOG_TITLE = 'Blog';
+const BLOG_DESCRIPTION = 'I write about Javascript, animations, CSS and more!';
 
 const Blog: NextPage<{ posts: Post[] }> = ({ posts }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -25,10 +27,8 @@ const Blog: NextPage<{ posts: Post[] }> = ({ posts }) => {
 
   return (
     <Page>
-      <PageHeader
-        title="Blog"
-        description="I write about Javascript, animations, CSS and more!"
-      >
+      <CustomSeo title={BLOG_TITLE} description={BLOG_DESCRIPTION} />
+      <PageHeader title={BLOG_TITLE} description={BLOG_DESCRIPTION}>
         <Input
           type="search"
           value={searchTerm}

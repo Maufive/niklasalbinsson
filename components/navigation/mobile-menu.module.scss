@@ -63,6 +63,8 @@
 
   svg {
     fill: var(--colors-typeface-tertiary);
+    width: 24px;
+    height: 24px;
   }
 
   &:focus:not(:focus-visible) {

@@ -7,14 +7,19 @@ import type { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 import PageHeader from 'components/page-header';
 import { formatDate } from 'utils/formatDate';
 import Page from 'components/page/page';
+import { CustomSeo } from 'components/seo';
 import styles from './post.module.scss';
 
 const PostPage: NextPage<{ post: Post }> = ({ post }) => {
   const Component = useMDXComponent(post.body.code);
   const formattedPublishDate = formatDate(post.publishedAt);
 
+  const BLOG_TITLE = `${post.title} | Niklas Albinsson`;
+  const BLOG_DESCRIPTION = `${post.summary}`;
+
   return (
     <Page>
+      <CustomSeo title={BLOG_TITLE} description={BLOG_DESCRIPTION} />
       <article className={styles.article}>
         <PageHeader title={post.title} compact>
           <p className={styles.meta}>

@@ -5,6 +5,7 @@ import PageHeader from 'components/page-header';
 import Profile from 'components/profile-image';
 import { ChevronRight, LocationIcon } from 'components/icons';
 import TopTracks from 'components/top-tracks';
+import { CustomSeo } from 'components/seo';
 import styles from './about.module.scss';
 
 const WavingHand = () => (
@@ -30,9 +31,12 @@ const WavingHand = () => (
   </motion.div>
 );
 
+const ABOUT_TITLE = 'About Me';
+
 const About: NextPage = () => (
   <Page>
-    <PageHeader title="About" />
+    <CustomSeo title={ABOUT_TITLE} />
+    <PageHeader title={ABOUT_TITLE} />
     <article className={styles.about}>
       <section className={styles.bio}>
         <Profile />
@@ -65,9 +69,9 @@ const About: NextPage = () => (
         </div>
       </section>
       <section className={styles.description}>
-        <h3>
+        <h2>
           Hi there! <WavingHand />
-        </h3>
+        </h2>
         <p>
           My name is Niklas, and I am currently working as a frontend developer
           at ComeOn Group. In my day-to-day work I use <b>React</b> with{' '}

@@ -1,5 +1,6 @@
 .buttonLink {
   display: flex;
+  align-items: center;
   color: var(--primary);
   font-size: var(--font-size-3);
   width: fit-content;
@@ -8,6 +9,7 @@
 
   svg {
     width: 20px;
+    height: 20px;
     transition: opacity 0.15s ease-in, transform 0.15s ease-in;
     opacity: 0;
     transform: translateX(0px);

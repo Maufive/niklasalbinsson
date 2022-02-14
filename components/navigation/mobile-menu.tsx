@@ -5,7 +5,7 @@ import { useLockedBody, useProgress } from 'utils/hooks';
 import styles from './mobile-menu.module.scss';
 import ThemeSwitcher from '../theme-switcher/theme-switcher';
 import { LINKS } from './links';
-import { HamburgerIcon, CloseIcon, HomeIcon } from '../icons';
+import { HamburgerIcon, CloseIcon } from '../icons';
 
 const NAV_CONTAINER_VARIANTS = {
   initial: { x: -100, opacity: 0 },
