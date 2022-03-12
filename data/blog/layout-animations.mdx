@@ -1,0 +1,37 @@
+---
+title: "Layout Animations with Framer Motion"
+publishedAt: "2022-03-20"
+summary: "Learn about how to do layout animations with ease"
+---
+
+Framer Motion provides a lot of powerful tools that require minimum effort to use. I've used it for a couple of years now both in my professional work and also a lot in my hobby projects. I recently got to play around with the new `LayoutGroup` component that took the place of the (now depcrated) `AnimateSharedLayout` component. They're not exactly the same, and do not serve the exact same purpose but work in a similar fashion.
+
+In this post we will start out looking at the most basic usage of Framer Motions `layout` prop, and how we can leverage it to give us some fancy layout animations. Then we will move on to some more advanced scenarios where components may affect eachothers layout and how we can use `LayoutGroup` to help them animate in a synchronized fashion.
+
+### What is layout animations, and why do I need them?
+
+Layout animations can be a great when you have an application UI where your components may be removed, switched places, added or resized. Without any animation your components will just show up in their own positions without any indication of where they came from, or where they are going. This might confuse users as to what actually happening. Layout animations can be used to guide the users attention to what is happening to the elements.
+
+When we talk about layout animations we are referring to changes to any of the following properties:
+
+- Positions - `grid`, `flex` or `position`
+- Size properties - `width` or `height`
+- Position of elements - adding / removing an item from a list of items
+
+### Layout animation basics
+
+With Framer Motion we can animate any `motion` component between different <b>layouts</b> by applying the `layout` prop to the element. Now the element will automatically animate to any layout changes resulting from any re-renders.
+
+Some practical examples of when this would be happning:
+
+- Adding / removing items in a list of items
+- The `width` of an item changing due to some additional data being added / removed
+- The sorting of a list is reversed and we change `flex-start` to `flex-end`
+
+In the interactive demo below you can click the list items to remove them from the list. Notice how the elements will automatically animate to their new position in the list when an item is removed, and all it really takes is to add the `layout` prop as `true` to the element.
+
+<BasicWidget />
+
+### Here is a title
+
+<FlexboxWidget />

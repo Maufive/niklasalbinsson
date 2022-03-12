@@ -11,6 +11,17 @@
   --palette-gray-800: rgb(39, 39, 42);
   --palette-gray-900: rgb(24, 24, 27);
 
+  --palette-blue-50: rgb(239, 246, 255);
+  --palette-blue-100: rgb(219, 234, 254);
+  --palette-blue-200: rgb(191, 219, 254);
+  --palette-blue-300: rgb(147, 197, 253);
+  --palette-blue-400: rgb(96, 165, 250);
+  --palette-blue-500: rgb(59, 130, 246);
+  --palette-blue-600: rgb(37, 99, 235);
+  --palette-blue-700: rgb(29, 78, 216);
+  --palette-blue-800: rgb(30, 64, 175);
+  --palette-blue-900: rgb(30, 58, 138);
+
   --primary: #6366f1;
   --primary-light: #818cf8;
   --primary-dark: #4f46e5;
@@ -50,13 +61,25 @@
 
   --border-radius-1: 0.4rem;
   --border-radius-2: 0.8rem;
-  --border-radius-2: 1.6rem;
+  --border-radius-3: 1.6rem;
+
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 40px;
+  --space-8: 48px;
+  --space-9: 56px;
+  --space-10: 64px;
 
   /* SPACING */
   --site-width: 768px;
   --padding-1: 6px;
   --padding-2: 12px;
-  --padding-3: 20px;
+  --padding-3: 24px;
   --padding-5: 5rem;
 
   /* TYPOGRAPHY */

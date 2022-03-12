@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--border-radius-1);
+  overflow: auto;
+
+  .exampleWrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    background-color: var(--palette-gray-800);
+
+    .boxWrapper {
+      display: grid;
+      margin-bottom: var(--space-5);
+
+      .box {
+        height: 75px;
+        width: 75px;
+        background: var(--brand-gradient);
+        border-radius: var(--border-radius-1);
+        border: 1px solid var(--border-color);
+        box-shadow: var(--shadow-2);
+      }
+    }
+
+    .radioGroup {
+      display: flex;
+    }
+  }
+}

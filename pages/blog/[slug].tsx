@@ -8,6 +8,7 @@ import PageHeader from 'components/page-header';
 import { formatDate } from 'utils/formatDate';
 import Page from 'components/page/page';
 import { CustomSeo } from 'components/seo';
+import MDX_COMPONENTS from 'components/mdx';
 import styles from './post.module.scss';
 
 const PostPage: NextPage<{ post: Post }> = ({ post }) => {
@@ -28,7 +29,7 @@ const PostPage: NextPage<{ post: Post }> = ({ post }) => {
             <span>&middot;</span> {post.readingTime.text}
           </p>
         </PageHeader>
-        <Component />
+        <Component components={MDX_COMPONENTS} />
       </article>
     </Page>
   );

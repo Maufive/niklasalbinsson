@@ -40,18 +40,18 @@
   }
 
   p {
-    margin-top: 1.25em;
-    margin-bottom: 1.25em;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     line-height: 1.9;
-    font-size: var(--font-size-3);
 
     & > code {
       margin: 0 3px;
       padding: 3px 7px;
       font-size: var(--font-size-3);
       white-space: nowrap;
-      background-color: var(--colors-background-tertiary);
+      background-color: var(--colors-background-secondary);
       border-radius: var(--border-radius-1);
+      color: var(--primary);
     }
   }
 
@@ -61,7 +61,7 @@
     overflow: auto;
     font-weight: 400;
     border-radius: var(--border-radius-1);
-    font-size: var(--font-size-3);
+    font-size: var(--font-size-1);
   }
 
   blockquote {
@@ -78,14 +78,23 @@
 
   ol,
   ul {
-    margin-bottom: 1.8em;
+    list-style: disc;
+    padding-inline-start: 40px;
+    margin-bottom: 3rem;
   }
 
   li {
     margin-bottom: 0.4em;
+    line-height: 1.9;
 
-    p {
-      margin-bottom: 0.7em;
+    & > code {
+      margin: 0 3px;
+      padding: 3px 7px;
+      font-size: var(--font-size-3);
+      white-space: nowrap;
+      background-color: var(--colors-background-secondary);
+      border-radius: var(--border-radius-1);
+      color: var(--primary);
     }
   }
 
