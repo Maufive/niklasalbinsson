@@ -28,10 +28,37 @@ Some practical examples of when this would be happning:
 - The `width` of an item changing due to some additional data being added / removed
 - The sorting of a list is reversed and we change `flex-start` to `flex-end`
 
-In the interactive demo below you can click the list items to remove them from the list. Notice how the elements will automatically animate to their new position in the list when an item is removed, and all it really takes is to add the `layout` prop as `true` to the element.
+Let's take a look at a basic example where we can change the `justify-self` property on a simple square div.
 
-<BasicWidget />
+<PositionWidget />
 
-### Here is a title
+This is how easy it is to get started with layout animations using Framer Motion. The only thing we really needed to do was to add the `layout` prop the the motion element and we get this smooth transition between different positions.
 
-<FlexboxWidget />
+By adding this kind of animation to your UI you can help your user to follow what is happening on the screen and make elements move around more naturally.
+
+Next we will take a look at another example that might be more similiar to something you'd might encouter in your own applications. We are going to look at a simple list component and see how we can leverage layout animations to help the user understand the actions taken when interacting with the list.
+
+We will also introduce the `AnimatePresence` component from Framer Motion. `AnimatePresence` allows us to animate an unmounting component, so when we remove it from the list we can give it a nice "fade out" effect.
+
+<SimpleListWidget />
+
+That was a little more code than the previous example! However in terms of code related to animations, we did not actually add that much. Let's try and break it down.
+
+- We wrapped out list elements in an `AnimatePresence` component. This allows us to access the `exit` prop on the motion element. The `exit` prop is what we use to animate when a component is unmounting. Giving it a value of `opacity: 0` will create the fade-out effect when we remove an item from the list.
+- We are still using the `layout` prop on the motion elements. This is what allows each list item to smoothly transition to it's new position after an item is removed from the list.
+
+### Diving deeper into the layout prop
+
+Now we know how we can use the `layout` prop to enable smooth transitions for layout animations. But in some more advanced use-cases you might find that your content will look distorted or squished during the animation transition.
+
+Let's take a look at a real world example of this happening. Let's imagine we have a couple of `<Badge />` components that acts as some type of filters on a shopping website.
+
+<BadgeWidget />
+
+What happens is that when we remove a Badge from the list will change the size of each Badge, so when we only use `layout=true` we are telling Framer Motion to animate both the size and the position of the element. This is not always what you want. Luckily we can tell the component explicitly that we **only want to animate the position of the component**.
+
+<Aside>
+  Just like you can set `position="position"` you can also set it to
+  `position="size"` if your use-case is the other way around where you would
+  want to change the size but not the position of your element.
+</Aside>

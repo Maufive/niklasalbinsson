@@ -2,7 +2,7 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { RefreshIcon } from 'components/icons';
 import CodeBlock from 'components/code/code-block';
-import styles from './basic-widget.module.scss';
+import styles from './simple-list-widget.module.scss';
 
 const exampleCode = `
 import React from 'react';
@@ -16,7 +16,7 @@ const INITIAL_STATE = [
     'Cookies 🍪',
   ];
 
-const BasicList: React.FC = () => {
+const SimpleList: React.FC = () => {
     const [items, setItems] = React.useState(INITIAL_STATE);
   
     const onClickItem = (task: string) => {
@@ -28,14 +28,14 @@ const BasicList: React.FC = () => {
     };
   
     return (
-        <ul className={styles.list}>
+        <ul>
             <AnimatePresence>
                 {items.map((item) => (
                     <motion.li
                         key={item}
-                        className={styles.listItem}
                         onClick={() => onClickItem(item)}
                         layout
+                        exit={{ opacity: 0 }}
                     >
                         {item}
                     </motion.li>
@@ -45,7 +45,7 @@ const BasicList: React.FC = () => {
     );
   };
   
-  export default BasicList;
+  export default SimpleList;
 `.trim();
 
 const INITIAL_STATE = [
@@ -56,7 +56,7 @@ const INITIAL_STATE = [
   'Cookies 🍪',
 ];
 
-const BasicList: React.FC = () => {
+const SimpleList: React.FC = () => {
   const [items, setItems] = React.useState(INITIAL_STATE);
 
   const onClickItem = (task: string) => {
@@ -86,6 +86,7 @@ const BasicList: React.FC = () => {
                 className={styles.listItem}
                 onClick={() => onClickItem(item)}
                 layout
+                exit={{ opacity: 0 }}
               >
                 {item}
               </motion.li>
@@ -98,4 +99,4 @@ const BasicList: React.FC = () => {
   );
 };
 
-export default BasicList;
+export default SimpleList;

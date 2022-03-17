@@ -1,17 +1,21 @@
 import dynamic from 'next/dynamic';
 
-const BasicWidget = dynamic(
-  () => import('./framer-motion-layout-animations/basic-widget')
+const SimpleListWidget = dynamic(
+  () => import('./framer-motion-layout-animations/simple-list-widget')
 );
-const FlexboxWidget = dynamic(
-  () => import('./framer-motion-layout-animations/flexbox-widget')
+const PositionWidget = dynamic(
+  () => import('./framer-motion-layout-animations/position-widget')
+);
+const BadgeWidget = dynamic(
+  () => import('./framer-motion-layout-animations/badges-widget')
 );
 
 const Aside = dynamic(() => import('./aside'));
 
 const MDXComponents = {
-  BasicWidget,
-  FlexboxWidget,
+  SimpleListWidget,
+  PositionWidget,
+  BadgeWidget,
   Aside,
 };
 

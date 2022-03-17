@@ -8,7 +8,7 @@
     display: flex;
     flex-direction: column;
     padding: 24px;
-    background-color: var(--palette-gray-800);
+    background-color: var(--colors-background-secondary);
 
     .boxWrapper {
       display: grid;
@@ -24,8 +24,13 @@
       }
     }
 
-    .radioGroup {
-      display: flex;
+    .widgetInputs {
+      margin: 0 auto;
+
+      .radioGroup {
+        display: flex;
+        margin-bottom: var(--space-3);
+      }
     }
   }
 }

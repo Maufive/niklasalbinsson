@@ -1,3 +1,4 @@
+import { InfoIcon } from 'components/icons';
 import styles from './aside.module.scss';
 
 enum AsideVariants {
@@ -8,6 +9,13 @@ enum AsideVariants {
 const Aside: React.FC<{ variant?: AsideVariants }> = ({
   variant,
   children,
-}) => <aside className={styles.aside}>{children}</aside>;
+}) => (
+  <aside className={styles.aside}>
+    <div className={styles.iconWrapper}>
+      <InfoIcon />
+    </div>
+    <p>{children}</p>
+  </aside>
+);
 
 export default Aside;

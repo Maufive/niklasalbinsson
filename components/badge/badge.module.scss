@@ -1,0 +1,29 @@
+.badge {
+  display: flex;
+  align-items: center;
+  border-radius: var(--border-radius-1);
+  background-color: var(--primary);
+  padding: 4px 8px;
+
+  button {
+    color: white;
+    background: transparent;
+    border: none;
+    padding: 0;
+    line-height: 0;
+    margin-right: 4px;
+    cursor: pointer;
+
+    svg {
+      height: 16px;
+      width: 16px;
+    }
+  }
+
+  span,
+  p {
+    font-size: var(--font-size-1);
+    margin: 0;
+    color: var(--palette-gray-50);
+  }
+}

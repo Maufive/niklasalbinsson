@@ -49,9 +49,11 @@
       padding: 3px 7px;
       font-size: var(--font-size-3);
       white-space: nowrap;
-      background-color: var(--colors-background-secondary);
+      background-color: var(--colors-foreground);
       border-radius: var(--border-radius-1);
       color: var(--primary);
+      font-weight: 600;
+      box-shadow: var(--shadow-1);
     }
   }
 
@@ -92,9 +94,11 @@
       padding: 3px 7px;
       font-size: var(--font-size-3);
       white-space: nowrap;
-      background-color: var(--colors-background-secondary);
+      background-color: var(--colors-foreground);
       border-radius: var(--border-radius-1);
       color: var(--primary);
+      font-weight: 600;
+      box-shadow: var(--shadow-1);
     }
   }
 

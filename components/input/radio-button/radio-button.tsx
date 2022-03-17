@@ -14,7 +14,8 @@ const RadioButton: React.FC<RadioButtonProps> = ({
   id,
   label,
   value,
-  isSelected,
+  checked,
+  ...rest
 }) => {
   const radioContext = useContext(RadioContext);
 
@@ -32,11 +33,13 @@ const RadioButton: React.FC<RadioButtonProps> = ({
         type="radio"
         id={id}
         name={name}
-        aria-checked={isSelected}
+        aria-checked={checked}
+        checked={checked}
         aria-label={label}
         className={styles.radioButton}
         value={value}
         onChange={(event) => onChange(event)}
+        {...rest}
       />
       <label htmlFor={id} className={styles.label}>
         {label}
