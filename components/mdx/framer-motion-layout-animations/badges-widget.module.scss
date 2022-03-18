@@ -24,6 +24,16 @@
       display: flex;
       justify-content: space-around;
     }
+
+    @media (max-width: 768px) {
+      padding: 12px;
+
+      .inputWrapper {
+        margin-top: 24px;
+        flex-direction: column;
+        gap: 6px;
+      }
+    }
   }
 }
 

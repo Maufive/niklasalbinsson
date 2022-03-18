@@ -1,12 +1,12 @@
 ---
-title: "Layout Animations with Framer Motion"
+title: "Layout Animation basics with Framer Motion"
 publishedAt: "2022-03-20"
-summary: "Learn about how to do layout animations with ease"
+summary: "Learn about layout animations and how we can use them to great advantages"
 ---
 
-Framer Motion provides a lot of powerful tools that require minimum effort to use. I've used it for a couple of years now both in my professional work and also a lot in my hobby projects. I recently got to play around with the new `LayoutGroup` component that took the place of the (now depcrated) `AnimateSharedLayout` component. They're not exactly the same, and do not serve the exact same purpose but work in a similar fashion.
+Framer Motion provides a lot of powerful tools that require minimum effort to use. I've used it for a couple of years now both in my professional work and also a lot in my hobby projects. I recently got to implement some layout animations at work, and I found it fascinating how easy it was to achieve so much with so little code. So I thought it would make a great blog post!
 
-In this post we will start out looking at the most basic usage of Framer Motions `layout` prop, and how we can leverage it to give us some fancy layout animations. Then we will move on to some more advanced scenarios where components may affect eachothers layout and how we can use `LayoutGroup` to help them animate in a synchronized fashion.
+In this post we will focus on one of Framer Motions many powerful features - the `layout` prop. We will learn about how we can use it to achieve smooth layout animations with ease.
 
 ### What is layout animations, and why do I need them?
 
@@ -62,3 +62,11 @@ What happens is that when we remove a Badge from the list will change the size o
   `position="size"` if your use-case is the other way around where you would
   want to change the size but not the position of your element.
 </Aside>
+
+### Conclusion
+
+We have now learned the basics of how to use the `layout` prop to achieve smooth layout animations for our components. Although this might have been a basic introduction, I hope it may serve as a helper to get you interested in diving deeper into Framer Motion and all the things you can do with the library! 🎉
+
+#### Looking for more?
+
+If I have sparked your interest for Framer Motion and wondering what else is possible, make sure to check out <Link href="https://www.framer.com/docs/introduction/">their documentation.</Link> Also, make sure to check out this really cool example of how to achieve <Link href="https://codesandbox.io/s/framer-motion-5-drag-to-reorder-tabs-zd2q7?from-embed">this "drag to re-order" tabs component!</Link> Super cool stuff!

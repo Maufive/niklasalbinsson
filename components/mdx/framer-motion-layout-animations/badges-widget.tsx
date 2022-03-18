@@ -62,7 +62,7 @@ const BadgesExample: React.FC = () => (
 export default BadgesExample;
 `.trim();
 
-const INITIAL_STATE = ['Purple', 'Extra Large', 'In Stock', 'On Sale'];
+const INITIAL_STATE = ['Label 1', 'Label 2', 'Label 3'];
 
 const BadgesWidget: React.FC = () => {
   const [filters, setFilters] = React.useState(INITIAL_STATE);

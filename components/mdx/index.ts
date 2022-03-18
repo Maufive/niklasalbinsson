@@ -11,12 +11,14 @@ const BadgeWidget = dynamic(
 );
 
 const Aside = dynamic(() => import('./aside'));
+const Link = dynamic(() => import('../links'));
 
 const MDXComponents = {
   SimpleListWidget,
   PositionWidget,
   BadgeWidget,
   Aside,
+  Link,
 };
 
 export default MDXComponents;
