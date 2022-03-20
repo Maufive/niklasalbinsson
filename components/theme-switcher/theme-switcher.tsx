@@ -4,7 +4,7 @@ import {
   useTransform,
   useAnimation,
 } from 'framer-motion';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 
 const duration = 0.7;
@@ -42,7 +42,12 @@ const tipVariants = {
 
 const LightDarkSwitcher: React.FC = () => {
   const { setTheme, theme } = useTheme();
-  const isDarkTheme = theme === 'dark';
+  const [currentTheme, setCurrentTheme] = useState<string | undefined>('dark');
+  const isDarkTheme = currentTheme === 'dark';
+
+  useEffect(() => {
+    setCurrentTheme(theme);
+  }, [theme]);
 
   const scaleMoon = useMotionValue(isDarkTheme ? 1 : 0);
   const scaleSun = useMotionValue(isDarkTheme ? 0 : 1);
@@ -54,11 +59,12 @@ const LightDarkSwitcher: React.FC = () => {
   const controls = useAnimation();
 
   const toggleTheme = () => {
-    if (theme === 'dark') {
+    if (isDarkTheme) {
       controls.start('sun');
       setTheme('light');
       return;
     }
+
     controls.start('moon');
     setTheme('dark');
   };
@@ -95,11 +101,11 @@ const LightDarkSwitcher: React.FC = () => {
       }}
     >
       <motion.button
-        className={
-          theme === 'dark'
-            ? 'theme-switcher-button theme-switcher-button-dark '
-            : 'theme-switcher-button theme-switcher-button-light'
-        }
+        className={`theme-switcher-button ${
+          isDarkTheme
+            ? 'theme-switcher-button-dark'
+            : 'theme-switcher-button-light'
+        }`}
         aria-labelledby="lightDarkSwitcherTooltip"
         aria-describedby="lightDarkSwitcherDesc"
         onClick={toggleTheme}
@@ -205,9 +211,6 @@ const LightDarkSwitcher: React.FC = () => {
             />
           </motion.svg>
         </div>
-        {/* <VisuallyHidden as="p" id="lightDarkSwitcherDesc">
-          Toggles between light and dark mode.
-        </VisuallyHidden> */}
       </motion.button>
       <motion.span
         className="tooltip pointer-events-none absolute right-0 z-10 whitespace-nowrap rounded-md bg-zinc-200 py-1 px-3 text-sm font-bold text-zinc-800 shadow-md dark:bg-zinc-800 dark:text-zinc-200 dark:shadow-zinc-800"
@@ -220,7 +223,7 @@ const LightDarkSwitcher: React.FC = () => {
         }}
         role="tooltip"
       >
-        {theme === 'dark' ? 'Activate light mode' : 'Activate dark mode'}
+        {isDarkTheme ? 'Activate light mode' : 'Activate dark mode'}
       </motion.span>
     </motion.div>
   );
