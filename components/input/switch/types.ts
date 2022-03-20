@@ -3,5 +3,5 @@ export interface SwitchProps {
   label?: React.ReactNode | string;
   id: string;
   ['aria-label']?: string;
-  onChange: (value) => void;
+  onChange: () => void;
 }
