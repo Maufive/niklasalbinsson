@@ -1,7 +1,7 @@
-export interface SwitchProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
-  toggled?: boolean;
+export interface SwitchProps {
+  toggled: boolean;
   label?: React.ReactNode | string;
   id: string;
   ['aria-label']?: string;
+  onChange: (value) => void;
 }

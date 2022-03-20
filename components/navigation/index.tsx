@@ -2,7 +2,6 @@ import { useRouter } from 'next/router';
 import useMediaQuery from 'utils/hooks/use-media-query';
 import DesktopNavigation from './desktop-menu';
 import MobileNavigation from './mobile-menu';
-import styles from './index.module.scss';
 
 const Navigation = () => {
   const { pathname } = useRouter();
@@ -10,7 +9,7 @@ const Navigation = () => {
   const isSmaller = useMediaQuery('(max-width: 768px)');
 
   return (
-    <div className={styles.wrapper}>
+    <div className="fixed top-0 bottom-0 z-10 flex h-16 w-full items-center justify-center border-b border-zinc-200 shadow-sm backdrop-blur-sm transition-colors dark:border-zinc-800">
       {isSmaller ? (
         <MobileNavigation
           pathname={pathname}

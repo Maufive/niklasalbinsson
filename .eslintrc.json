@@ -5,5 +5,6 @@
     "@typescript-eslint/naming-convention": "off",
     "camelcase": "off",
     "import/no-extraneous-dependencies": 0
-  }
+  },
+  "plugins": ["eslint-plugin-tailwindcss"]
 }

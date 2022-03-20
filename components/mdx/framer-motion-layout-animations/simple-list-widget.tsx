@@ -2,7 +2,6 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { RefreshIcon } from 'components/icons';
 import CodeBlock from 'components/code/code-block';
-import styles from './simple-list-widget.module.scss';
 
 const exampleCode = `
 import React from 'react';
@@ -68,22 +67,22 @@ const SimpleList: React.FC = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.exampleWrapper}>
+    <div className="not-prose flex h-96 flex-col overflow-auto rounded-md md:flex-row">
+      <div className="flex-shink flex flex-grow basis-64 flex-col justify-between bg-zinc-200 p-3 dark:bg-zinc-800 md:p-6">
         <motion.button
           type="button"
-          className={styles.refreshButton}
+          className="flex w-fit cursor-pointer items-center justify-center rounded-full border-none bg-transparent p-2 text-zinc-600 dark:text-zinc-400"
           onClick={onClickRefresh}
           whileHover={{ scale: 1.1 }}
         >
           <RefreshIcon />
         </motion.button>
-        <ul className={styles.list}>
+        <ul className="flex h-72 flex-col justify-end space-y-4">
           <AnimatePresence>
             {items.map((item) => (
               <motion.li
                 key={item}
-                className={styles.listItem}
+                className="flex cursor-pointer items-center bg-zinc-100 p-3 text-sm shadow-sm dark:bg-zinc-900"
                 onClick={() => onClickItem(item)}
                 layout
                 exit={{ opacity: 0 }}

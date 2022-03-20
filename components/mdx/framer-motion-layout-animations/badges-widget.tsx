@@ -4,7 +4,6 @@ import CodeBlock from 'components/code/code-block';
 import Badge from 'components/badge';
 import Switch from 'components/input/switch';
 import { CloseIcon, RefreshIcon } from 'components/icons';
-import styles from './badges-widget.module.scss';
 
 const exampleCodePositionLayout = `
 import React from 'react';
@@ -77,10 +76,10 @@ const BadgesWidget: React.FC = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.exampleWrapper}>
+    <div className="not-prose flex flex-col overflow-auto rounded-t-md">
+      <div className="flex flex-col bg-zinc-200 p-3 dark:bg-zinc-800 md:p-6">
         {position ? (
-          <ul className={styles.filters}>
+          <ul className="flex gap-3">
             {filters.map((filter) => (
               <motion.li key={filter} style={{ width: '100%' }} layout>
                 <Badge>
@@ -95,18 +94,18 @@ const BadgesWidget: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => handleBadgeClick(filter)}
-                      className={styles.badgeButton}
+                      className=""
                     >
                       <CloseIcon />
                     </button>
-                    <span>{filter}</span>
+                    <span className="text-sm">{filter}</span>
                   </motion.div>
                 </Badge>
               </motion.li>
             ))}
           </ul>
         ) : (
-          <ul className={styles.filters}>
+          <ul className="flex gap-3">
             {filters.map((filter) => (
               <motion.li key={filter} style={{ width: '100%' }} layout>
                 <Badge>
@@ -120,18 +119,18 @@ const BadgesWidget: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => handleBadgeClick(filter)}
-                      className={styles.badgeButton}
+                      className=""
                     >
                       <CloseIcon />
                     </button>
-                    <span>{filter}</span>
+                    <span className="text-sm">{filter}</span>
                   </div>
                 </Badge>
               </motion.li>
             ))}
           </ul>
         )}
-        <div className={styles.inputWrapper}>
+        <div className="mt-6 flex flex-col justify-around gap-2 md:mt-3 md:flex-row md:gap-0">
           <Switch
             id="badges-layout-position"
             label={`Enable layout="position"`}
@@ -140,7 +139,7 @@ const BadgesWidget: React.FC = () => {
           />
           <motion.button
             type="button"
-            className={styles.refreshButton}
+            className="flex w-fit cursor-pointer items-center justify-center rounded-full border-none bg-transparent p-2 text-base text-zinc-600 dark:text-zinc-400"
             onClick={onClickRefresh}
           >
             <RefreshIcon />

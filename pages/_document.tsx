@@ -5,7 +5,6 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <meta content="width=device-width, initial-scale=1" name="viewport" />
           <link
             rel="preload"
             href="/fonts/Inter-Regular.ttf"
@@ -40,7 +39,7 @@ class MyDocument extends Document {
             type="image/png"
           />
         </Head>
-        <body>
+        <body className="bg-zinc-100 text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100">
           <Main />
           <NextScript />
         </body>

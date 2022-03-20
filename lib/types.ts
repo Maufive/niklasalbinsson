@@ -134,6 +134,7 @@ export type SimpleTrack = {
   songUrl: string;
   artist: string;
   title: string;
+  images: SpotifyImage[];
 };
 
 export type NowPlayingSong = {

@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { RadioGroup } from '@headlessui/react';
 import CodeBlock from 'components/code/code-block';
 import Radio from 'components/input/radio-button';
 import Switch from 'components/input/switch';
-import styles from './position-widget.module.scss';
 
 const ExampleWithLayout = `
 import React from 'react';
@@ -45,51 +45,35 @@ const PositionWidget: React.FC = () => {
   const [isLayout, setIsLayout] = React.useState<boolean>(false);
 
   return (
-    <div className={styles.container}>
-      <div className={styles.exampleWrapper}>
-        <div className={styles.boxWrapper}>
+    <div className="flex flex-col overflow-auto rounded-md">
+      <div className="flex flex-col bg-zinc-200 p-3 dark:bg-zinc-800 md:p-6">
+        <div className="grid">
           {isLayout ? (
             <motion.div
               layout={isLayout}
-              className={styles.box}
+              className="branded-gradient h-20 w-20 rounded-md shadow-md"
               style={{ justifySelf: position }}
             />
           ) : (
-            <div className={styles.box} style={{ justifySelf: position }} />
+            <div
+              className="branded-gradient h-20 w-20 rounded-md shadow-md"
+              style={{ justifySelf: position }}
+            />
           )}
         </div>
 
-        <div className={styles.widgetInputs}>
-          <div className={styles.radioGroup}>
-            <Radio.Group
-              name="positions"
-              onChange={(event) => {
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-                setPosition(event.target.value);
-              }}
+        <div className="mx-auto mt-6">
+          <div className="mb-3 flex">
+            <RadioGroup
+              value={position}
+              onChange={setPosition}
+              className="flex items-center"
             >
-              <Radio.Item
-                id="position-1"
-                value="start"
-                aria-label="Start"
-                label="Start"
-                checked={position === 'start'}
-              />
-              <Radio.Item
-                id="position-2"
-                value="center"
-                aria-label="Center"
-                label="Center"
-                checked={position === 'center'}
-              />
-              <Radio.Item
-                id="position-3"
-                value="end"
-                aria-label="End"
-                label="End"
-                checked={position === 'end'}
-              />
-            </Radio.Group>
+              <RadioGroup.Label className="sr-only">Position</RadioGroup.Label>
+              <Radio.Item value="start" label="Start" />
+              <Radio.Item value="center" label="Center" />
+              <Radio.Item value="end" label="End" />
+            </RadioGroup>
           </div>
           <div>
             <Switch

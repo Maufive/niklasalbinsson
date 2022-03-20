@@ -9,7 +9,6 @@ import { formatDate } from 'utils/formatDate';
 import Page from 'components/page/page';
 import { CustomSeo } from 'components/seo';
 import MDX_COMPONENTS from 'components/mdx';
-import styles from './post.module.scss';
 
 const PostPage: NextPage<{ post: Post }> = ({ post }) => {
   const Component = useMDXComponent(post.body.code);
@@ -21,14 +20,14 @@ const PostPage: NextPage<{ post: Post }> = ({ post }) => {
   return (
     <Page>
       <CustomSeo title={BLOG_TITLE} description={BLOG_DESCRIPTION} />
-      <article className={styles.article}>
-        <PageHeader title={post.title} compact>
-          <p className={styles.meta}>
-            Published on{' '}
-            <time dateTime={post.publishedAt}>{formattedPublishDate}</time>
-            <span>&middot;</span> {post.readingTime.text}
-          </p>
-        </PageHeader>
+      <PageHeader title={post.title} compact>
+        <p>
+          Published on{' '}
+          <time dateTime={post.publishedAt}>{formattedPublishDate}</time>
+          <span>&middot;</span> {post.readingTime.text}
+        </p>
+      </PageHeader>
+      <article className="prose prose-zinc dark:prose-invert lg:prose-xl">
         <Component components={MDX_COMPONENTS} />
       </article>
     </Page>

@@ -1,42 +1,24 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
+import { GithubIcon, TwitterIcon, AtIcon } from 'components/icons';
 import NowPlaying from '../now-playing/now-playing';
-import styles from './footer.module.scss';
 
 const CURRENT_YEAR = new Date().getFullYear();
 
-const INTERNAL_LINKS = [
-  {
-    label: 'Home',
-    href: '/',
-  },
-  {
-    label: 'About',
-    href: '/about',
-  },
-  {
-    label: 'Blog',
-    href: '/blog',
-  },
-];
-
 const EXTERNAL_LINKS = [
-  {
-    label: 'Email',
-    href: 'mailto:albinssonniklas@gmail.com',
-  },
   {
     label: 'GitHub',
     href: 'https://github.com/Maufive',
-  },
-  {
-    label: 'LinkedIn',
-    href: 'https://se.linkedin.com/in/niklas-albinsson-6a9306137',
+    icon: (
+      <GithubIcon className="transition-color h-6 w-6 fill-transparent stroke-current stroke-2" />
+    ),
   },
   {
     label: 'Twitter',
     href: 'https://twitter.com/albinssonniklas',
+    icon: (
+      <TwitterIcon className="transition-color h-6 w-6 fill-transparent stroke-current stroke-2" />
+    ),
   },
 ];
 
@@ -58,40 +40,38 @@ const FooterNavigation = () => {
   }, []);
 
   return (
-    <footer className={styles.footer}>
+    <footer className="my-0 mx-auto mt-20 w-full max-w-2xl p-2">
       <NowPlaying />
-      <nav className={styles.nav}>
-        <ul className={styles.navLinks}>
-          {INTERNAL_LINKS.map((link) => (
-            <li
-              key={link.href}
-              className={`${styles.navLink} ${
-                pathname === link.href ? styles.navLinkActive : ''
-              }`}
+      <nav className="mt-20 flex w-full justify-center py-2">
+        <ul className="flex items-center">
+          <li className="mr-8 p-2">
+            <a
+              title="Email Me"
+              href="mailto:albinssonniklas@gmail.com"
+              className="ml-0 flex cursor-pointer items-center rounded-lg border border-zinc-600 bg-zinc-200 px-2 py-2 text-sm font-semibold text-zinc-600 shadow-md transition-all hover:scale-105 hover:border-secondary hover:bg-secondary hover:text-zinc-50 focus:border-secondary focus:bg-secondary focus:text-zinc-50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 md:ml-5 md:px-4 md:text-base"
             >
-              <Link href={link.href} passHref>
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <ul className={styles.navLinks}>
+              <AtIcon className="mr-2 h-4 w-4 fill-transparent stroke-current stroke-2" />
+              Email Me
+            </a>
+          </li>
           {EXTERNAL_LINKS.map((link) => (
-            <li
-              key={link.href}
-              className={`${styles.navLink} ${
-                pathname === link.href ? styles.navLinkActive : ''
-              }`}
-            >
-              <a href={link.href} target="_blank" rel="noreferrer">
-                {link.label}
+            <li key={link.href} className="mr-8 p-2">
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                title={`Link to my ${link.label} profile`}
+                className="flex rounded-md p-1 text-zinc-600 transition-colors hover:text-zinc-900 focus:ring focus:ring-primary dark:text-zinc-300 hover:dark:text-zinc-50"
+              >
+                {link.icon}
               </a>
             </li>
           ))}
         </ul>
       </nav>
-      <p className={styles.copyrightLabel}>
-        © <span>Niklas Albinsson</span> {CURRENT_YEAR} | Have a nice {today}!
+      <p className="my-4 text-center text-base">
+        © <span className="font-bold">Niklas Albinsson</span> {CURRENT_YEAR} |
+        Have a nice {today}!
       </p>
     </footer>
   );

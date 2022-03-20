@@ -12,7 +12,7 @@ function AppContainer({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   return (
-    <ThemeProvider defaultTheme="dark">
+    <ThemeProvider defaultTheme="dark" attribute="class">
       <Navigation />
       <AnimatePresence initial={false}>
         <Component {...pageProps} key={router.route} />

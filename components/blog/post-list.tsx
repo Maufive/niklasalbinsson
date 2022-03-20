@@ -1,6 +1,5 @@
 import type { Post as PostType } from '.contentlayer/types';
 import Post from './post';
-import styles from './post-list.module.scss';
 
 type BlogPostListProps = {
   title: string;
@@ -12,8 +11,8 @@ const BlogPostList: React.FC<BlogPostListProps> = ({
   posts,
   children,
 }) => (
-  <section className={styles.blogPosts}>
-    <h2>{title}</h2>
+  <section>
+    <h2 className="mb-8 text-2xl font-bold">{title}</h2>
     {posts.length > 0 ? (
       <ul>
         {posts.map((post) => (

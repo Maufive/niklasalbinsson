@@ -1,51 +1,29 @@
-import React, { useContext } from 'react';
-import { RadioContext } from './radio-button-context';
-import styles from './radio-button.module.scss';
+import { RadioGroup } from '@headlessui/react';
 
 interface RadioButtonProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
-  id: string;
-  isSelected?: boolean;
   value: string;
   label: string;
 }
 
-const RadioButton: React.FC<RadioButtonProps> = ({
-  id,
-  label,
-  value,
-  checked,
-  ...rest
-}) => {
-  const radioContext = useContext(RadioContext);
-
-  if (!radioContext) {
-    // eslint-disable-next-line no-console
-    console.warn('Radio.Item must be rendered within a Radio.Group component!');
-    return null;
-  }
-
-  const { name, onChange } = radioContext;
-
-  return (
-    <div className={styles.radioButtonWrapper}>
-      <input
-        type="radio"
-        id={id}
-        name={name}
-        aria-checked={checked}
-        checked={checked}
-        aria-label={label}
-        className={styles.radioButton}
-        value={value}
-        onChange={(event) => onChange(event)}
-        {...rest}
-      />
-      <label htmlFor={id} className={styles.label}>
-        {label}
-      </label>
-    </div>
-  );
-};
+const RadioButton: React.FC<RadioButtonProps> = ({ label, value }) => (
+  <RadioGroup.Option value={value}>
+    {({ checked }) => (
+      <div className="flex items-center">
+        <span
+          className={`${
+            checked ? 'border-4 border-primary' : ''
+          } mr-2 inline-block h-5 w-5 rounded-full bg-zinc-100 shadow-md`}
+        />
+        <label
+          htmlFor="start"
+          className="mr-2 inline-block cursor-pointer text-sm"
+        >
+          {label}
+        </label>
+      </div>
+    )}
+  </RadioGroup.Option>
+);
 
 export default RadioButton;

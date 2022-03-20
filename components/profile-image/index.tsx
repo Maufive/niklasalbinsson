@@ -1,10 +1,9 @@
 import Image from 'next/image';
 import ProfileImage from '../../public/profile-min.png';
-import styles from './profile-image.module.scss';
 
 const Profile = () => (
-  <div className={styles.profileWrapper}>
-    <div className={styles.imageWrapper}>
+  <div className="relative flex h-fit">
+    <div className="branded-gradient relative h-20 w-20 overflow-hidden rounded-full border-2 border-secondary p-2">
       <Image
         alt="Profile picture"
         src={ProfileImage}
@@ -12,7 +11,7 @@ const Profile = () => (
         placeholder="blur"
       />
     </div>
-    <span className={styles.profileOverlay} />
+    <div className="absolute inset-0 h-20 w-20 rounded-full opacity-10" />
   </div>
 );
 

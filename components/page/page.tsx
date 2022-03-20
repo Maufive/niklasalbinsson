@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import { motion } from 'framer-motion';
-import styles from './page.module.scss';
 
 const variants = {
   initial: {
@@ -20,7 +19,7 @@ const PageTransition: FC = ({ children }): JSX.Element => (
 );
 
 const Page: FC = ({ children }): JSX.Element => (
-  <main className={styles.page}>
+  <main className="relative mx-auto max-w-2xl p-3 pt-28">
     <PageTransition>{children}</PageTransition>
   </main>
 );

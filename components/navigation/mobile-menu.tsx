@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLockedBody, useProgress } from 'utils/hooks';
-import styles from './mobile-menu.module.scss';
 import ThemeSwitcher from '../theme-switcher/theme-switcher';
 import { LINKS } from './links';
 import { HamburgerIcon, CloseIcon } from '../icons';
@@ -47,13 +46,13 @@ const MobileNavigation: React.FC<{
       {showProgressBar && (
         <motion.div
           style={{ scaleX: scrollProgress }}
-          className={styles.progressBar}
+          className="absolute bottom-0 h-1 w-full origin-left bg-primary"
         />
       )}
-      <header className={styles.header}>
+      <header className="relative flex w-full items-center justify-between py-1 px-3">
         <button
           type="button"
-          className={styles.iconButton}
+          className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-md focus:outline-2 focus:outline-primary"
           onClick={() => setIsOpen(true)}
         >
           <HamburgerIcon />
@@ -62,7 +61,7 @@ const MobileNavigation: React.FC<{
         <AnimatePresence>
           {isOpen && (
             <motion.nav
-              className={styles.nav}
+              className="absolute top-0 left-0 z-20 flex h-screen w-9/12 flex-col bg-zinc-100 shadow-sm dark:bg-zinc-900"
               variants={NAV_CONTAINER_VARIANTS}
               initial="initial"
               animate="show"
@@ -70,31 +69,51 @@ const MobileNavigation: React.FC<{
             >
               <button
                 type="button"
-                className={styles.iconButton}
+                className="mx-3 flex h-10 w-10 cursor-pointer items-center justify-center rounded-md focus:outline-2 focus:outline-primary"
                 onClick={() => setIsOpen(false)}
               >
                 <CloseIcon />
               </button>
-              <ol className={styles.navLinks}>
+              <ol className="mt-6 flex flex-col">
                 <Link href="/" passHref>
                   <motion.li
-                    className={`${styles.navLink} ${
-                      pathname === '/' ? styles.navLinkActive : ''
-                    }`}
+                    className={
+                      pathname === '/'
+                        ? 'mb-2 border-l-4 border-primary py-2 px-3'
+                        : 'mb-2 py-2 px-3'
+                    }
                     variants={NAV_ITEM_VARIANTS}
                   >
-                    <a>Home</a>
+                    <a
+                      className={
+                        pathname === '/'
+                          ? 'font-bold text-zinc-900 transition-colors hover:text-zinc-800 dark:text-zinc-100'
+                          : 'font-normal text-zinc-600 transition-colors dark:text-zinc-500 dark:hover:text-zinc-200'
+                      }
+                    >
+                      Home
+                    </a>
                   </motion.li>
                 </Link>
                 {LINKS.map((link) => (
                   <Link key={link.href} href={link.href} passHref>
                     <motion.li
-                      className={`${styles.navLink} ${
-                        pathname === link.href ? styles.navLinkActive : ''
-                      }`}
+                      className={
+                        pathname === link.href
+                          ? 'mb-2 border-l-4 border-primary py-2 px-3'
+                          : 'mb-2 py-2 px-3'
+                      }
                       variants={NAV_ITEM_VARIANTS}
                     >
-                      <a>{link.label}</a>
+                      <a
+                        className={
+                          pathname === link.href
+                            ? 'font-bold text-zinc-900 transition-colors hover:text-zinc-800 dark:text-zinc-100'
+                            : 'font-normal text-zinc-600 transition-colors dark:text-zinc-500 dark:hover:text-zinc-200'
+                        }
+                      >
+                        {link.label}
+                      </a>
                     </motion.li>
                   </Link>
                 ))}

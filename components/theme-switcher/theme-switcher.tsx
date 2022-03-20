@@ -6,7 +6,6 @@ import {
 } from 'framer-motion';
 import React from 'react';
 import { useTheme } from 'next-themes';
-import styles from './theme-switcher.module.scss';
 
 const duration = 0.7;
 
@@ -80,7 +79,7 @@ const LightDarkSwitcher: React.FC = () => {
 
   return (
     <motion.div
-      className={styles.buttonWrapper}
+      className="relative"
       initial="idle"
       animate={controls}
       onMouseEnter={showTooltip}
@@ -96,7 +95,11 @@ const LightDarkSwitcher: React.FC = () => {
       }}
     >
       <motion.button
-        className={styles.button}
+        className={
+          theme === 'dark'
+            ? 'theme-switcher-button theme-switcher-button-dark '
+            : 'theme-switcher-button theme-switcher-button-light'
+        }
         aria-labelledby="lightDarkSwitcherTooltip"
         aria-describedby="lightDarkSwitcherDesc"
         onClick={toggleTheme}
@@ -104,7 +107,7 @@ const LightDarkSwitcher: React.FC = () => {
         animate={isDarkTheme ? 'moon' : 'sun'}
         transition={{ duration }}
       >
-        <div className={styles.svgWrapper}>
+        <div className="theme-switcher-icon-wrapper">
           <motion.svg
             viewBox="0 0 25 25"
             fill="none"
@@ -207,7 +210,7 @@ const LightDarkSwitcher: React.FC = () => {
         </VisuallyHidden> */}
       </motion.button>
       <motion.span
-        className={styles.tooltip}
+        className="tooltip pointer-events-none absolute right-0 z-10 whitespace-nowrap rounded-md bg-zinc-200 py-1 px-3 text-sm font-bold text-zinc-800 shadow-md dark:bg-zinc-800 dark:text-zinc-200 dark:shadow-zinc-800"
         id="lightDarkSwitcherTooltip"
         aria-hidden
         ref={tooltipRef}
