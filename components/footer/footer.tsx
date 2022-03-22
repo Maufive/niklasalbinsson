@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
 import { GithubIcon, TwitterIcon, AtIcon } from 'components/icons';
 import NowPlaying from '../now-playing/now-playing';
+import useIsIosSafari from '../../utils/hooks/use-is-ios-safari';
 
 const CURRENT_YEAR = new Date().getFullYear();
 
@@ -24,7 +24,7 @@ const EXTERNAL_LINKS = [
 
 const FooterNavigation = () => {
   const [today, setToday] = useState<string>('');
-  const { pathname } = useRouter();
+  const isIOSSafari = useIsIosSafari();
 
   useEffect(() => {
     if (window) {
@@ -35,9 +35,14 @@ const FooterNavigation = () => {
         .format(new Date())
         .split(', ');
 
+      if (isIOSSafari) {
+        const dayInSafari = day[0].split(' ')[0];
+        return setToday(dayInSafari);
+      }
+
       setToday(day[0].toLowerCase());
     }
-  }, []);
+  }, [isIOSSafari]);
 
   return (
     <footer className="my-0 mx-auto mt-20 w-full max-w-2xl p-2">
