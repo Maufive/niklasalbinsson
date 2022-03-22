@@ -90,11 +90,11 @@ const BadgesWidget: React.FC = () => {
                       display: 'flex',
                       alignItems: 'center',
                     }}
+                    className="flex items-center text-zinc-200"
                   >
                     <button
                       type="button"
                       onClick={() => handleBadgeClick(filter)}
-                      className=""
                     >
                       <CloseIcon />
                     </button>
@@ -115,11 +115,11 @@ const BadgesWidget: React.FC = () => {
                       display: 'flex',
                       alignItems: 'center',
                     }}
+                    className="flex items-center text-zinc-200"
                   >
                     <button
                       type="button"
                       onClick={() => handleBadgeClick(filter)}
-                      className=""
                     >
                       <CloseIcon />
                     </button>
@@ -143,7 +143,7 @@ const BadgesWidget: React.FC = () => {
             onClick={onClickRefresh}
           >
             <RefreshIcon />
-            Reset
+            <span className="ml-4">Reset</span>
           </motion.button>
         </div>
       </div>

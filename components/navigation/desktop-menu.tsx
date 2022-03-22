@@ -24,11 +24,11 @@ const DesktopMenu: React.FC<{ pathname: string; showProgressBar: boolean }> = ({
             <li className="mr-4 cursor-pointer transition-colors">
               <Link href="/" passHref>
                 <a
-                  className={
+                  className={`rounded-md p-1 transition-colors focus:ring focus:ring-primary ${
                     pathname === '/'
-                      ? 'rounded-md p-1 font-bold text-zinc-900 transition-colors hover:text-zinc-800 focus:ring focus:ring-primary dark:text-zinc-100'
-                      : 'rounded-md p-1 font-normal text-zinc-600 transition-colors focus:text-zinc-800 focus:ring focus:ring-primary dark:text-zinc-500 dark:hover:text-zinc-200 dark:focus:text-zinc-300'
-                  }
+                      ? 'font-bold text-zinc-900 hover:text-zinc-800 dark:text-zinc-100'
+                      : 'font-normal text-zinc-700 focus:text-zinc-800 dark:text-zinc-300 dark:hover:text-zinc-200 dark:focus:text-zinc-300'
+                  }`}
                 >
                   Home
                 </a>
@@ -42,11 +42,11 @@ const DesktopMenu: React.FC<{ pathname: string; showProgressBar: boolean }> = ({
               >
                 <Link key={link.href} href={link.href} passHref>
                   <a
-                    className={
+                    className={`rounded-md p-1 transition-colors focus:ring focus:ring-primary ${
                       pathname.includes(link.href)
-                        ? 'rounded-md p-1 font-bold text-zinc-900 transition-colors hover:text-zinc-800 focus:ring focus:ring-primary dark:text-zinc-100'
-                        : 'rounded-md p-1 font-normal text-zinc-600 transition-colors focus:text-zinc-800 focus:ring focus:ring-primary dark:text-zinc-500 dark:hover:text-zinc-200 dark:focus:text-zinc-300'
-                    }
+                        ? 'font-bold text-zinc-900 hover:text-zinc-800 dark:text-zinc-100'
+                        : 'font-normal text-zinc-700 focus:text-zinc-800 dark:text-zinc-300 dark:hover:text-zinc-200 dark:focus:text-zinc-300'
+                    }`}
                   >
                     {link.label}
                   </a>

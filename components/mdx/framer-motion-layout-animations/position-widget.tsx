@@ -45,7 +45,7 @@ const PositionWidget: React.FC = () => {
   const [isLayout, setIsLayout] = React.useState<boolean>(false);
 
   return (
-    <div className="flex flex-col overflow-auto rounded-md">
+    <div className="not-prose flex flex-col overflow-auto rounded-md">
       <div className="flex flex-col bg-zinc-200 p-3 dark:bg-zinc-800 md:p-6">
         <div className="grid">
           {isLayout ? (
