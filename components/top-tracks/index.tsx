@@ -2,24 +2,36 @@ import { useState } from 'react';
 import useSWR from 'swr';
 import fetcher from 'lib/fetcher';
 import { TopTracks } from 'lib/types';
+import ListBox, { ListBoxOption } from 'components/listbox';
 import Track from './track';
 
+const options = [
+  { value: 'short_term', label: 'Last month' },
+  { value: 'medium_term', label: 'Last 6 months' },
+  { value: 'long_term', label: 'All time' },
+];
+
 const Tracks: React.FC = () => {
-  const [period, setPeriod] = useState<string>('short_term');
+  const [period, setPeriod] = useState<string | undefined>('short_term');
+  const [periodLabel, setPeriodLabel] = useState<string | undefined>(
+    'Last month'
+  );
   const { data } = useSWR<TopTracks>(
-    `/api/top-tracks?limit=5&period=${period}`,
+    `/api/top-tracks?limit=5&period=${period || 'short_term'}`,
     fetcher
   );
 
-  const onChangePeriod = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setPeriod(event.currentTarget.value);
+  const onChangePeriod = (value: string) => {
+    const selectedOption = options.find(
+      (option: ListBoxOption) => option.label === value
+    );
+    setPeriod(selectedOption?.value);
+    setPeriodLabel(selectedOption?.label);
   };
 
   if (!data) {
     return null;
   }
-
-  console.log(data);
 
   return (
     <section className="mt-20">
@@ -29,22 +41,13 @@ const Tracks: React.FC = () => {
         my favourite jams!
       </p>
 
-      <div className="my-6 flex rounded-md bg-zinc-200 p-2 dark:bg-zinc-800 sm:w-fit">
-        <label className="flex-1 text-sm" htmlFor="period">
-          Top tracks for period:
-        </label>
-        <select
-          className="ml-3 cursor-pointer appearance-none rounded-md bg-transparent text-sm font-bold text-secondary transition-colors hover:text-secondary-light md:w-auto"
-          name="period"
-          id="period"
+      <div className="my-6 flex flex-col rounded-md sm:w-fit">
+        <ListBox
+          options={options}
           onChange={onChangePeriod}
-          value={period}
-          defaultValue="medium_term"
-        >
-          <option value="short_term">Last month</option>
-          <option value="medium_term">Last 6 months</option>
-          <option value="long_term">All time</option>
-        </select>
+          selectedValue={periodLabel}
+          title="Top tracks for period:"
+        />
       </div>
 
       <ul className="mt-4 list-decimal space-y-10">
