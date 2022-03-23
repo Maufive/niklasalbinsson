@@ -5,37 +5,6 @@ import PageHeader from 'components/page-header';
 import TopTracks from 'components/top-tracks';
 import { CustomSeo } from 'components/seo';
 
-// <section className="">
-//         <Profile />
-//         <div className={styles.bioDetailWrapper}>
-//           <div className={styles.bioDetails}>
-//             <h3>Niklas Albinsson</h3>
-//             <p>Software developer</p>
-//             <div className={styles.location}>
-//               <LocationIcon />
-//               <p>Umeå, Sweden</p>
-//             </div>
-//           </div>
-//           <motion.a
-//             href="mailto:albinssonniklas@gmail.com"
-//             target="__blank"
-//             whileTap={{ scale: 0.95 }}
-//             className={styles.buttonLinkPrimary}
-//           >
-//             Get in touch
-//           </motion.a>
-//           <motion.a
-//             href="https://docs.google.com/document/d/1WBVROPLHXxYf4Or0rqhvglPsU91xOpuWnexmpA4gZOI/"
-//             target="__blank"
-//             whileTap={{ scale: 0.95 }}
-//             className={styles.buttonLinkSecondary}
-//           >
-//             View Resume
-//             <ChevronRight />
-//           </motion.a>
-//         </div>
-//       </section>
-
 const WavingHand = () => (
   <motion.div
     style={{
@@ -90,9 +59,9 @@ const About: NextPage = () => (
         </p>
       </section>
     </article>
-    <article className="">
+    <article>
       <h2 className="mb-6 text-xl font-bold">Experience</h2>
-      <section className="">
+      <section>
         <h4 className="text-base font-normal">
           Frontend Developer @{' '}
           <span className="font-bold text-secondary">ComeOn Group</span>

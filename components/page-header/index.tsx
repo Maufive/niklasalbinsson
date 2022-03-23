@@ -12,7 +12,11 @@ const PageHeader: React.FC<PageHeaderProps> = ({
 }) => (
   <div className={`mb-12 sm:mb-20 ${compact ? 'mb-0 sm:mb-10' : ''}`}>
     <h1 className="mb-10 text-3xl font-bold sm:mb-3">{title}</h1>
-    {description && <p className="text-md mb-7">{description}</p>}
+    {description && (
+      <p className="mb-8 text-base text-zinc-700 dark:text-zinc-400">
+        {description}
+      </p>
+    )}
     {children}
   </div>
 );
