@@ -36,7 +36,7 @@ const FooterNavigation = () => {
         .split(', ');
 
       if (isIOSSafari) {
-        const dayInSafari = day[0].split(' ')[0];
+        const dayInSafari = day[0].split(' ')[0].toLowerCase();
         return setToday(dayInSafari);
       }
 
