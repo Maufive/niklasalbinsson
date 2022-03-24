@@ -1,4 +1,5 @@
 import type { NextPage, GetStaticProps } from 'next';
+import Link from 'next/link';
 import { pick } from '@contentlayer/client';
 import { allPosts } from '.contentlayer/data';
 import type { Post } from '.contentlayer/types';
@@ -10,7 +11,7 @@ import Badge from 'components/badge';
 
 const ListItem: React.FC = ({ children }) => (
   <li>
-    <Badge>
+    <Badge variant="secondary">
       <span className="text-xs font-bold text-zinc-100">{children}</span>
     </Badge>
   </li>
@@ -32,24 +33,28 @@ const Home: NextPage<{ posts: Post[] }> = ({ posts }) => (
 
     <section className="mb-20 flex flex-col 2xl:mb-32">
       <div className="mb-6">
-        <h2 className="mb-4 text-2xl font-bold">Featured Project</h2>
+        <h2 className="text-2xl font-bold">Featured Project</h2>
       </div>
-      <div className="w-full transform cursor-pointer rounded-xl bg-transparent from-transparent to-transparent p-1 transition-all hover:scale-[1.03] hover:bg-gradient-to-r hover:from-[#D8B4FE] hover:to-[#818CF8]">
-        <div className="flex h-full flex-col justify-between rounded-lg bg-zinc-100 p-6 transition-colors dark:bg-zinc-900">
-          <h3 className="mb-2 text-xl font-semibold">Veckohandla</h3>
-          <p className="text-base text-zinc-700 dark:text-zinc-300">
-            An app built to try and make weekly grocery shopping easy. Create a
-            ready-to-go shopping list of groceries in just a matter of seconds!
-          </p>
-          <div className="mt-6">
-            <ul className="flex list-none items-center space-x-4">
-              <ListItem>React</ListItem>
-              <ListItem>TypeScript</ListItem>
-              <ListItem>Redux Toolkit</ListItem>
-            </ul>
+
+      <Link passHref href="/projects/veckohandla">
+        <div className="w-full transform cursor-pointer rounded-xl bg-transparent from-transparent to-transparent p-1 transition-all hover:scale-[1.03] hover:bg-gradient-to-r hover:from-[#D8B4FE] hover:to-[#818CF8]">
+          <div className="flex h-full flex-col justify-between rounded-lg bg-zinc-100 p-6 transition-colors dark:bg-zinc-900">
+            <h3 className="mb-2 text-xl font-semibold">Veckohandla</h3>
+            <p className="text-base text-zinc-700 dark:text-zinc-300">
+              An app built to try and make weekly grocery shopping easy. Create
+              a ready-to-go shopping list of groceries in just a matter of
+              seconds!
+            </p>
+            <div className="mt-6">
+              <ul className="flex list-none items-center space-x-4">
+                <ListItem>React</ListItem>
+                <ListItem>TypeScript</ListItem>
+                <ListItem>Redux Toolkit</ListItem>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
+      </Link>
     </section>
 
     <PostList title="Latest posts" posts={posts}>

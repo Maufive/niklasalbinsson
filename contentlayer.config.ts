@@ -26,7 +26,7 @@ const computedFields: ComputedFields = {
 
 const Post = defineDocumentType(() => ({
   name: 'Post',
-  filePathPattern: '**/*.mdx',
+  filePathPattern: 'blog/*.mdx',
   bodyType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
@@ -38,9 +38,25 @@ const Post = defineDocumentType(() => ({
   computedFields,
 }));
 
+const Project = defineDocumentType(() => ({
+  name: 'Project',
+  filePathPattern: 'projects/*.mdx',
+  bodyType: 'mdx',
+  fields: {
+    title: { type: 'string', required: true },
+    stack: { type: 'string', required: true },
+    summary: { type: 'string', required: true },
+    publishedAt: { type: 'string', required: true },
+    image: { type: 'string', required: true }, 
+    repositoryUrl: { type: 'string', required: true },
+    projectUrl: { type: 'string', required: false }
+  },
+  computedFields,
+}));
+
 const contentLayerConfig = makeSource({
-  contentDirPath: 'data/blog',
-  documentTypes: [Post],
+  contentDirPath: 'data',
+  documentTypes: [Post, Project],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [

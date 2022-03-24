@@ -1,7 +1,19 @@
-const Badge: React.FC = ({ children }) => (
-  <div className="flex items-center rounded-md bg-primary py-1 px-2">
+type Props = {
+  variant: 'primary' | 'secondary';
+};
+
+const Badge: React.FC<Props> = ({ children, variant }) => (
+  <div
+    className={`${
+      variant === 'primary' ? 'bg-primary' : 'bg-secondary'
+    } flex items-center rounded-md py-1 px-2`}
+  >
     {children}
   </div>
 );
+
+Badge.defaultProps = {
+  variant: 'primary',
+};
 
 export default Badge;

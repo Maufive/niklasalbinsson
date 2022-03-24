@@ -12,6 +12,7 @@ const BadgeWidget = dynamic(
 
 const Aside = dynamic(() => import('./aside'));
 const Link = dynamic(() => import('../links'));
+const RoundedImage = dynamic(() => import('./images'));
 
 const MDXComponents = {
   SimpleListWidget,
@@ -19,6 +20,7 @@ const MDXComponents = {
   BadgeWidget,
   Aside,
   Link,
+  Image: RoundedImage,
 };
 
 export default MDXComponents;
