@@ -35,7 +35,7 @@ const About: NextPage = () => (
     <CustomSeo title={ABOUT_TITLE} />
     <PageHeader title={ABOUT_TITLE} />
     <article className="">
-      <section className="mb-10">
+      <section className="mb-10 2xl:mb-20">
         <h2 className="mb-6 text-xl font-bold">
           Hi there! <WavingHand />
         </h2>

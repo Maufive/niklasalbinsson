@@ -34,7 +34,7 @@ const Tracks: React.FC = () => {
   }
 
   return (
-    <section className="mt-20">
+    <section className="mt-20 2xl:mt-32">
       <h2 className="mb-2 text-xl font-bold">Top Tracks</h2>
       <p className="text-base">
         I love listening to all kinds of music. Here is a daily updated list of
