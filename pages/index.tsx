@@ -7,13 +7,10 @@ import PageHeader from 'components/page-header';
 import Page from 'components/page/page';
 import { PostList } from 'components/blog';
 import { InternalLink } from 'components/links';
-import Badge from 'components/badge';
 
 const ListItem: React.FC = ({ children }) => (
-  <li>
-    <Badge variant="secondary">
-      <span className="text-xs font-bold text-zinc-100">{children}</span>
-    </Badge>
+  <li className="mr-6">
+    <span className="text-xs font-bold text-zinc-100">✨ {children}</span>
   </li>
 );
 
@@ -37,16 +34,16 @@ const Home: NextPage<{ posts: Post[] }> = ({ posts }) => (
       </div>
 
       <Link passHref href="/projects/veckohandla">
-        <div className="w-full transform cursor-pointer rounded-xl bg-transparent from-transparent to-transparent p-1 transition-all hover:scale-[1.03] hover:bg-gradient-to-r hover:from-[#D8B4FE] hover:to-[#818CF8]">
+        <div className="w-full transform cursor-pointer rounded-xl bg-transparent bg-gradient-to-r from-[#D8B4FE] from-transparent to-[#818CF8] to-transparent p-1 transition-all hover:scale-[1.03]">
           <div className="flex h-full flex-col justify-between rounded-lg bg-zinc-100 p-6 transition-colors dark:bg-zinc-900">
-            <h3 className="mb-2 text-xl font-semibold">Veckohandla</h3>
+            <h3 className="mb-2 text-xl font-semibold xl:mb-4">Veckohandla</h3>
             <p className="text-base text-zinc-700 dark:text-zinc-300">
               An app built to try and make weekly grocery shopping easy. Create
               a ready-to-go shopping list of groceries in just a matter of
               seconds!
             </p>
             <div className="mt-6">
-              <ul className="flex list-none items-center space-x-4">
+              <ul className="flex list-none flex-wrap items-center">
                 <ListItem>React</ListItem>
                 <ListItem>TypeScript</ListItem>
                 <ListItem>Redux Toolkit</ListItem>

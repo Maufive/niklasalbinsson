@@ -35,9 +35,9 @@ const Project: NextPage<{ project: ProjectType }> = ({ project }) => {
       <PageHeader title={project.title} compact description={project.summary} />
       <div className="flex flex-col space-y-4">
         <ProjectDetail title="Stack" column>
-          <ul className="flex space-x-4">
+          <ul className="flex flex-wrap">
             {STACK.map((technology) => (
-              <li key={technology} className="flex flex-wrap">
+              <li key={technology} className="mr-4 mb-2 lg:mb-0">
                 <p className="text-base text-zinc-700 dark:text-zinc-300">
                   {technology}
                 </p>

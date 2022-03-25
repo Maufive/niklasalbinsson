@@ -48,8 +48,8 @@ const FooterNavigation = () => {
     <footer className="my-0 mx-auto mt-20 w-full max-w-2xl p-2 2xl:mt-32">
       <NowPlaying />
       <nav className="mt-20 flex w-full justify-center py-2 2xl:mt-32">
-        <ul className="flex items-center">
-          <li className="mr-8 p-2">
+        <ul className="flex flex-wrap items-center space-x-6">
+          <li className="p-2">
             <a
               title="Email Me"
               href="mailto:albinssonniklas@gmail.com"
@@ -60,7 +60,7 @@ const FooterNavigation = () => {
             </a>
           </li>
           {EXTERNAL_LINKS.map((link) => (
-            <li key={link.href} className="mr-8 p-2">
+            <li key={link.href} className="p-2">
               <a
                 href={link.href}
                 target="_blank"

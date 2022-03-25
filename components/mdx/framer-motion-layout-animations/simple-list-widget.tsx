@@ -67,7 +67,7 @@ const SimpleList: React.FC = () => {
   };
 
   return (
-    <div className="not-prose flex h-96 flex-col overflow-auto rounded-md md:flex-row">
+    <div className="not-prose flex h-full flex-col overflow-auto rounded-md md:h-96 md:flex-row">
       <div className="flex-shink flex flex-grow basis-64 flex-col justify-between bg-zinc-200 p-3 dark:bg-zinc-800 md:p-6">
         <motion.button
           type="button"
