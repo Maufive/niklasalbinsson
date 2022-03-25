@@ -82,7 +82,7 @@ const BadgesWidget: React.FC = () => {
           <ul className="flex gap-3">
             {filters.map((filter) => (
               <motion.li key={filter} style={{ width: '100%' }} layout>
-                <Badge>
+                <Badge variant="primary">
                   <motion.div
                     layout="position"
                     style={{
@@ -108,7 +108,7 @@ const BadgesWidget: React.FC = () => {
           <ul className="flex gap-3">
             {filters.map((filter) => (
               <motion.li key={filter} style={{ width: '100%' }} layout>
-                <Badge>
+                <Badge variant="primary">
                   <div
                     style={{
                       width: '100%',
