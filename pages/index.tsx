@@ -34,7 +34,7 @@ const Home: NextPage<{ posts: Post[] }> = ({ posts }) => (
       </div>
 
       <Link passHref href="/projects/veckohandla">
-        <div className="w-full transform cursor-pointer rounded-xl bg-transparent bg-gradient-to-r from-[#D8B4FE] from-transparent to-[#818CF8] to-transparent p-1 transition-all hover:scale-[1.03]">
+        <div className="w-full transform cursor-pointer rounded-xl bg-transparent bg-gradient-to-r from-[#D8B4FE] to-[#818CF8] p-1 transition-all hover:scale-[1.03]">
           <div className="flex h-full flex-col justify-between rounded-lg bg-zinc-100 p-6 transition-colors dark:bg-zinc-900">
             <h3 className="mb-2 text-xl font-semibold xl:mb-4">Veckohandla</h3>
             <p className="text-base text-zinc-700 dark:text-zinc-300">
