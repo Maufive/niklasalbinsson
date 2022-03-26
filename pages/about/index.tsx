@@ -36,7 +36,7 @@ const About: NextPage = () => (
     <PageHeader title={ABOUT_TITLE} />
     <article className="">
       <section className="mb-10 2xl:mb-20">
-        <h2 className="mb-6 text-xl font-bold">
+        <h2 className="mb-6 text-2xl font-bold">
           Hi there! <WavingHand />
         </h2>
         <p className="mb-4 text-base leading-7 text-zinc-800 dark:text-zinc-200">
@@ -60,7 +60,7 @@ const About: NextPage = () => (
       </section>
     </article>
     <article>
-      <h2 className="mb-6 text-xl font-bold">Experience</h2>
+      <h3 className="mb-6 text-xl font-bold">Experience</h3>
       <section>
         <h4 className="text-base font-normal">
           Frontend Developer @{' '}
@@ -69,7 +69,7 @@ const About: NextPage = () => (
         <p className="text-sm text-zinc-600 dark:text-zinc-400">
           May 2019 - present
         </p>
-        <ul className="mt-4 list-disc space-y-4">
+        <ul className="mt-4 list-disc space-y-4 px-4 lg:px-0">
           <li className="marker:text-secondary">
             <p className="text-base leading-7 text-zinc-700 dark:text-zinc-300">
               Leading initiative to implement TypeScript including tooling into
