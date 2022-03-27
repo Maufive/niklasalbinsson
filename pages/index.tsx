@@ -10,7 +10,9 @@ import { InternalLink } from 'components/links';
 
 const ListItem: React.FC = ({ children }) => (
   <li className="mr-6">
-    <span className="text-xs font-bold text-zinc-100">✨ {children}</span>
+    <span className="text-xs font-bold text-zinc-600 dark:text-zinc-300">
+      ✨ {children}
+    </span>
   </li>
 );
 
