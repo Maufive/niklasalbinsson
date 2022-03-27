@@ -5,6 +5,24 @@ import useIsIosSafari from '../../utils/hooks/use-is-ios-safari';
 
 const CURRENT_YEAR = new Date().getFullYear();
 
+const FancyButton = () => (
+  <div className="grid items-start justify-center gap-8">
+    <div className="group relative">
+      <div className="absolute -inset-0.5 rounded-md bg-gradient-to-r from-primary to-secondary opacity-75 blur transition duration-1000 group-hover:opacity-100 group-hover:duration-200" />
+      <a
+        title="Email Me"
+        href="mailto:albinssonniklas@gmail.com"
+        className="relative flex items-center rounded-md bg-zinc-100 px-7 py-4 leading-none dark:bg-zinc-900"
+      >
+        <span className="flex items-center text-zinc-700 transition duration-200 group-hover:text-zinc-900 dark:text-zinc-300 dark:group-hover:text-zinc-50">
+          <AtIcon className="mr-2 h-4 w-4 fill-transparent stroke-current stroke-2" />
+          Email Me
+        </span>
+      </a>
+    </div>
+  </div>
+);
+
 const EXTERNAL_LINKS = [
   {
     label: 'GitHub',
@@ -50,14 +68,7 @@ const FooterNavigation = () => {
       <nav className="mt-20 flex w-full justify-center py-2 2xl:mt-32">
         <ul className="flex flex-wrap items-center space-x-6">
           <li className="p-2">
-            <a
-              title="Email Me"
-              href="mailto:albinssonniklas@gmail.com"
-              className="ml-0 flex cursor-pointer items-center rounded-lg border border-zinc-600 bg-zinc-200 px-2 py-2 text-sm font-semibold text-zinc-600 shadow-md transition-all hover:scale-105 hover:border-secondary hover:bg-secondary hover:text-zinc-50 focus:border-secondary focus:bg-secondary focus:text-zinc-50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 md:ml-5 md:px-4 md:text-base"
-            >
-              <AtIcon className="mr-2 h-4 w-4 fill-transparent stroke-current stroke-2" />
-              Email Me
-            </a>
+            <FancyButton />
           </li>
           {EXTERNAL_LINKS.map((link) => (
             <li key={link.href} className="p-2">
