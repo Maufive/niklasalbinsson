@@ -29,10 +29,6 @@ const Tracks: React.FC = () => {
     setPeriodLabel(selectedOption?.label);
   };
 
-  if (!data) {
-    return null;
-  }
-
   return (
     <section className="mt-20 2xl:mt-32">
       <h2 className="mb-2 text-xl font-bold">Top Tracks</h2>
@@ -51,7 +47,7 @@ const Tracks: React.FC = () => {
       </div>
 
       <ul className="mt-4 list-decimal space-y-10">
-        {data.tracks.map((track, index) => (
+        {data?.tracks.map((track, index) => (
           <Track ranking={index + 1} key={track.songUrl} {...track} />
         ))}
       </ul>
