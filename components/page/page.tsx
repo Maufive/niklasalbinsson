@@ -19,7 +19,7 @@ const PageTransition: FC = ({ children }): JSX.Element => (
 );
 
 const Page: FC = ({ children }): JSX.Element => (
-  <main className="relative mx-auto max-w-2xl p-3 pt-28">
+  <main className="relative mx-auto max-w-2xl p-3 pt-6">
     <PageTransition>{children}</PageTransition>
   </main>
 );
