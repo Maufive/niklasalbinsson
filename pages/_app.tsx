@@ -5,7 +5,7 @@ import type { AppProps } from 'next/app';
 import { ThemeProvider } from 'next-themes';
 import { AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/router';
-import Navigation from 'components/new-nav';
+import Navigation from 'components/navigation';
 import Footer from 'components/footer/footer';
 
 function AppContainer({ Component, pageProps }: AppProps) {

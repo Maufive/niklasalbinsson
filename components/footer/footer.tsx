@@ -6,21 +6,19 @@ import useIsIosSafari from '../../utils/hooks/use-is-ios-safari';
 const CURRENT_YEAR = new Date().getFullYear();
 
 const FancyButton = () => (
-  <div className="grid items-start justify-center gap-8">
-    <div className="group relative">
-      <div className="absolute -inset-0.5 rounded-md bg-gradient-to-r from-primary to-secondary opacity-75 blur transition duration-1000 group-hover:opacity-100 group-hover:duration-200" />
-      <a
-        title="Email Me"
-        href="mailto:albinssonniklas@gmail.com"
-        className="relative flex items-center rounded-md bg-zinc-100 px-7 py-4 leading-none dark:bg-zinc-900"
-      >
-        <span className="flex items-center text-zinc-700 transition duration-200 group-hover:text-zinc-900 dark:text-zinc-300 dark:group-hover:text-zinc-50">
-          <AtIcon className="mr-2 h-4 w-4 fill-transparent stroke-current stroke-2" />
-          Email Me
-        </span>
-      </a>
+  <a
+    className="group relative block"
+    title="Email Me"
+    href="mailto:albinssonniklas@gmail.com"
+  >
+    <div className="absolute -inset-0.5 rounded-md bg-gradient-to-r from-primary to-secondary opacity-50 blur transition duration-1000 hover:scale-[1.02] group-hover:opacity-100 group-hover:duration-200 group-focus:scale-[1.02]  group-focus:opacity-100  group-focus:duration-200" />
+    <div className="relative flex items-center rounded-md bg-zinc-100 px-7 py-4 leading-none dark:bg-zinc-900">
+      <span className="flex items-center text-zinc-700 transition duration-200 group-hover:text-zinc-900 dark:text-zinc-300 dark:group-hover:text-zinc-50">
+        <AtIcon className="mr-2 h-4 w-4 fill-transparent stroke-current stroke-2" />
+        Email Me
+      </span>
     </div>
-  </div>
+  </a>
 );
 
 const EXTERNAL_LINKS = [
@@ -63,9 +61,9 @@ const FooterNavigation = () => {
   }, [isIOSSafari]);
 
   return (
-    <footer className="my-0 mx-auto mt-20 w-full max-w-2xl p-2 pb-20 2xl:mt-32">
+    <footer className="my-0 mx-auto mt-20 w-full max-w-2xl space-y-20 p-2 pb-20 2xl:mt-32">
       <NowPlaying />
-      <nav className="my-20 flex w-full justify-center py-2 2xl:mt-32">
+      <nav className="my-20 hidden w-full justify-center py-2 sm:flex 2xl:mt-32">
         <ul className="flex flex-wrap items-center space-x-6">
           <li>
             <FancyButton />

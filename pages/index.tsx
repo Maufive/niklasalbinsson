@@ -35,15 +35,15 @@ const Home: NextPage<{ posts: Post[] }> = ({ posts }) => (
         <h2 className="text-2xl font-bold">Featured Project</h2>
       </div>
 
-      <div className="group relative transition duration-1000 hover:scale-[1.02] hover:duration-200">
-        <div className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-primary to-secondary opacity-50 blur transition duration-1000 group-hover:opacity-100 group-hover:duration-200" />
-        <Link passHref href="/projects/veckohandla">
+      <Link passHref href="/projects/veckohandla">
+        <a className="group relative block transition duration-1000 hover:scale-[1.02] hover:duration-200 focus:scale-[1.02] focus:duration-200">
+          <div className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-primary to-secondary px-4 opacity-50 blur transition duration-1000 group-hover:opacity-100 group-hover:duration-200 group-focus:opacity-100 group-focus:duration-200" />
           <div className="w-full transform cursor-pointer rounded-xl bg-transparent p-1">
             <div className="flex h-full flex-col justify-between rounded-xl bg-zinc-100 p-6 transition-colors dark:bg-zinc-900">
-              <h3 className="mb-2 text-xl font-semibold text-zinc-700 transition duration-200 group-hover:text-zinc-900 dark:text-zinc-200 dark:group-hover:text-zinc-50 xl:mb-4">
+              <h3 className="mb-2 text-xl font-semibold text-zinc-700 transition duration-200 group-hover:text-zinc-900 group-focus:text-zinc-900 dark:text-zinc-200 dark:group-hover:text-zinc-50 dark:group-focus:text-zinc-50 xl:mb-4">
                 Veckohandla
               </h3>
-              <p className="text-base text-zinc-600 transition duration-200 group-hover:text-zinc-700 dark:text-zinc-300 dark:group-hover:text-zinc-200">
+              <p className="text-base text-zinc-600 transition duration-200 group-hover:text-zinc-700 group-focus:text-zinc-700 dark:text-zinc-300 dark:group-hover:text-zinc-200 dark:group-focus:text-zinc-200">
                 An app built to try and make weekly grocery shopping easy.
                 Create a ready-to-go shopping list of groceries in just a matter
                 of seconds!
@@ -57,8 +57,8 @@ const Home: NextPage<{ posts: Post[] }> = ({ posts }) => (
               </div>
             </div>
           </div>
-        </Link>
-      </div>
+        </a>
+      </Link>
     </section>
 
     <PostList title="Latest posts" posts={posts}>
