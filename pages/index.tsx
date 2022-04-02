@@ -1,5 +1,6 @@
 import type { NextPage, GetStaticProps } from 'next';
 import Link from 'next/link';
+import { ChevronRightIcon } from '@heroicons/react/outline';
 import { pick } from '@contentlayer/client';
 import { allPosts } from '.contentlayer/data';
 import type { Post } from '.contentlayer/types';
@@ -9,10 +10,9 @@ import { PostList } from 'components/blog';
 import { InternalLink } from 'components/links';
 
 const ListItem: React.FC = ({ children }) => (
-  <li className="mr-6">
-    <span className="text-xs font-bold text-zinc-600 transition duration-200 group-hover:text-zinc-800 dark:text-zinc-400 dark:group-hover:text-zinc-300">
-      ✨ {children}
-    </span>
+  <li className="mr-6 flex items-center  text-xs font-bold text-zinc-600 transition duration-200 group-hover:text-zinc-800 dark:text-zinc-300 dark:group-hover:text-zinc-300">
+    <ChevronRightIcon className="mr-1 h-4 w-4 text-secondary" />
+    {children}
   </li>
 );
 
@@ -43,7 +43,7 @@ const Home: NextPage<{ posts: Post[] }> = ({ posts }) => (
               <h3 className="mb-2 text-xl font-semibold text-zinc-700 transition duration-200 group-hover:text-zinc-900 group-focus:text-zinc-900 dark:text-zinc-200 dark:group-hover:text-zinc-50 dark:group-focus:text-zinc-50 xl:mb-4">
                 Veckohandla
               </h3>
-              <p className="text-base text-zinc-600 transition duration-200 group-hover:text-zinc-700 group-focus:text-zinc-700 dark:text-zinc-300 dark:group-hover:text-zinc-200 dark:group-focus:text-zinc-200">
+              <p className="text-base text-zinc-700 transition duration-200 group-hover:text-zinc-700 group-focus:text-zinc-700 dark:text-zinc-300 dark:group-hover:text-zinc-200 dark:group-focus:text-zinc-200">
                 An app built to try and make weekly grocery shopping easy.
                 Create a ready-to-go shopping list of groceries in just a matter
                 of seconds!
