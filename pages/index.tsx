@@ -10,7 +10,7 @@ import { PostList } from 'components/blog';
 import { InternalLink } from 'components/links';
 
 const ListItem: React.FC = ({ children }) => (
-  <li className="mr-6 flex items-center  text-xs font-bold text-zinc-600 transition duration-200 group-hover:text-zinc-800 dark:text-zinc-300 dark:group-hover:text-zinc-300">
+  <li className="flex items-center  text-xs font-bold text-zinc-600 transition duration-200 group-hover:text-zinc-800 dark:text-zinc-300 dark:group-hover:text-zinc-300 md:text-sm">
     <ChevronRightIcon className="mr-1 h-4 w-4 text-secondary" />
     {children}
   </li>
@@ -30,7 +30,7 @@ const Home: NextPage<{ posts: Post[] }> = ({ posts }) => (
       <InternalLink href="/about">Learn more about me</InternalLink>
     </PageHeader>
 
-    <section className="mb-20 flex flex-col 2xl:mb-32">
+    <section className="mb-20 flex flex-col md:px-4 2xl:mb-32">
       <div className="mb-6">
         <h2 className="text-2xl font-bold">Featured Project</h2>
       </div>
@@ -49,7 +49,7 @@ const Home: NextPage<{ posts: Post[] }> = ({ posts }) => (
                 of seconds!
               </p>
               <div className="mt-6">
-                <ul className="flex list-none flex-wrap items-center">
+                <ul className="flex list-none flex-col space-y-2 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-6">
                   <ListItem>React</ListItem>
                   <ListItem>TypeScript</ListItem>
                   <ListItem>Redux Toolkit</ListItem>
