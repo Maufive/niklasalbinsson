@@ -8,6 +8,7 @@ import PageHeader from 'components/page-header';
 import Page from 'components/page/page';
 import { PostList } from 'components/blog';
 import { InternalLink } from 'components/links';
+import Seo from 'components/seo';
 
 const ListItem: React.FC = ({ children }) => (
   <li className="flex items-center  text-xs font-bold text-zinc-600 transition duration-200 group-hover:text-zinc-800 dark:text-zinc-300 dark:group-hover:text-zinc-300 md:text-sm">
@@ -18,6 +19,7 @@ const ListItem: React.FC = ({ children }) => (
 
 const Home: NextPage<{ posts: Post[] }> = ({ posts }) => (
   <Page>
+    <Seo />
     <PageHeader
       title={
         <span>
