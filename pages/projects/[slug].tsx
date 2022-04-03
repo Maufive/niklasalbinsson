@@ -33,7 +33,7 @@ const Project: NextPage<{ project: ProjectType }> = ({ project }) => {
     <Page>
       <CustomSeo title={BLOG_TITLE} description={BLOG_DESCRIPTION} />
       <PageHeader title={project.title} compact description={project.summary} />
-      <div className="flex flex-col space-y-4">
+      <div className="flex flex-col space-y-4 md:px-4">
         <ProjectDetail title="Stack" column>
           <ul className="flex flex-wrap">
             {STACK.map((technology) => (
