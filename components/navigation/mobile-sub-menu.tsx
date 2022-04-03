@@ -113,6 +113,7 @@ const MenuItem: React.FC<{
         target="_blank"
         rel="noreferrer"
         title={ariaTitle}
+        aria-label={ariaTitle}
       >
         {icon}
       </a>
@@ -142,6 +143,7 @@ const Submenu: React.FC = () => (
     {({ open }) => (
       <>
         <Menu.Button
+          aria-label="Submenu button"
           className={`flex items-center rounded-xl border bg-zinc-100 p-3 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:ring-opacity-75
                dark:bg-zinc-900 md:rounded-lg md:p-2 ${
                  open

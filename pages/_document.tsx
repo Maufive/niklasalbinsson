@@ -20,7 +20,7 @@ class MyDocument extends Document {
             crossOrigin="anonymous"
           />
           <link href="/favicons/favicon.ico" rel="icon" />
-          <link href="/static/favicons/site.webmanifest" rel="manifest" />
+
           <link
             href="/favicons/apple-touch-icon.png"
             rel="apple-touch-icon"
