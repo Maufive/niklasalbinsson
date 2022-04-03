@@ -34,8 +34,8 @@ const About: NextPage = () => (
   <Page>
     <CustomSeo title={ABOUT_TITLE} />
     <PageHeader title={ABOUT_TITLE} />
-    <article className="px-4">
-      <section className="mb-10 2xl:mb-20">
+    <article className="space-y-20 md:px-4 2xl:space-y-32">
+      <section>
         <h2 className="mb-6 text-2xl font-bold">
           Hi there! <WavingHand />
         </h2>
@@ -58,51 +58,58 @@ const About: NextPage = () => (
           to this day I strive to get a little better every day.
         </p>
       </section>
-    </article>
-    <article>
-      <h3 className="mb-6 text-xl font-bold">Experience</h3>
+
       <section>
-        <h4 className="text-base font-normal">
-          Frontend Developer @{' '}
-          <span className="font-bold text-secondary">ComeOn Group</span>
-        </h4>
-        <p className="text-sm text-zinc-600 dark:text-zinc-400">
-          May 2019 - present
-        </p>
-        <ul className="mt-4 list-disc space-y-4 px-4 lg:px-0">
-          <li className="marker:text-secondary">
-            <p className="text-base leading-7 text-zinc-700 dark:text-zinc-300">
-              Leading initiative to implement TypeScript including tooling into
-              an already existing codebase by gradually refactoring components
-              and configurations.
-            </p>
-          </li>
-          <li className="marker:text-secondary">
-            <p className="text-base leading-7 text-zinc-700 dark:text-zinc-300">
-              Contributing to the in-house UI component library creating
-              reusable React components used by all frontend developers in the
-              organization.
-            </p>
-          </li>
-          <li className="marker:text-secondary">
-            <p className="text-base leading-7 text-zinc-700 dark:text-zinc-300">
-              Involved in developing a brand new web product in modern React to
-              allow casino players to play games together with favorite online
-              live-streamers.
-            </p>
-          </li>
-          <li className="marker:text-secondary">
-            <p className="text-base leading-7 text-zinc-700 dark:text-zinc-300">
-              Implementing a new third-provider for the Sportsbook product
-              together with my team of developers to secure two key markets in
-              Germany and India.
-            </p>
-          </li>
-        </ul>
+        <h3 className="mb-6 text-xl font-bold">Experience</h3>
+        <div>
+          <h4 className="text-base font-normal">
+            Frontend Developer @{' '}
+            <span className="font-bold text-secondary">ComeOn Group</span>
+          </h4>
+          <p className="text-sm text-zinc-600 dark:text-zinc-400">
+            May 2019 - present
+          </p>
+          <ul className="mt-4 list-disc space-y-4 px-4 lg:space-y-6 lg:px-0">
+            <li className="marker:text-secondary">
+              <p className="text-base leading-7 text-zinc-700 dark:text-zinc-300">
+                Leading initiative to implement TypeScript and surrounding
+                tooling into an already existing codebase by gradually
+                refactoring components and configurations
+              </p>
+            </li>
+            <li className="marker:text-secondary">
+              <p className="text-base leading-7 text-zinc-700 dark:text-zinc-300">
+                Developing a new UI for the Sportsbook product in React and
+                styled-components
+              </p>
+            </li>
+            <li className="marker:text-secondary">
+              <p className="text-base leading-7 text-zinc-700 dark:text-zinc-300">
+                Creating performant state management in Redux to handle
+                real-time data sent over websocket
+              </p>
+            </li>
+            <li className="marker:text-secondary">
+              <p className="text-base leading-7 text-zinc-700 dark:text-zinc-300">
+                Heavily contributing to the in-house UI component library
+                creating reusable React components used by most of the frontend
+                developers
+              </p>
+            </li>
+            <li className="marker:text-secondary">
+              <p className="text-base leading-7 text-zinc-700 dark:text-zinc-300">
+                Writing unit and end-to-end tests with the Cypress and Jest
+                frameworks
+              </p>
+            </li>
+          </ul>
+        </div>
       </section>
     </article>
 
-    <TopTracks />
+    <section className="mt-20 md:px-4 2xl:mt-32">
+      <TopTracks />
+    </section>
   </Page>
 );
 
