@@ -38,7 +38,7 @@ const Home: NextPage<{ posts: Post[] }> = ({ posts }) => (
       </div>
 
       <Link passHref href="/projects/veckohandla">
-        <a className="group relative block transition duration-1000 hover:scale-[1.02] hover:duration-200 focus:scale-[1.02] focus:duration-200">
+        <a className="group relative block transition duration-1000 focus:duration-200 md:hover:scale-[1.02] md:hover:duration-200 md:focus:scale-[1.02]">
           <div className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-primary to-secondary px-4 opacity-50 blur transition duration-1000 group-hover:opacity-100 group-hover:duration-200 group-focus:opacity-100 group-focus:duration-200" />
           <div className="w-full transform cursor-pointer rounded-xl bg-transparent p-1">
             <div className="flex h-full flex-col justify-between rounded-xl bg-zinc-100 p-6 transition-colors dark:bg-zinc-900">
