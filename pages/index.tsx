@@ -38,14 +38,14 @@ const Home: NextPage<{ posts: Post[] }> = ({ posts }) => (
       </div>
 
       <Link passHref href="/projects/veckohandla">
-        <a className="group relative block transition duration-1000 focus:duration-200 md:hover:scale-[1.02] md:hover:duration-200 md:focus:scale-[1.02]">
-          <div className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-primary to-secondary px-4 opacity-50 blur transition duration-1000 group-hover:opacity-100 group-hover:duration-200 group-focus:opacity-100 group-focus:duration-200" />
+        <a className="group relative block lg:transition lg:duration-1000 lg:hover:scale-[1.02] lg:hover:duration-200 lg:focus:scale-[1.02] lg:focus:duration-200">
+          <div className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-primary to-secondary px-4 opacity-50 blur group-focus:opacity-100 lg:transition lg:duration-1000 lg:group-hover:opacity-100 lg:group-hover:duration-200 lg:group-focus:duration-200" />
           <div className="w-full transform cursor-pointer rounded-xl bg-transparent p-1">
             <div className="flex h-full flex-col justify-between rounded-xl bg-zinc-100 p-6 transition-colors dark:bg-zinc-900">
-              <h3 className="mb-2 text-xl font-semibold text-zinc-700 transition duration-200 group-hover:text-zinc-900 group-focus:text-zinc-900 dark:text-zinc-200 dark:group-hover:text-zinc-50 dark:group-focus:text-zinc-50 xl:mb-4">
+              <h3 className="mb-2 text-xl font-semibold text-zinc-700 transition duration-200 dark:text-zinc-200 dark:group-hover:text-zinc-50 dark:group-focus:text-zinc-50 lg:group-hover:text-zinc-900 lg:group-focus:text-zinc-900 xl:mb-4">
                 Veckohandla
               </h3>
-              <p className="text-base text-zinc-700 transition duration-200 group-hover:text-zinc-700 group-focus:text-zinc-700 dark:text-zinc-300 dark:group-hover:text-zinc-200 dark:group-focus:text-zinc-200">
+              <p className="text-base text-zinc-700 transition duration-200 dark:text-zinc-300 lg:group-hover:text-zinc-700 lg:group-focus:text-zinc-700 lg:dark:group-hover:text-zinc-200 lg:dark:group-focus:text-zinc-200">
                 An app built to try and make weekly grocery shopping easy.
                 Create a ready-to-go shopping list of groceries in just a matter
                 of seconds!
