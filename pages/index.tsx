@@ -37,30 +37,32 @@ const Home: NextPage<{ posts: Post[] }> = ({ posts }) => (
         <h2 className="text-2xl font-bold">Featured Project</h2>
       </div>
 
-      <Link passHref href="/projects/veckohandla">
-        <a className="group relative block lg:transition lg:duration-1000 lg:hover:scale-[1.02] lg:hover:duration-200 lg:focus:scale-[1.02] lg:focus:duration-200">
-          <div className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-primary to-secondary px-4 opacity-50 blur group-focus:opacity-100 lg:transition lg:duration-1000 lg:group-hover:opacity-100 lg:group-hover:duration-200 lg:group-focus:duration-200" />
-          <div className="w-full transform cursor-pointer rounded-xl bg-transparent p-1">
-            <div className="flex h-full flex-col justify-between rounded-xl bg-zinc-100 p-6 transition-colors dark:bg-zinc-900">
-              <h3 className="mb-2 text-xl font-semibold text-zinc-700 transition duration-200 dark:text-zinc-200 dark:group-hover:text-zinc-50 dark:group-focus:text-zinc-50 lg:group-hover:text-zinc-900 lg:group-focus:text-zinc-900 xl:mb-4">
-                Veckohandla
-              </h3>
-              <p className="text-base text-zinc-700 transition duration-200 dark:text-zinc-300 lg:group-hover:text-zinc-700 lg:group-focus:text-zinc-700 lg:dark:group-hover:text-zinc-200 lg:dark:group-focus:text-zinc-200">
-                An app built to try and make weekly grocery shopping easy.
-                Create a ready-to-go shopping list of groceries in just a matter
-                of seconds!
-              </p>
-              <div className="mt-6">
-                <ul className="flex list-none flex-col space-y-2 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-6">
-                  <ListItem>React</ListItem>
-                  <ListItem>TypeScript</ListItem>
-                  <ListItem>Redux Toolkit</ListItem>
-                </ul>
+      <div className="px-2 lg:px-0">
+        <Link passHref href="/projects/veckohandla">
+          <a className="group relative block lg:transition lg:duration-1000 lg:hover:scale-[1.02] lg:hover:duration-200 lg:focus:scale-[1.02] lg:focus:duration-200">
+            <div className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-primary to-secondary px-4 opacity-50 blur group-focus:opacity-100 lg:transition lg:duration-1000 lg:group-hover:opacity-100 lg:group-hover:duration-200 lg:group-focus:duration-200" />
+            <div className="w-full transform cursor-pointer rounded-xl bg-transparent p-1">
+              <div className="flex h-full flex-col justify-between rounded-xl bg-zinc-100 p-6 transition-colors dark:bg-zinc-900">
+                <h3 className="mb-2 text-xl font-semibold text-zinc-700 transition duration-200 dark:text-zinc-200 dark:group-hover:text-zinc-50 dark:group-focus:text-zinc-50 lg:group-hover:text-zinc-900 lg:group-focus:text-zinc-900 xl:mb-4">
+                  Veckohandla
+                </h3>
+                <p className="text-base text-zinc-700 transition duration-200 dark:text-zinc-300 lg:group-hover:text-zinc-700 lg:group-focus:text-zinc-700 lg:dark:group-hover:text-zinc-200 lg:dark:group-focus:text-zinc-200">
+                  An app built to try and make weekly grocery shopping easy.
+                  Create a ready-to-go shopping list of groceries in just a
+                  matter of seconds!
+                </p>
+                <div className="mt-6">
+                  <ul className="flex list-none flex-col space-y-2 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-6">
+                    <ListItem>React</ListItem>
+                    <ListItem>TypeScript</ListItem>
+                    <ListItem>Redux Toolkit</ListItem>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
-        </a>
-      </Link>
+          </a>
+        </Link>
+      </div>
     </section>
 
     <PostList title="Latest posts" posts={posts}>

@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { UserIcon, HomeIcon, BookOpenIcon } from '@heroicons/react/outline';
-import SubMenuButton from './mobile-sub-menu';
+import SubMenu from './mobile-sub-menu';
 import { NavItemIcon } from './mobile-item';
 
 const Wrapper: React.FC = ({ children }) => (
@@ -27,7 +27,7 @@ const Navbar = () => {
       </div>
       <div className="inline-block h-8 w-px bg-zinc-400 dark:bg-zinc-600 md:mx-4" />
       <div className="flex items-center justify-end">
-        <SubMenuButton />
+        <SubMenu />
       </div>
     </Wrapper>
   );

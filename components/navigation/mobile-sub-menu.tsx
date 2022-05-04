@@ -144,18 +144,14 @@ const Submenu: React.FC = () => (
       <>
         <Menu.Button
           aria-label="Submenu button"
-          className={`flex items-center rounded-xl border bg-zinc-100 p-3 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:ring-opacity-75
-               dark:bg-zinc-900 md:rounded-lg md:p-2 ${
+          className={`flex items-center rounded-xl border  border-zinc-400 bg-zinc-100 p-3 text-zinc-700 transition-colors focus:outline-none
+               focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:ring-opacity-75 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 md:rounded-lg md:p-2 ${
                  open
-                   ? 'border-primary-light outline-none ring-2 ring-primary-light ring-opacity-75'
-                   : 'border-primary'
+                   ? 'outline-none ring-2 ring-primary-light ring-opacity-75'
+                   : ''
                }`}
         >
-          <MenuIcon
-            className={`h-5 w-5 transition-colors ${
-              open ? 'stroke-primary-light' : 'stroke-primary'
-            }`}
-          />
+          <MenuIcon className={`h-5 w-5 transition-colors ${open ? '' : ''}`} />
         </Menu.Button>
         <Menu.Items
           as={motion.ul}
