@@ -22,7 +22,7 @@ const InternalLink: React.FC<Props> = ({ children, href }) => (
     <motion.a
       whileHover="hover"
       whileFocus="focus"
-      className="text-md flex w-fit items-center rounded-md py-2 px-4 text-primary transition-colors hover:text-primary-light focus:text-primary-light focus:ring focus:ring-primary-light"
+      className="text-md flex w-fit items-center rounded-md text-primary transition-colors hover:text-primary-light focus:text-primary-light focus:ring focus:ring-primary-light"
     >
       {children}
       <motion.span variants={iconAnimation} className="opacity-0">
