@@ -1,19 +1,13 @@
-import { useEffect, useState } from 'react';
-import { useViewportScroll } from 'framer-motion';
+import { useSpring, useViewportScroll } from 'framer-motion';
 
 const useProgress = () => {
-  const [readingProgress, setReadingProgress] = useState(0);
   const { scrollYProgress } = useViewportScroll();
+  const pathLength = useSpring(scrollYProgress, {
+    stiffness: 400,
+    damping: 90,
+  });
 
-  useEffect(
-    () =>
-      scrollYProgress.onChange((latest: number) => {
-        setReadingProgress(parseFloat(latest.toFixed(2)));
-      }),
-    [scrollYProgress]
-  );
-
-  return readingProgress;
+  return pathLength;
 };
 
 export default useProgress;
