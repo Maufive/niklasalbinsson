@@ -5,15 +5,19 @@
   </url>
 
   <url>
-    <loc>https://niklasalbinsson.dev/blog</loc>
+    <loc>https://niklasalbinsson.dev/about/index</loc>
   </url>
 
   <url>
-    <loc>https://niklasalbinsson.dev/about</loc>
+    <loc>https://niklasalbinsson.dev/blog/[slug]</loc>
   </url>
 
   <url>
-    <loc>https://niklasalbinsson.dev/projects/veckohandla</loc>
+    <loc>https://niklasalbinsson.dev/blog/index</loc>
+  </url>
+
+  <url>
+    <loc>https://niklasalbinsson.dev/projects/[slug]</loc>
   </url>
 
   <url>
@@ -22,5 +26,15 @@
 
   <url>
     <loc>https://niklasalbinsson.dev/blog/layout-animations</loc>
+  </url>
+
+  <url>
+    <loc
+      >https://niklasalbinsson.dev/blog/twitch-carousel-with-framer-motion</loc
+    >
+  </url>
+
+  <url>
+    <loc>https://niklasalbinsson.dev/projects/veckohandla</loc>
   </url>
 </urlset>
