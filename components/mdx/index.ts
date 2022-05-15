@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic';
 
+/* / Framer Motion Layout Animations widgets */
 const SimpleListWidget = dynamic(
   () => import('./framer-motion-layout-animations/simple-list-widget')
 );
@@ -9,6 +10,9 @@ const PositionWidget = dynamic(
 const BadgeWidget = dynamic(
   () => import('./framer-motion-layout-animations/badges-widget')
 );
+
+/* Twitch Carousel widgets */
+const TwitchCarousel = dynamic(() => import('./twitch-carousel'));
 
 const Aside = dynamic(() => import('./aside'));
 const Link = dynamic(() => import('../links'));
@@ -23,6 +27,7 @@ const MDXComponents = {
   Link,
   Image: RoundedImage,
   BlurImage,
+  TwitchCarousel,
 };
 
 export default MDXComponents;

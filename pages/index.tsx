@@ -49,6 +49,7 @@ const Home: NextPage<{ posts: Post[] }> = ({ posts }) => (
 
 export const getStaticProps: GetStaticProps = () => {
   const posts = allPosts
+    .filter((post) => !post.archived)
     .map((post) =>
       pick(post, ['slug', 'title', 'summary', 'publishedAt', 'readingTime'])
     )

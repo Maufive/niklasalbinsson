@@ -1,0 +1,30 @@
+---
+title: 'I built the Twitch carousel with TailwindCSS and Framer Motion!'
+publishedAt: '2022-03-25'
+summary: 'I spent the weekend rebuilding the carousel component seen on Twitch but using my favourite tools - React w/ Typescript, TailwindCSS and Framer Motion'
+---
+
+If you've ever been on the popular livestreaming platform [twitch.tv](https://www.twitch.tv/) you probably have seen this carousel before. It is used to promote streams that you might not otherwise check out. As a very frequent user of the website I am very familiar with it and thought it would be a fun little side project to see if I would be able to re-create the carousel but using some different tools than they do over at twitch.
+
+<i>
+  Note: This component is built specifically for desktop, although I made it
+  responsive it may not be the best fit for a mobile interface
+</i>
+
+<TwitchCarousel />
+
+### Take-aways
+
+This was a really fun project for me personally since I love creating components like these. They tend to look more simple than they actually are! Also I got to play around with the `ResizeObserver` API which I had never done before! This is really something I will be using more often, and will probably try and make a similar hook in my daily work.
+
+As always it's great fun getting to play around with Framer Motion in ways I haven't really used it before.
+
+Some things I was thinking about doing but didn't since it would increase complexitly vastly:
+
+- Gesture navigation
+- Supporting variable width items
+- A better UI for mobile users
+
+Maybe I will come back to it another day and improve on it but for now I am happy with how it turned out!
+
+You can check out the source code on [my Github](https://github.com/Maufive/twitch-carousel-clone)

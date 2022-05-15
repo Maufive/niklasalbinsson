@@ -34,6 +34,7 @@ const Post = defineDocumentType(() => ({
     publishedAt: { type: 'string', required: true },
     image: { type: 'string', required: false },
     tags: { type: 'json', required: false },
+    archived: { type: 'boolean', required: false }
   },
   computedFields,
 }));

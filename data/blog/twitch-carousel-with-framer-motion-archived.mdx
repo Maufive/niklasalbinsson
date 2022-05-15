@@ -1,0 +1,348 @@
+---
+title: "Let's build the Twitch carousel with Framer Motion! "
+publishedAt: '2022-03-25'
+summary: "In this post we will build a snappy carousel for desktop that works as the one seen on the twitch.tv start page!. We will build it using React Typescript TailwindCSS and Framer-Motion. Let's get into it!"
+archived: true;
+---
+
+If you've ever been on the popular livestreaming platform [twitch.tv](https://www.twitch.tv/) you probably have seen this carousel before. It is used to promote streams that you might not otherwise check out. As a very frequent user of the website I am very familiar with it and thought it would be a fun little side project to see if I would be able to re-create the carousel but using some different tools than they do over at twitch.
+
+<i>
+  Notice: This component is built specifically for desktop, although we will
+  make it responsive it may not be the best fit for a mobile interface
+</i>
+
+## What we will be building
+
+We are going to target a few key features that this carousel has.
+
+- Display the items in a stacked way where we have one primary item that is centered while the offset-items are still visible but just teasing the content
+- We should only show 5 items at a time - but we do have more items avaialble in our data.
+- We want to be able to seemlessly go circle around the data so when you reach the end you should start at the beginning again without any weird jumping from last to first
+- It should be responsive to the viewport. A smaller viewport should make the stack tighter, and when we have a wider viewport we can allow the items to stretch out a little more
+- Use Framer-Motion to get those sweet, sweet animations when changing position for each item
+
+<FinishedCarousel />
+
+## Step 1 - Planning out the component
+
+The first thing I think about when starting to build a component like this is the API and how I want to be able to use the component. And for this carousel component I imagine I want it to just be a wrapper around my content and the component will handle the logic for me. So maybe something like this:
+
+```javascript
+<Carousel>
+    {data.map((item) => (
+        <div>
+            <h2>{item.title}</h2>
+            // ...
+        </div>
+    )}
+</Carousel>
+```
+
+This is nice because it allows us the user of the component to style the data inside as they want rather than just passing the data to the carousel as a prop.
+
+So let's go ahead and scaffold out the basic wrapper component that we will call Carousel and apply some basic styling to it.
+
+<i>
+  (We will be using TailwindCSS for this component, but any classnames should be
+  pretty easy to convert to any CSS library you want)
+</i>
+
+```javascript
+const Carousel: React.FC<{
+  children: React.ReactNode | React.ReactNode[],
+}> = ({ children }) => {
+  return <div className="relative mx-auto flex items-center">{children}</div>;
+};
+```
+
+And since we are not pulling in any real data for this component we will be working with some very basic mocked data that just contains of a title and a color that we will use for the background-color.
+
+```typescript
+const mockedData = [
+    {
+        title: 'Item Number 1',
+        color: '#0ea5e9',
+    },
+    {
+        title: 'Item Number 2',
+        color: '#3b82f6',
+    },
+    {
+        title: 'Item Number 3',
+        color: '#6366f1',
+    },
+    ...
+]
+```
+
+And now we should be able to start to render the mocked data in our Carousel:
+
+```javascript
+const Carousel: React.FC<{
+  children: React.ReactNode | React.ReactNode[],
+}> = ({ children }) => {
+  return <div className="relative mx-auto flex items-center">{children}</div>;
+};
+
+const CarouselRepresentation = () => (
+  <div className="w-full">
+    <Carousel>
+      {mockedData.map((item) => (
+        <div
+          className="flex h-44 w-96 items-center justify-center rounded-xl"
+          style={{
+            backgroundColor: item.color,
+          }}
+        >
+            <h2 className="text-xl font-bold text-stone-100>
+                {item.title}
+            </h2>
+        </div>
+      ))}
+    </Carousel>
+  </div>
+);
+```
+
+Now, all of our items will be lined up on a row - and this isn't really what we want. So let's go ahead and create a `<CarouselItem />` component that will own the Carousel-specific styles we want to have. These would be styles that the consumer of the component should not need have to worry about.
+
+```javascript
+const CarouselItem: React.FC<{
+  children: React.ReactNode | React.ReactNode[],
+}> = ({ children }) => {
+  return <div className="absolute top-0 rounded-xl shadow-2xl">{children}</div>;
+};
+
+const Carousel: React.FC<{
+  children: React.ReactNode | React.ReactNode[],
+}> = ({ children }) => (
+  <div className="relative mx-auto flex h-44 items-center">
+    <CarouselItem>{children}</CarouselItem>
+  </div>
+);
+```
+
+And we should have something like this where all the items are stacked on-top of eachother. This is expected since we applied `position: absolute` to the `<CarouselItem />` component. But don't worry, we will handle the position for these elements in an upcoming step!
+
+<Step1Carousel />
+
+## Step 2 - Adding logic to the Carousel
+
+Now we will add some logic to the carousel so we can start to navigate between the items in the carousel.
+
+Skippa detta? - One of the goals we set from the start is that we should show five items at a time, but we also need to consider that we may want to have more stuff in our list of items.
+
+So lets start out by creating two buttons that we can click in order to navigate either direction. The way I want to handle things like this is to create one button component that has `variants` prop. We will also be using some SVG icons in the button, and you can use whatever you like but I will be using [heroicons](https://heroicons.com/).
+
+Here is our simple "arrow button" component that we will be using:
+
+```javascript
+type ArrowVariants = 'left' | 'right';
+
+const ArrowButton = ({
+  onClick,
+  variant,
+}: {
+  onClick: () => void,
+  variant: ArrowVariants,
+}) => (
+  <button
+    type="button"
+    className="h-6 w-6 rounded-lg bg-zinc-800 p-1 shadow-lg"
+    onClick={onClick}
+  >
+    {variant === 'left' && <ArrowLeftIcon className="h-4 w-4 text-gray-50" />}
+    {variant === 'right' && <ArrowRightIcon className="h-4 w-4 text-gray-50" />}
+  </button>
+);
+```
+
+Nice! A simple button component that just takes a `onClick` callback and a `variant` prop. Now we can implement these in our Carousel and wire up the buttons to actually do something for us.
+
+But before we do that let's take a minute and think about how we want to go back and forth between our items. I'd like to think about it as going forwards/backwards in our Carousel. So when clicking the `variant="right"` button we will be stepping one step forward. We also need to consider that we want to go <b>around</b> the carousel, and not jump from the last item to first.
+
+Let's start by writing the code for stepping forward. We need just need to take the first item and put it at the bottom of the list. And since we don't want to mutate the data that is being used in the carousel we can store it as an internal state in our carousel.
+
+```javascript
+const Carousel: React.FC<{
+  children: React.ReactNode | React.ReactNode[];
+}> = ({ children }) => {
+  const [items, setItems] = React.useState(Children.toArray(children));
+
+  const handelClickNext = () => {
+    // Extact the first child and put it at the bottom of the list
+    const [first, ...rest] = items;
+    setItems([...rest, first]);
+  };
+
+  const handleClickPrevious = () => {
+    // We want to move the items in the array in reverse. So take the last item and put it at the top again.
+    // 1. Get the last child
+    const lastChild = items[items.length - 1];
+    // 2. Take a copy if current state. Remove the last child from it
+    const childrenWithoutLastChild = [...items].filter(
+      (item) => item !== lastChild
+    );
+    // 3. Apply the last child again at the start of the list
+    const newArr = [lastChild, ...childrenWithoutLastChild];
+    setItems(newArr);
+  };
+
+  // Make sure we only show as many items as we want to at the same time.
+  // First create a copy of the items in state so we don't mutate the array
+  const itemsToShow = [...items].splice(0, 5);
+
+  return (
+    <div className="mx-auto flex h-52 items-center">
+      <ArrowButton variant="left" handleClick={handleClickPrevious} />
+      <div className="relative mx-auto h-full w-full">
+        {itemsToShow.map((child) => (
+            <CarouselItem key={child.key}>
+                {child}
+            </CarouselItem>
+        ))}
+      </div>
+      <ArrowButton variant="right" handleClick={handelClickNext} />
+    </div>
+  );
+```
+
+That was quite a lot of stuff we just added! Let's try and break it down into smaller pieces.
+
+- We introduced some local state into our component that holds the items we want to render.
+- We use this newly introduced state to manipulate it to only show 5 items at a time with the `itemsToShow` variable.
+- We added our new `<ArrowButton />` components and hooked them up with their individual callbacks to navigate forwards/backwards
+
+Good stuff! Our carousel should now be functional and we should be able to navigate between the slides by clicking either `<ArrowButton />` and it should look something like this:
+
+<Step2Carousel />
+
+It still doesn't really look like what we want it to be seeing how all the items are still stacked on-top of eachother - so let's fix that it the next step!
+
+## Step 3 - Positioning our items
+
+It's time we start addressing the positioning of our carousel items. Right now they are stacked on-top of eachother in a single big pile. This is of course not what we want. We want to show five items, spaced evenly with one item centered in the middle.
+
+To do this we will position each child with a unique `transform: translateX()` value. This kind of logic can get pretty complicated when you start to think about the different cases you might want to support:
+
+- Responsiveness with different viewports
+- Different sized child-elements
+- Should we be able to support displaying a variable amount of children instead of the hardcoded 5?
+
+All of the above can be tricky problems to solve, and we will not be solving all of them today. Although we will make it responsive, we will use equally sized elements inside the carousel and we will stick to always showing 5 items at a time.
+
+My strategy moving forward will be:
+
+- Measure the available space in the container
+- Measure each item
+- Use measurements to calculate the X position for the left and right side of the container.
+
+This way we can have some responsiveness when the container is shrinking/growing and we can allow each item to take up more horizontal space.
+
+### useElementSize - a hook to help us measure our elements
+
+We will be using a simplified version of `useElementSize` from [usehooks-ts.com](https://usehooks-ts.com/react-hook/use-element-size). The way it works is that you drop it into your component that you want to measure, and it will return a `ref` and the `width` and `height` for the element you apply the `ref` to.
+
+```javascript
+const Carousel: React.FC<{
+  children: React.ReactNode | React.ReactNode[],
+}> = ({ children }) => {
+  const [items, setItems] = React.useState(Children.toArray(children));
+  // Since we will be using the width from the container as well as the width from each item we will rename this `containerWidth`
+  const [containerRef, { width: containerWidth }] = useElementSize();
+
+  // ...
+};
+
+const CarouselItem: React.FC<{
+  children: React.ReactNode | React.ReactNode[],
+  containerWidth: number,
+}> = ({ children, containerWidth }) => {
+  const [ref, { width }] = useElementSize();
+  // ...
+};
+```
+
+Now we have the widths of the container and the child elements both available to our disposal. <b>Note: I added the containerWidth as a prop to the child element.</b>
+
+So let's put these values to use and try and calculate the X position for each of the five child elements!
+
+### Using our width values to calculate the X positions
+
+My goal here is to try and keep this logic as simple as possible with as little math as possible. We will also separate this logic from our component, so let's create a little helper function that just returns an object with our positions.
+
+```javascript
+const PADDING = 16;
+
+function getCarouselItemXPositions(itemWidth: number, containerWidth: number) {
+  const right = containerWidth / 2 - itemWidth - PADDING;
+  const rightest = right * 2;
+  const center = 0;
+  const left = -(containerWidth / 2) + itemWidth + PADDING;
+  const leftest = left * 2;
+
+  return {
+    rightest,
+    right,
+    center,
+    left,
+    leftest,
+  };
+}
+```
+
+Now we are able to get the positions we want for our visible carousel items spaced out evenly across the avaiable horizontal space!
+
+In order to make use of our new helper function we need to map each visible child element to one of these "variants". We can simply just use the index in which they are reneder by the parent for this:
+
+```javascript
+// Creating our map
+type VariantsMap = { [key: number]: string };
+
+const IndexToVariantsMap: VariantsMap = {
+  0: 'leftest',
+  1: 'left',
+  2: 'center',
+  3: 'right',
+  4: 'rightest',
+};
+
+// <Carousel />
+{itemsToShow.map((child, index) => (
+    <CarouselItem
+        position={index} // Pass the index down to the child element as a prop
+        // ..
+)}
+
+// <CarouselItem />
+const CarouselItem: React.FC<{
+  children: React.ReactNode | React.ReactNode[];
+  containerWidth: number;
+  position: number;
+}> = ({ children, containerWidth, position }) => {
+  const [ref, { width }] = useElementSize();
+  const itemXPosition = getCarouselItemXPositions(width, containerWidth);
+
+  const variant = IndexToVariantsMap[position]; // Get the X position for the variant in our map
+
+  return (
+    <div
+      ref={ref}
+      className="absolute top-0 rounded-xl shadow-2xl"
+      style={{
+        left: `calc(50% - ${width / 2}px)`, // Center the element
+        transform: `translateX(${itemXPosition[variant]}px)`, // Position the element with it's X value
+      }}
+    >
+      {children}
+    </div>
+  );
+};
+```
+
+<Step3Carousel />
+
+Alright! Now things are starting to look a little more like the end result. There are still a few things missing though. We need to add dynamic z-indexes to our items so that they are layered correctly, and of course we haven't even gotten started on the animations yet. Let's do that next!
+
+## Step 4 - Adding Framer Motion to help us animate our carousel
