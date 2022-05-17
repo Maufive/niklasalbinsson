@@ -7,18 +7,6 @@ import { useResizeObserver } from '../../../utils/hooks';
 const PADDING = 16;
 const NUMBER_OF_ITEMS_TO_SHOW = 5;
 
-function clamp(val: number, min: number, max: number) {
-  if (val > max) {
-    return max;
-  }
-
-  if (val < min) {
-    return min;
-  }
-
-  return val;
-}
-
 function getCarouselItemXPositions(
   itemWidth?: number,
   containerWidth?: number
