@@ -19,7 +19,20 @@ function clamp(val: number, min: number, max: number) {
   return val;
 }
 
-function getCarouselItemXPositions(itemWidth: number, containerWidth: number) {
+function getCarouselItemXPositions(
+  itemWidth?: number,
+  containerWidth?: number
+) {
+  if (!itemWidth || !containerWidth) {
+    return {
+      rightest: 0,
+      right: 0,
+      center: 0,
+      left: 0,
+      leftest: 0,
+    };
+  }
+
   const right = containerWidth / 2 - itemWidth - PADDING;
   const rightest = right * 2;
   const center = 0;
@@ -112,16 +125,13 @@ const CarouselItem: React.FC<{
   containerWidth: number;
 }> = ({ position, children, containerWidth }) => {
   const { ref, width } = useResizeObserver();
-  const itemXPosition = getCarouselItemXPositions(
-    width || 0,
-    clamp(containerWidth, 350, 1200)
-  );
+  const itemXPosition = getCarouselItemXPositions(width, containerWidth);
 
   return (
     <motion.div
       ref={ref}
       style={{
-        left: `calc(50% - ${(width || 0) / 2}px)`,
+        left: `calc(50% - ${(width || 432) / 2}px)`,
       }}
       variants={ITEM_VARIANTS}
       animate={IndexToVariantsMap[position]}
@@ -158,8 +168,7 @@ const Carousel: React.FC<{
       (item) => item !== lastChild
     );
     // Apply the last child again at the start of the list
-    const newArr = [lastChild, ...childrenWithoutLastChild];
-    setItems(newArr);
+    setItems([lastChild, ...childrenWithoutLastChild]);
   };
 
   const itemsToShow = [...items].splice(0, NUMBER_OF_ITEMS_TO_SHOW);
