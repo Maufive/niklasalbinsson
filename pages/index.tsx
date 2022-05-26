@@ -14,10 +14,10 @@ const Home: NextPage<{ posts: Post[] }> = ({ posts }) => (
     <Seo />
     <PageHeader
       title={
-        <span>
+        <>
           Hi there, I'm Niklas. <br /> A curious software developer who's trying
           to get a little better every day
-        </span>
+        </>
       }
       description="This is where I share my experience working as a frontend developer and everything I learn about modern web technologies, UI/UX and much more!"
     >

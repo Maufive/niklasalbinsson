@@ -22,7 +22,10 @@ export const FeaturedProjectCard: React.FC<Props> = ({
   stack,
 }) => (
   <Link passHref href={link}>
-    <a className="group relative block lg:transition lg:duration-1000 lg:hover:scale-[1.02] lg:hover:duration-200 lg:focus:scale-[1.02] lg:focus:duration-200">
+    <a
+      title={`Check out my project ${title}`}
+      className="group relative block lg:transition lg:duration-1000 lg:hover:scale-[1.02] lg:hover:duration-200 lg:focus:scale-[1.02] lg:focus:duration-200"
+    >
       <div className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-primary to-secondary px-4 opacity-50 blur group-focus:opacity-100 lg:transition lg:duration-1000 lg:group-hover:opacity-100 lg:group-hover:duration-200 lg:group-focus:duration-200" />
       <div className="w-full transform cursor-pointer rounded-xl bg-transparent p-1">
         <div className="flex h-full flex-col justify-between rounded-xl bg-zinc-100 p-6 transition-colors dark:bg-zinc-900">

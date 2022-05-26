@@ -13,7 +13,7 @@ const Navigation = () => {
   }
 
   return (
-    <div className="fixed top-0 bottom-0 z-20 flex h-16 w-full items-center justify-center border-b border-zinc-200 shadow-sm backdrop-blur-sm transition-colors dark:border-zinc-800 dark:bg-zinc-800/50">
+    <div className="fixed top-0 bottom-0 z-20 flex h-16 w-full items-center justify-center border-b border-zinc-200 bg-zinc-200/50 shadow-sm backdrop-blur-sm transition-colors dark:border-zinc-800 dark:bg-zinc-800/50">
       <DesktopNavigation
         pathname={pathname}
         showProgressBar={showProgressBar}
