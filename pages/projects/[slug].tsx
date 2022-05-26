@@ -24,14 +24,17 @@ const ProjectDetail: React.FC<{ title: string; column?: boolean }> = ({
 
 const Project: NextPage<{ project: ProjectType }> = ({ project }) => {
   const Component = useMDXComponent(project.body.code);
-  const BLOG_TITLE = `${project.title} | Niklas Albinsson`;
-  const BLOG_DESCRIPTION = `${project.summary}`;
+  const PROJECT_META_TITLE = `${project.title} - a project by Niklas Albinsson`;
+  const PROJECT_META_DESCRIPTION = `${project.summary}`;
 
   const STACK = project.stack.split(' ');
 
   return (
     <Page>
-      <CustomSeo title={BLOG_TITLE} description={BLOG_DESCRIPTION} />
+      <CustomSeo
+        title={PROJECT_META_TITLE}
+        description={PROJECT_META_DESCRIPTION}
+      />
       <BlurImage alt="Project Image" src={project.image} className="mb-10" />
       <PageHeader title={project.title} compact description={project.summary} />
       <div className="flex flex-col space-y-4 sm:px-4">

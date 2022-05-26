@@ -32,15 +32,14 @@ const CustomSeo: FC<{ title?: string; description?: string }> = ({
   description,
 }) => {
   const router = useRouter();
-  const seoTitle = `${title} | Niklas Albinsson`;
 
   return (
     <NextSeo
       {...config}
-      title={seoTitle || config.title}
+      title={title || config.title}
       description={description || config.description}
       openGraph={{
-        title: seoTitle,
+        title,
         url: `https://niklasalbinsson.dev${router.asPath}`,
       }}
     />

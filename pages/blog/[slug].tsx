@@ -14,7 +14,7 @@ const PostPage: NextPage<{ post: Post }> = ({ post }) => {
   const Component = useMDXComponent(post.body.code);
   const formattedPublishDate = formatDate(post.publishedAt);
 
-  const BLOG_TITLE = `${post.title} | Niklas Albinsson`;
+  const BLOG_TITLE = `Niklas Albinsson - ${post.title}`;
   const BLOG_DESCRIPTION = `${post.summary}`;
 
   return (
