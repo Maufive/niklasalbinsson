@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 const config = {
   title: 'Niklas Albinsson - Software developer',
   description:
-    'I’m a developer that loves to create stuff and make them look nice!',
+    'Niklas Albinsson is a developer from Umeå, Sweden. Specialized in front end development, and likes to create apps, websites or just about anything and love to make them look nice!',
   openGraph: {
     type: 'website',
     locale: 'sv_SE',
