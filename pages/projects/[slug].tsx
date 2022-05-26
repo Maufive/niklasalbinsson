@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 // eslint-disable-next-line import/no-unresolved
 import { useMDXComponent } from 'next-contentlayer/hooks';
-import Image from 'next/image';
 import { Project as ProjectType } from '.contentlayer/types';
 import { allProjects } from '.contentlayer/data';
 import type { NextPage, GetStaticProps, GetStaticPaths } from 'next';
@@ -10,6 +9,7 @@ import Page from 'components/page/page';
 import { CustomSeo } from 'components/seo';
 import { ExternalLink } from 'components/links';
 import MDX_COMPONENTS from 'components/mdx';
+import BlurImage from 'components/image';
 
 const ProjectDetail: React.FC<{ title: string; column?: boolean }> = ({
   title,
@@ -32,8 +32,9 @@ const Project: NextPage<{ project: ProjectType }> = ({ project }) => {
   return (
     <Page>
       <CustomSeo title={BLOG_TITLE} description={BLOG_DESCRIPTION} />
+      <BlurImage alt="Project Image" src={project.image} className="mb-10" />
       <PageHeader title={project.title} compact description={project.summary} />
-      <div className="flex flex-col space-y-4 md:px-4">
+      <div className="flex flex-col space-y-4 sm:px-4">
         <ProjectDetail title="Stack" column>
           <ul className="flex flex-wrap">
             {STACK.map((technology) => (
@@ -50,10 +51,10 @@ const Project: NextPage<{ project: ProjectType }> = ({ project }) => {
             className="ml-2 font-normal"
             href={project.repositoryUrl}
           >
-            Repository
+            View Repository
           </ExternalLink>
         </ProjectDetail>
-        {project.projectUrl && (
+        {project.projectUrl && !project.downloadable && (
           <ProjectDetail title="Demo">
             <ExternalLink
               className="ml-2 font-normal"
@@ -63,9 +64,19 @@ const Project: NextPage<{ project: ProjectType }> = ({ project }) => {
             </ExternalLink>
           </ProjectDetail>
         )}
+        {project.projectUrl && project.downloadable && (
+          <ProjectDetail title="Download">
+            <ExternalLink
+              className="ml-2 font-normal"
+              href={project.projectUrl}
+            >
+              Download .zip (macOS only)
+            </ExternalLink>
+          </ProjectDetail>
+        )}
       </div>
 
-      <article className="prose prose-zinc mt-10 dark:prose-invert 2xl:prose-xl 2xl:my-20">
+      <article className="prose prose-zinc mt-10 dark:prose-invert sm:px-4 2xl:prose-xl 2xl:my-20">
         <Component components={MDX_COMPONENTS} />
       </article>
     </Page>

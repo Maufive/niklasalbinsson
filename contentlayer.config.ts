@@ -50,7 +50,8 @@ const Project = defineDocumentType(() => ({
     publishedAt: { type: 'string', required: true },
     image: { type: 'string', required: true }, 
     repositoryUrl: { type: 'string', required: true },
-    projectUrl: { type: 'string', required: false }
+    projectUrl: { type: 'string', required: false },
+    downloadable: { type: 'boolean', required: false }
   },
   computedFields,
 }));

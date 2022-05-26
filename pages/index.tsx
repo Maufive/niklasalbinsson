@@ -31,12 +31,10 @@ const Home: NextPage<{ posts: Post[] }> = ({ posts }) => (
 
       <div className="px-2 lg:px-0">
         <FeaturedProjectCard
-          link="/projects/veckohandla"
-          title="Veckohandla"
-          description="An app built to try and make weekly grocery shopping easy. Create
-              a ready-to-go shopping list of groceries in just a matter of
-              seconds!"
-          stack={['React', 'TypeScript', 'Redux Toolkit']}
+          link="/projects/emoji-picker"
+          title="Emoji Picker ✨"
+          description="Making it easy to bring more fun into your daily writing. This macOS app is made to make it simpler to add emojis to your texts."
+          stack={['TypeScript', 'Electron', 'React']}
         />
       </div>
     </section>

@@ -16,6 +16,7 @@ const TwitchCarousel = dynamic(() => import('./twitch-carousel'));
 
 const Aside = dynamic(() => import('./aside'));
 const Link = dynamic(() => import('../links'));
+const ExternalLink = dynamic(() => import('../links/external-link'));
 const RoundedImage = dynamic(() => import('./images'));
 const BlurImage = dynamic(() => import('../image/index'));
 
@@ -28,6 +29,7 @@ const MDXComponents = {
   Image: RoundedImage,
   BlurImage,
   TwitchCarousel,
+  ExternalLink,
 };
 
 export default MDXComponents;

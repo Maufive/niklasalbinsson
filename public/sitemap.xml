@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://niklasalbinsson.dev/</loc>
+    <loc>https://niklasalbinsson.dev</loc>
   </url>
 
   <url>
@@ -21,6 +21,10 @@
   </url>
 
   <url>
+    <loc>https://niklasalbinsson.dev/projects/index</loc>
+  </url>
+
+  <url>
     <loc>https://niklasalbinsson.dev/blog/hello-world</loc>
   </url>
 
@@ -32,6 +36,10 @@
     <loc
       >https://niklasalbinsson.dev/blog/twitch-carousel-with-framer-motion</loc
     >
+  </url>
+
+  <url>
+    <loc>https://niklasalbinsson.dev/projects/emoji-picker</loc>
   </url>
 
   <url>
