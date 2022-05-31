@@ -19,7 +19,7 @@ const Home: NextPage<{ posts: Post[] }> = ({ posts }) => (
           to get a little better every day
         </>
       }
-      description="This is where I share my experience working as a frontend developer and everything I learn about modern web technologies, UI/UX and much more!"
+      description="I'm currently working as a Frontend developer at ComeOn Group. This is my personal website - a place for me to share my personal projects, thoughts and ideas."
     >
       <InternalLink href="/about">Learn more about me</InternalLink>
     </PageHeader>
