@@ -9,6 +9,7 @@ import { formatDate } from 'utils/formatDate';
 import Page from 'components/page/page';
 import { CustomSeo } from 'components/seo';
 import MDX_COMPONENTS from 'components/mdx';
+import { BreadcrumbLink } from 'components/navigation/breadcrumb-link';
 
 const PostPage: NextPage<{ post: Post }> = ({ post }) => {
   const Component = useMDXComponent(post.body.code);
@@ -20,6 +21,7 @@ const PostPage: NextPage<{ post: Post }> = ({ post }) => {
   return (
     <Page>
       <CustomSeo title={BLOG_TITLE} description={BLOG_DESCRIPTION} />
+      <BreadcrumbLink href="/blog">All posts</BreadcrumbLink>
       <PageHeader title={post.title} compact>
         <p>
           Published on{' '}

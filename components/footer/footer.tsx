@@ -61,7 +61,7 @@ const FooterNavigation = () => {
   }, [isIOSSafari]);
 
   return (
-    <footer className="my-0 mx-auto mt-20 w-full max-w-2xl space-y-20 p-2 pb-20 2xl:mt-32">
+    <footer className="my-0 mx-auto mt-20 w-full max-w-2xl space-y-20 p-4 pb-20 2xl:mt-32">
       <NowPlaying />
       <nav className="my-20 hidden w-full justify-center py-2 sm:flex 2xl:mt-32">
         <ul className="flex flex-wrap items-center space-x-6">

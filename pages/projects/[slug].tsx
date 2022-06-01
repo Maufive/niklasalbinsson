@@ -10,6 +10,7 @@ import { CustomSeo } from 'components/seo';
 import { ExternalLink } from 'components/links';
 import MDX_COMPONENTS from 'components/mdx';
 import BlurImage from 'components/image';
+import { BreadcrumbLink } from 'components/navigation/breadcrumb-link';
 
 const ProjectDetail: React.FC<{ title: string; column?: boolean }> = ({
   title,
@@ -35,6 +36,7 @@ const Project: NextPage<{ project: ProjectType }> = ({ project }) => {
         title={PROJECT_META_TITLE}
         description={PROJECT_META_DESCRIPTION}
       />
+      <BreadcrumbLink href="/">Home</BreadcrumbLink>
       <BlurImage alt="Project Image" src={project.image} className="mb-10" />
       <PageHeader title={project.title} compact description={project.summary} />
       <div className="flex flex-col space-y-4 sm:px-4">
