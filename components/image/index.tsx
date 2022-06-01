@@ -31,6 +31,7 @@ const BlurImage: React.FC<Props> = ({ src, alt, className, height, width }) => {
         width={width}
         src={src}
         onLoadingComplete={() => setIsLoading(false)}
+        loading="lazy"
         className={cn(
           'duration-700 ease-in-out',
           isLoading
