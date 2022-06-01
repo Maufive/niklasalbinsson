@@ -1,6 +1,7 @@
 import '../styles/globals.css';
 import '../styles/fonts.css';
 import '../styles/prism-theme.css';
+import '../styles/directives.css';
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from 'next-themes';
 import { AnimatePresence } from 'framer-motion';
