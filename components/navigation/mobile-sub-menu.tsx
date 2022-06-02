@@ -77,7 +77,7 @@ const ThemeSwitcherButton: React.FC = () => {
       {({ active }) => (
         <motion.button
           type="button"
-          className={`flex items-center rounded-xl border  p-3 transition-colors md:rounded-lg md:p-2 ${
+          className={`flex items-center rounded-lg border  p-3 transition-colors md:rounded-lg md:p-2 ${
             active
               ? 'border-zinc-100 bg-primary text-zinc-100'
               : 'border-zinc-400 bg-zinc-100 text-zinc-700 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300'
@@ -104,7 +104,7 @@ const MenuItem: React.FC<{
   <Menu.Item as={motion.li} variants={CHILD_VARIANTS}>
     {({ active }) => (
       <a
-        className={`flex items-center rounded-xl border  p-3 transition-colors md:rounded-lg md:p-2  ${
+        className={`flex items-center rounded-lg border  p-3 transition-colors md:rounded-lg md:p-2  ${
           active
             ? 'border-primary-light text-primary-light'
             : 'border-zinc-400 bg-zinc-100 text-zinc-700 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300'
@@ -144,7 +144,7 @@ const Submenu: React.FC = () => (
       <>
         <Menu.Button
           aria-label="Submenu button"
-          className={`flex items-center rounded-xl border  border-zinc-400 bg-zinc-100 p-3 text-zinc-700 transition-colors focus:outline-none
+          className={`flex items-center rounded-lg border  border-zinc-400 bg-zinc-100 p-3 text-zinc-700 transition-colors focus:outline-none
                focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:ring-opacity-75 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 md:rounded-lg md:p-2 ${
                  open
                    ? 'outline-none ring-2 ring-primary-light ring-opacity-75'
@@ -158,7 +158,7 @@ const Submenu: React.FC = () => (
           variants={CONTAINER_VARIANTS}
           initial="closed"
           animate="open"
-          className="fixed right-0 bottom-20 flex origin-bottom-right flex-col items-center space-y-4 rounded-xl border border-zinc-400 bg-zinc-100/75 p-1 shadow-xl dark:border-zinc-600 dark:bg-zinc-900/90 md:bottom-16 md:rounded-lg"
+          className="fixed right-0 bottom-20 flex origin-bottom-right flex-col items-center space-y-4 rounded-2xl border border-zinc-400 bg-zinc-100/75 p-2 shadow-xl dark:border-zinc-600 dark:bg-zinc-900/90 md:bottom-16 md:rounded-lg"
         >
           {EXTERNAL_LINKS.map((link) => (
             <MenuItem

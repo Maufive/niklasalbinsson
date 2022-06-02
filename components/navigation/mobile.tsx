@@ -7,7 +7,7 @@ const BottomNavigation: React.FC = () => {
   const { pathname } = useRouter();
 
   return (
-    <div className="blurred-transparent-background fixed bottom-2 left-1/2 z-10 flex w-11/12 -translate-x-1/2 items-center justify-between rounded-xl border border-zinc-400  p-2 dark:border-zinc-600 md:w-fit md:rounded-lg">
+    <div className="blurred-transparent-background fixed bottom-2 left-1/2 z-10 flex w-11/12 -translate-x-1/2 items-center justify-between rounded-2xl border border-zinc-400  p-2 dark:border-zinc-600 md:w-fit md:rounded-lg">
       <div className="flex items-center space-x-4">
         <NavItemIcon href="/" isActive={pathname === '/'}>
           <HomeIcon className="h-5 w-5" />
