@@ -1,2 +1,6 @@
 User-agent: *
-Sitemap: https://niklasalbinsson.dev/sitemap.xml
+Sitemap: https://www.niklasalbinsson.dev/sitemap.xml
+
+# Allow all crawlers
+User-agent: *
+Allow: /
