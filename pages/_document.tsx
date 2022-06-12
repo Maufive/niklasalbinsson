@@ -5,6 +5,7 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          <meta name="robots" content="all" />
           <link
             rel="preload"
             href="/fonts/Inter-Regular.ttf"
