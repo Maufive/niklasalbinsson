@@ -54,8 +54,8 @@ const About: NextPage = () => (
           single drop of knowledge possible.
         </p>
         <p className="text-base leading-7 text-zinc-800 dark:text-zinc-200">
-          My geniune interest for web development is what kept me focused, and
-          to this day I strive to get a little better every day.
+          My geniune interest for web development is what has kept me focused,
+          and to this day I strive to get a little better every day.
         </p>
       </section>
 
@@ -73,14 +73,15 @@ const About: NextPage = () => (
             <li className="marker:text-secondary">
               <p className="text-base leading-7 text-zinc-700 dark:text-zinc-300">
                 Leading initiative to implement TypeScript and surrounding
-                tooling into an already existing codebase by gradually
-                refactoring components and configurations
+                tooling into an already existing codebase shared by some 25
+                developers by gradually refactoring components
               </p>
             </li>
             <li className="marker:text-secondary">
               <p className="text-base leading-7 text-zinc-700 dark:text-zinc-300">
-                Developing a new UI for the Sportsbook product in React and
-                styled-components
+                Closely working with designers to develop a brand new UI for the
+                Sportsbook product by creating reusable, high quality components
+                in React and TypeScript
               </p>
             </li>
             <li className="marker:text-secondary">
@@ -92,14 +93,15 @@ const About: NextPage = () => (
             <li className="marker:text-secondary">
               <p className="text-base leading-7 text-zinc-700 dark:text-zinc-300">
                 Heavily contributing to the in-house UI component library
-                creating reusable React components used by most of the frontend
+                creating reusable React components used by all frontend
                 developers
               </p>
             </li>
             <li className="marker:text-secondary">
               <p className="text-base leading-7 text-zinc-700 dark:text-zinc-300">
-                Writing unit and end-to-end tests with the Cypress and Jest
-                frameworks
+                Writing unit, integration and end-to-end tests with the Cypress
+                and Jest frameworks to ensure code confidence and smooth
+                releases
               </p>
             </li>
           </ul>
