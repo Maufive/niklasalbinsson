@@ -1,59 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://niklasalbinsson.dev</loc>
+    <loc>https://www.niklasalbinsson.dev</loc>
     <lastmod>2022-06-12T15:16:57.474Z</lastmod>
   </url>
 
   <url>
-    <loc>https://niklasalbinsson.dev/about/index</loc>
+    <loc>https://www.niklasalbinsson.dev/about/index</loc>
     <lastmod>2022-06-12T15:16:57.474Z</lastmod>
   </url>
 
   <url>
-    <loc>https://niklasalbinsson.dev/blog/[slug]</loc>
+    <loc>https://www.niklasalbinsson.dev/blog/[slug]</loc>
     <lastmod>2022-06-12T15:16:57.474Z</lastmod>
   </url>
 
   <url>
-    <loc>https://niklasalbinsson.dev/blog/index</loc>
+    <loc>https://www.niklasalbinsson.dev/blog/index</loc>
     <lastmod>2022-06-12T15:16:57.474Z</lastmod>
   </url>
 
   <url>
-    <loc>https://niklasalbinsson.dev/projects/[slug]</loc>
+    <loc>https://www.niklasalbinsson.dev/projects/[slug]</loc>
     <lastmod>2022-06-12T15:16:57.474Z</lastmod>
   </url>
 
   <url>
-    <loc>https://niklasalbinsson.dev/projects/index</loc>
+    <loc>https://www.niklasalbinsson.dev/projects/index</loc>
     <lastmod>2022-06-12T15:16:57.474Z</lastmod>
   </url>
 
   <url>
-    <loc>https://niklasalbinsson.dev/blog/hello-world</loc>
+    <loc>https://www.niklasalbinsson.dev/blog/hello-world</loc>
     <lastmod>2022-06-12T15:16:57.474Z</lastmod>
   </url>
 
   <url>
-    <loc>https://niklasalbinsson.dev/blog/layout-animations</loc>
+    <loc>https://www.niklasalbinsson.dev/blog/layout-animations</loc>
     <lastmod>2022-06-12T15:16:57.474Z</lastmod>
   </url>
 
   <url>
-    <loc
-      >https://niklasalbinsson.dev/blog/twitch-carousel-with-framer-motion</loc
-    >
+    <loc>https://www.niklasalbinsson.dev/blog/twitch-carousel-with-framer-motion</loc>
     <lastmod>2022-06-12T15:16:57.474Z</lastmod>
   </url>
 
   <url>
-    <loc>https://niklasalbinsson.dev/projects/emoji-picker</loc>
+    <loc>https://www.niklasalbinsson.dev/projects/emoji-picker</loc>
     <lastmod>2022-06-12T15:16:57.474Z</lastmod>
   </url>
 
   <url>
-    <loc>https://niklasalbinsson.dev/projects/veckohandla</loc>
+    <loc>https://www.niklasalbinsson.dev/projects/veckohandla</loc>
     <lastmod>2022-06-12T15:16:57.474Z</lastmod>
   </url>
 </urlset>
