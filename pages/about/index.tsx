@@ -72,29 +72,28 @@ const About: NextPage = () => (
           <ul className="mt-4 list-disc space-y-4 px-4 lg:space-y-6 lg:px-0">
             <li className="marker:text-secondary">
               <p className="text-base leading-7 text-zinc-700 dark:text-zinc-300">
-                Leading initiative to implement TypeScript and surrounding
+                Leading initiative to implement Typescript and surrounding
                 tooling into an already existing codebase shared by some 25
-                developers by gradually refactoring components
+                developers by gradually refactoring features and components
+              </p>
+            </li>
+            <li className="marker:text-secondary">
+              <p className="text-base leading-7 text-zinc-700 dark:text-zinc-300">
+                Developing new backend features in Java and designing clear,
+                developer friendly REST APIs
               </p>
             </li>
             <li className="marker:text-secondary">
               <p className="text-base leading-7 text-zinc-700 dark:text-zinc-300">
                 Closely working with designers to develop a brand new UI for the
                 Sportsbook product by creating reusable, high quality components
-                in React and TypeScript
+                in React and Typescript
               </p>
             </li>
             <li className="marker:text-secondary">
               <p className="text-base leading-7 text-zinc-700 dark:text-zinc-300">
-                Creating performant state management in Redux to handle
-                real-time data sent over websocket
-              </p>
-            </li>
-            <li className="marker:text-secondary">
-              <p className="text-base leading-7 text-zinc-700 dark:text-zinc-300">
-                Heavily contributing to the in-house UI component library
-                creating reusable React components used by all frontend
-                developers
+                Increasing the Sportsbook application Web Vitals score by 20% by
+                implementing UX best practices
               </p>
             </li>
             <li className="marker:text-secondary">
