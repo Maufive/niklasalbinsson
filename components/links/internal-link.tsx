@@ -1,33 +1,56 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ChevronRight } from 'components/icons';
 
 type Props = {
   href: string;
+  children: React.ReactNode;
 };
 
-const iconAnimation = {
-  hover: {
-    opacity: 1,
-    x: 5,
+const line = {
+  initial: {
+    opacity: 0,
+    x: -2,
   },
-  focus: {
+  enter: {
     opacity: 1,
-    x: 5,
+    x: 0,
+    transition: {
+      x: {
+        type: 'spring',
+        bounce: 0.65,
+      },
+    },
+  },
+};
+
+const chevron = {
+  initial: {
+    x: 0,
+  },
+  enter: {
+    x: 3,
+    transition: { type: 'spring', bounce: 0.65 },
   },
 };
 
 const InternalLink: React.FC<Props> = ({ children, href }) => (
   <Link href={href} passHref>
     <motion.a
-      whileHover="hover"
-      whileFocus="focus"
-      className="text-md flex w-fit items-center rounded-md text-primary transition-colors hover:text-primary-light focus:text-primary-light focus:ring focus:ring-primary-light"
+      initial="initial"
+      whileHover="enter"
+      whileFocus="enter"
+      className="inline-flex items-center py-1.5 pr-4 text-primary"
     >
       {children}
-      <motion.span variants={iconAnimation} className="opacity-0">
-        <ChevronRight />
-      </motion.span>
+      <motion.svg
+        className="mt-0.5 ml-2 -mr-1 stroke-primary stroke-1"
+        fill="none"
+        viewBox="0 0 10 10"
+        aria-hidden="true"
+      >
+        <motion.path variants={line} d="M0 5h7" />
+        <motion.path variants={chevron} d="M1 1l4 4-4 4" />
+      </motion.svg>
     </motion.a>
   </Link>
 );
