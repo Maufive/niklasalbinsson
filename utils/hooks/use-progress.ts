@@ -1,7 +1,7 @@
-import { useSpring, useViewportScroll } from 'framer-motion';
+import { useSpring, useScroll } from 'framer-motion';
 
 const useProgress = () => {
-  const { scrollYProgress } = useViewportScroll();
+  const { scrollYProgress } = useScroll();
   const pathLength = useSpring(scrollYProgress, {
     stiffness: 400,
     damping: 90,
