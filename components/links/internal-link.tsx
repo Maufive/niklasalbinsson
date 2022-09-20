@@ -1,57 +1,30 @@
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 
 type Props = {
   href: string;
   children: React.ReactNode;
 };
 
-const line = {
-  initial: {
-    opacity: 0,
-    x: -2,
-  },
-  enter: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      x: {
-        type: 'spring',
-        bounce: 0.65,
-      },
-    },
-  },
-};
-
-const chevron = {
-  initial: {
-    x: 0,
-  },
-  enter: {
-    x: 3,
-    transition: { type: 'spring', bounce: 0.65 },
-  },
-};
-
 const InternalLink: React.FC<Props> = ({ children, href }) => (
   <Link href={href} passHref>
-    <motion.a
-      initial="initial"
-      whileHover="enter"
-      whileFocus="enter"
-      className="inline-flex items-center py-1.5 pr-4 text-primary"
-    >
+    <a className="group inline-flex items-center overflow-hidden py-1.5 pr-4 text-primary transition hover:text-primary-light">
       {children}
-      <motion.svg
-        className="mt-0.5 ml-2 -mr-1 stroke-primary stroke-1"
+      <svg
+        className="mt-0.5 ml-2 -mr-1 stroke-primary stroke-1 transition group-hover:stroke-primary-light"
         fill="none"
         viewBox="0 0 10 10"
         aria-hidden="true"
       >
-        <motion.path variants={line} d="M0 5h7" />
-        <motion.path variants={chevron} d="M1 1l4 4-4 4" />
-      </motion.svg>
-    </motion.a>
+        <path
+          className="translate-x-[-2px] opacity-0 transition group-hover:translate-x-[0px] group-hover:opacity-100"
+          d="M0 5h7"
+        />
+        <path
+          className="transition group-hover:translate-x-[3px]"
+          d="M1 1l4 4-4 4"
+        />
+      </svg>
+    </a>
   </Link>
 );
 
