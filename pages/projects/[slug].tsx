@@ -1,8 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 // eslint-disable-next-line import/no-unresolved
 import { useMDXComponent } from 'next-contentlayer/hooks';
-import { Project as ProjectType } from '.contentlayer/types';
-import { allProjects } from '.contentlayer/data';
 import type { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 import PageHeader from 'components/page-header';
 import Page from 'components/page/page';
@@ -11,6 +8,7 @@ import { ExternalLink } from 'components/links';
 import MDX_COMPONENTS from 'components/mdx';
 import BlurImage from 'components/image';
 import { BreadcrumbLink } from 'components/navigation/breadcrumb-link';
+import { allProjects, type Project } from 'contentlayer/generated';
 
 const ProjectDetail: React.FC<{ title: string; column?: boolean }> = ({
   title,
@@ -23,7 +21,7 @@ const ProjectDetail: React.FC<{ title: string; column?: boolean }> = ({
   </div>
 );
 
-const Project: NextPage<{ project: ProjectType }> = ({ project }) => {
+const ProjectPage: NextPage<{ project: Project }> = ({ project }) => {
   const Component = useMDXComponent(project.body.code);
   const PROJECT_META_TITLE = `${project.title} - a project by Niklas Albinsson`;
   const PROJECT_META_DESCRIPTION = `${project.summary}`;
@@ -94,7 +92,16 @@ export const getStaticPaths: GetStaticPaths = () => ({
 });
 
 export const getStaticProps: GetStaticProps = ({ params }) => {
-  const project = allProjects.find((p) => p.slug === params?.slug);
+  if (!params) {
+    return {
+      props: {
+        project: allProjects[0],
+      },
+    };
+  }
+
+  const project = allProjects.find((p) => p.slug === params.slug);
+
   return {
     props: {
       project,
@@ -102,4 +109,4 @@ export const getStaticProps: GetStaticProps = ({ params }) => {
   };
 };
 
-export default Project;
+export default ProjectPage;

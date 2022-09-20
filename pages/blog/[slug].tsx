@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 // eslint-disable-next-line import/no-unresolved
 import { useMDXComponent } from 'next-contentlayer/hooks';
-import { Post } from '.contentlayer/types';
-import { allPosts } from '.contentlayer/data';
 import type { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 import PageHeader from 'components/page-header';
 import { formatDate } from 'utils/formatDate';
@@ -10,6 +8,7 @@ import Page from 'components/page/page';
 import { CustomSeo } from 'components/seo';
 import MDX_COMPONENTS from 'components/mdx';
 import { BreadcrumbLink } from 'components/navigation/breadcrumb-link';
+import { allPosts, type Post } from 'contentlayer/generated';
 
 const PostPage: NextPage<{ post: Post }> = ({ post }) => {
   const Component = useMDXComponent(post.body.code);
@@ -42,7 +41,15 @@ export const getStaticPaths: GetStaticPaths = () => ({
 });
 
 export const getStaticProps: GetStaticProps = ({ params }) => {
-  const post = allPosts.find((p) => p.slug === params?.slug);
+  if (!params) {
+    return {
+      props: {
+        post: allPosts[0],
+      },
+    };
+  }
+
+  const post = allPosts.find((p) => p.slug === params.slug);
   //   const related = allPosts
   //     /* remove current post */
   //     .filter((p) => p.slug !== params?.slug)

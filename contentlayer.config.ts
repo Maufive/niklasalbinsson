@@ -26,32 +26,32 @@ const computedFields: ComputedFields = {
 
 const Post = defineDocumentType(() => ({
   name: 'Post',
-  filePathPattern: 'blog/*.mdx',
-  bodyType: 'mdx',
+  filePathPattern: './blog/*.mdx',
+  contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
     summary: { type: 'string', required: true },
     publishedAt: { type: 'string', required: true },
     image: { type: 'string', required: false },
     tags: { type: 'json', required: false },
-    archived: { type: 'boolean', required: false }
+    archived: { type: 'boolean', required: false },
   },
   computedFields,
 }));
 
 const Project = defineDocumentType(() => ({
   name: 'Project',
-  filePathPattern: 'projects/*.mdx',
-  bodyType: 'mdx',
+  filePathPattern: './projects/*.mdx',
+  contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
     stack: { type: 'string', required: true },
     summary: { type: 'string', required: true },
     publishedAt: { type: 'string', required: true },
-    image: { type: 'string', required: true }, 
+    image: { type: 'string', required: true },
     repositoryUrl: { type: 'string', required: true },
     projectUrl: { type: 'string', required: false },
-    downloadable: { type: 'boolean', required: false }
+    downloadable: { type: 'boolean', required: false },
   },
   computedFields,
 }));
