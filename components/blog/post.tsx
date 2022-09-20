@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import type { Post as PostType } from '.contentlayer/types';
 import Link from 'next/link';
 import { formatDate } from 'utils/formatDate';
+import type { Post as PostType } from 'contentlayer/generated';
 
 const Post: React.FC<{ post: PostType }> = ({ post }) => (
   <li>

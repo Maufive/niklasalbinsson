@@ -1,4 +1,4 @@
-import type { Post as PostType } from '.contentlayer/types';
+import type { Post as PostType } from 'contentlayer/generated';
 import Post from './post';
 
 type BlogPostListProps = {

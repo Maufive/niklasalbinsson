@@ -1,13 +1,12 @@
 import type { NextPage, GetStaticProps } from 'next';
 import { pick } from '@contentlayer/client';
-import { allPosts } from '.contentlayer/data';
-import type { Post } from '.contentlayer/types';
 import PageHeader from 'components/page-header';
 import Page from 'components/page/page';
 import { PostList } from 'components/blog';
 import { InternalLink } from 'components/links';
 import Seo from 'components/seo';
 import { FeaturedProjectCard } from 'components/featured-project-card';
+import { allPosts, type Post } from 'contentlayer/generated';
 
 const Home: NextPage<{ posts: Post[] }> = ({ posts }) => (
   <Page>
