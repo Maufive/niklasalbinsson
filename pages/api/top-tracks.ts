@@ -12,6 +12,10 @@ export default async function handler(
 ) {
   const { limit, period } = req.query;
 
+  if (!limit || !period) {
+    return;
+  }
+
   const response = await getTopTracks({ limit, period });
   const { items } = (await response.json()) as ResponseJSON;
 
