@@ -49,8 +49,8 @@ const LightDarkSwitcher: React.FC = () => {
     setCurrentTheme(theme);
   }, [theme]);
 
-  const scaleMoon = useMotionValue(isDarkTheme ? 1 : 0);
-  const scaleSun = useMotionValue(isDarkTheme ? 0 : 1);
+  const scaleMoon = useMotionValue(isDarkTheme ? 0 : 1);
+  const scaleSun = useMotionValue(isDarkTheme ? 1 : 0);
   const pathLengthMoon = useTransform(scaleMoon, [0.6, 1], [0, 1]);
   const pathLengthSun = useTransform(scaleSun, [0.6, 1], [0, 1]);
 
@@ -110,7 +110,7 @@ const LightDarkSwitcher: React.FC = () => {
         aria-describedby="lightDarkSwitcherDesc"
         onClick={toggleTheme}
         initial={false}
-        animate={isDarkTheme ? 'moon' : 'sun'}
+        animate={isDarkTheme ? 'sun' : 'moon'}
         transition={{ duration }}
       >
         <div className="theme-switcher-icon-wrapper">
