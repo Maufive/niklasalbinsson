@@ -14,9 +14,19 @@ const BadgeWidget = dynamic(
 /* Twitch Carousel widgets */
 const TwitchCarousel = dynamic(() => import('./twitch-carousel'));
 
+/* Framer Motion Values widgets */
+const UseTransformWidget = dynamic(
+  () => import('./framer-motion-values/use-transform-widget')
+);
+const CollapsingHeaderWidget = dynamic(
+  () => import('./framer-motion-values/collapsing-header-widget')
+);
+
+/* Shared widgets */
 const Aside = dynamic(() => import('./aside'));
 const Link = dynamic(() => import('../links'));
 const ExternalLink = dynamic(() => import('../links/external-link'));
+const InternalLink = dynamic(() => import('../links/internal-link'));
 const RoundedImage = dynamic(() => import('./images'));
 const BlurImage = dynamic(() => import('../image/index'));
 
@@ -30,6 +40,9 @@ const MDXComponents = {
   BlurImage,
   TwitchCarousel,
   ExternalLink,
+  InternalLink,
+  UseTransformWidget,
+  CollapsingHeaderWidget,
 };
 
 export default MDXComponents;

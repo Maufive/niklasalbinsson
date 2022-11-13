@@ -1,0 +1,122 @@
+---
+title: "Framer Motion Hooks / Working with Framer Motion's Motion Values"
+publishedAt: '2022-11-13'
+summary: 'Working with Motion Values in the real world'
+---
+
+## Introduction
+
+In my <a href="https://www.niklasalbinsson.dev/blog/layout-animations" target="_blank">previous post</a> we covered the easy to use, convenient api for layout animations. We also briefly covered the AnimatePresence API but in this post we will be diving into the realm of `MotionValues`. It took me a while working with Framer Motion before I got a grip of how these values work and how they could be used in a real application.
+
+The `MotionValue` is a special type of value used within Framer Motion components that track the state and velocity of an animating value. So for example when we are using the `layout` prop we learned about previously - Framer Motion uses these `MotionValue`s under the hood.
+
+They´re really neat and useful for more advanced animations where we can create them ourselves, taking full control over the animation and injecting them into our `motion` components via the `style` tag. And all of this is done without triggering the React render cycle! That means that we don't get a bunch of re-renders in our component just because we want to add animation.
+
+**In this post we will learn about the following topics:**
+
+- The Framer Motion `MotionValue` - How and why do we use it?
+- Chaining `MotionValue`s with the `useTransform` and `useMotionTemplate` hooks
+- Working with drag and scroll based animations
+
+## useTransform
+
+Before we start implementing our real-world component example I want to bring particiular focus to a hook that I find _very_ useful when working with `MotionValue`s. Introducing the `useTransform` hook!
+
+Drag the box to see something really cool! 🎨
+
+<UseTransformWidget />
+
+In this colorful component we make use of the `useTransform` hook to map the position of the box and map it to a `MotionValue` over a range of colors that we pass. I promise it's not as hard as it sounds, let's dissect the code from above bit by bit.
+
+We will start by looking at the required arguments one by one and explain their purpose
+
+### 1. The MotionValue
+
+```jsx
+const x = useMotionValue(0);
+const color = useTransform(x, ..., ...);
+```
+
+We need to pass a `MotionValue` as the first argument to the hook. This is the value that Framer Motion will update under the hood in this hook. This is also the value we will inject to our motion component via the `style` tag. The element you pass to **has to be a motion element**, otherwise it won't work.
+
+### 2. The input range
+
+```jsx
+const xInput = [-100, 0, 100];
+const color = useTransform(x, xInput, ...);
+```
+
+The second argument will be the so-called "input" array. This is the range in which we want to map to our output, and it is synced with the value we passed as the first argument. What that means is that we have value `x` and it's range goes from `-100` to `100`. So when we've dragged our box to the left-most edge this value will be `-100`.
+
+### 3. The output range
+
+```jsx
+const colorOutput = ['rgb(211, 9, 225)', 'rgb(68, 0, 255)', 'rgb(3, 209, 0)'];
+const background = useTransform(x, xInput, colorOutput);
+```
+
+The third and last argument that we pass is the output range. This is an array of values that we want to map to our input range. So for example when the value `x` (MotionValue) is `-100` (input range) the output will be `rgb(211, 9, 225)` (Pink)!
+
+### 4. Tying it all together
+
+Now that understand what we need to use the hook, we can apply the returned value to our component. As it turns out the hook actually just returns a new `MotionValue` for us to use, but we don't have to deal with updating the value ourselves since it is done under the hood by the hook. All we need to do is tell it when to update!
+
+This is where we add the value `x` to our component, and make use of the `drag` API of a `motion` component:
+
+```jsx
+<motion.div
+  style={{ x }}
+  drag="x"
+  dragConstraints={{ left: 0, right: 0 }} // Don't go outside the bounds of the element
+>
+  <motion.p style={{ color }}>{currentColor}</motion.p>
+</motion.div>
+```
+
+So now when we drag this element on the X-axis we will update the X position which is also our `MotionValue` that's being picked up by the `useTransform` hook. We can then grab the returned `MotionValue` output `color` and plug it into our paragraph tag. The paragraph will now update it's color depending on where on the X-axis we drag our box. **Amazing! ✨**
+
+### 5. Bonus!
+
+You will of course also have noticed that we also update the background color. Now that you know how we update the text color, you will notice that we do exactly the same thing to the background color as well..
+
+## A real life example
+
+Changing the background color to different gradients is nice and all, and makes for a good introductionary example - but it probably isn't something that will be very useful in the real world.
+
+So the real world example I came up with was a header component. A header component that collapses in size as you scroll. And with this component we will use what we learned from the previous component and also see another example of how we can use `MotionValue`s together with another great helper hook from Framer Motion!
+
+<Aside>
+  useMotionTemplate creates a new **MotionValue** from a string template
+  containing other **MotionValues**. When one value in the template string
+  updates the new **MotionValue** will be updated.
+</Aside>
+
+Our component will have three main features all relying on `MotionValue`s.
+
+1. The height of the header should shrink as we scroll to take up less space on the page. This can be a good idea since we can make some assumptions that the user is not as interested of the contents of the header when they are scrolling down.
+
+2. Make the background color a little transparent as we scroll down. This is mostly to provide a modern look to our header.
+
+3. We will animate the company logo as we scroll down for the same reasons as in the first point - basically we want a leaner, cleaner look in the header component.
+
+So take a look at our component below and try scrolling within the widget to see the effects in action.
+
+_To make the widget not too cluttered, I will strip away irrellevant information from the code. If you want to see the full source code for the component please see it on Github. (add link here)_
+
+<CollapsingHeaderWidget />
+
+So using the same techniques we learned earlier we can apply this to a more realistic example. We are still relying heavliy on the `useTransform` hook to get an output value that we just inject to our `motion` elements. And as you can see - the `useMotionTemplate` hook isn't all that different either. We just take a `MotionValue` and add it to our template string and we can easily animate things like the alpha in our background rgba color! ✨
+
+The only real difference from the previous example is that instead of using the **drag** event we are listening for a **scroll** event in the widget container.
+
+## Take-aways
+
+By using `MotionValue` ourselves and use them for our animations we can get a lot of control over our animations. It's super handy when doing gesture based animations because of the utilities that Framer Motion provides us to work with them. It's also super nice that we're not triggering the React render cycle when updating and changing these values so we won't compromise our applications performance by having to do any unneccesary local states and effects.
+
+Last but not least if you are still here and still interested in this kind of stuff I would highly recommend checking out further resources on this topic:
+
+- Sam Selikoff has a lot of content covering Framer Motion topics. Here is the video that inspired this post where he covers animations on scroll direction changes: <a href="https://www.youtube.com/watch?v=SLOBjhSJCi0" target="_blank">Link to youtube video</a>
+- Framer Motion documentation covering the `MotionValue`: <a href="https://www.framer.com/docs/motionvalue/" target="_blank">Link to documentation</a>
+- Framer Motions own examples of `MotionValue`: <a href="https://www.framer.com/docs/examples/#motionvalues" target="_blank">Link to examples</a>
+
+Thanks for sticking around, and see you next time!

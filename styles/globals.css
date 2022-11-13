@@ -14,7 +14,7 @@
   );
 
   /* TYPOGRAPHY */
-  --fontFamily: "Inter", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+  --fontFamily: 'Inter', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 
   /* THEMING */
@@ -167,7 +167,7 @@ ol {
   &::after {
     z-index: 0;
     position: absolute;
-    content: "";
+    content: '';
     display: block;
     width: 100%;
     height: 100%;
@@ -249,4 +249,11 @@ ol {
 .aside-icon {
   top: -30px;
   right: -30px;
+}
+
+.basic-drag-example__box-wrapper {
+  width: 10rem;
+  height: 4rem;
+  top: calc(50% - 4rem / 2);
+  left: calc(50% - 10rem / 2);
 }
