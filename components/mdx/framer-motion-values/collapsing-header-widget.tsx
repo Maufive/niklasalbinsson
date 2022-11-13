@@ -59,12 +59,16 @@ const MyComponent = () => {
 }
 `;
 
-const NavigationItem: FC<{ isActive?: boolean }> = ({ children, isActive }) => (
+const NavigationItem: FC<{ isActive?: boolean; className?: string }> = ({
+  children,
+  isActive,
+  className,
+}) => (
   <a
     href="#"
     className={`rounded-md text-sm font-medium text-white ${
       isActive ? '' : 'text-gray-400 hover:text-white'
-    }`}
+    } ${className ?? ''}`}
     aria-current="page"
   >
     {children}
@@ -87,7 +91,7 @@ const CollapsingHeaderWidget = () => {
   const logoOpacity = useTransform(scrollY, [0, 75], [1, 0]);
 
   return (
-    <div className="not-prose">
+    <div className="relative">
       <motion.div
         className="not-prose h-96 w-full overflow-scroll rounded-xl bg-gradient-to-r from-primary to-primary-dark"
         ref={widgetRef}
@@ -96,74 +100,68 @@ const CollapsingHeaderWidget = () => {
           borderBottomLeftRadius: showCode ? '0px' : '12px',
         }}
       >
-        <div className="relative">
-          <motion.nav
-            className="sticky top-0 z-10 flex w-full items-center backdrop-blur-md"
-            style={{ height, backgroundColor: backgroundColorTemplate }}
-          >
-            <div className="w-full max-w-7xl px-2 sm:px-6 lg:px-8">
-              <div className="relative flex w-full items-center">
-                <div className="flex w-full items-center sm:items-stretch sm:justify-start">
-                  <motion.div
-                    className="flex flex-shrink-0 items-center"
-                    style={{ x, opacity: logoOpacity }}
-                  >
-                    <img
-                      className="block h-8 w-auto"
-                      src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                      alt="Your Company"
-                    />
-                  </motion.div>
-                  <div className="flex w-full justify-between">
-                    <div className="ml-6 flex items-center space-x-4">
-                      <NavigationItem isActive>Dashboard</NavigationItem>
-                      <NavigationItem>Team</NavigationItem>
-                      <NavigationItem>Projects</NavigationItem>
-                    </div>
-                    <div className="mr-6">
-                      <motion.button
-                        className="rounded-md bg-zinc-50 py-1 px-2 text-xs text-zinc-800 shadow-md"
-                        type="button"
-                        onClick={() => setShowCode(!showCode)}
-                        whileHover={{ scale: 1.05 }}
-                      >
-                        {showCode ? 'Hide code' : 'Show code'}
-                      </motion.button>
-                    </div>
-                  </div>
-                </div>
+        <motion.nav
+          className="sticky flex w-full items-center px-2 backdrop-blur-md sm:px-6 lg:px-8"
+          style={{ height, backgroundColor: backgroundColorTemplate }}
+        >
+          <div className="flex w-full items-center sm:items-stretch sm:justify-start">
+            <motion.div
+              className="flex flex-shrink-0 items-center"
+              style={{ x, opacity: logoOpacity }}
+            >
+              <img
+                className="block h-8 w-auto"
+                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                alt="Your Company"
+              />
+            </motion.div>
+            <div className="flex w-full justify-between">
+              <div className="ml-6 flex items-center space-x-4">
+                <NavigationItem isActive>Dashboard</NavigationItem>
+                <NavigationItem className="hidden sm:flex">Team</NavigationItem>
+                <NavigationItem className="hidden sm:flex">
+                  Projects
+                </NavigationItem>
               </div>
+              <motion.button
+                className="rounded-md bg-zinc-50 py-1 px-2 text-xs text-zinc-800 shadow-md"
+                type="button"
+                onClick={() => setShowCode(!showCode)}
+                whileHover={{ scale: 1.05 }}
+              >
+                {showCode ? 'Hide code' : 'Show code'}
+              </motion.button>
             </div>
-          </motion.nav>
-          <div className="mx-auto my-8 flex w-2/3 flex-col space-y-4 rounded-xl bg-gray-100 p-6">
-            <p className="text-sm text-gray-800">
-              Est reprehenderit irure consequat aliquip qui dolore cillum eu ut
-              veniam. Id officia consequat qui duis laboris minim ipsum
-              excepteur sint dolor anim elit. Ut mollit duis Lorem sunt dolor
-              qui non deserunt consectetur minim duis officia. Magna nisi
-              proident id culpa aliquip nostrud non in do in incididunt.
-              Exercitation cupidatat magna voluptate consequat incididunt dolore
-              amet qui non consectetur. Anim anim aliqua fugiat ut amet occaecat
-              proident enim quis nulla velit sint.
-            </p>
-            <p className="text-sm text-gray-800">
-              Est reprehenderit irure consequat aliquip qui dolore cillum eu ut
-              veniam. Id officia consequat qui duis laboris minim ipsum
-              excepteur sint dolor anim elit. Ut mollit duis Lorem sunt dolor
-              qui non deserunt consectetur minim duis officia. Magna nisi
-              proident id culpa aliquip nostrud non in do in incididunt.
-              Exercitation cupidatat magna voluptate consequat incididunt dolore
-              amet qui non consectetur. Anim anim aliqua fugiat ut amet occaecat
-              proident enim quis nulla velit sint.
-            </p>
-            <p className="text-sm text-gray-800">
-              Est reprehenderit irure consequat aliquip qui dolore cillum eu ut
-              veniam. Id officia consequat qui duis laboris minim ipsum
-              excepteur sint dolor anim elit. Ut mollit duis Lorem sunt dolor
-              qui non deserunt consectetur minim duis officia. Magna nisi
-              proident id culpa aliquip nostrud non in do in incididunt.
-            </p>
           </div>
+        </motion.nav>
+        <div className="mx-auto my-8 flex w-4/5 flex-col space-y-4 rounded-xl bg-gray-100 p-6 lg:w-2/3">
+          <p className="text-sm text-gray-800">
+            Est reprehenderit irure consequat aliquip qui dolore cillum eu ut
+            veniam. Id officia consequat qui duis laboris minim ipsum excepteur
+            sint dolor anim elit. Ut mollit duis Lorem sunt dolor qui non
+            deserunt consectetur minim duis officia. Magna nisi proident id
+            culpa aliquip nostrud non in do in incididunt. Exercitation
+            cupidatat magna voluptate consequat incididunt dolore amet qui non
+            consectetur. Anim anim aliqua fugiat ut amet occaecat proident enim
+            quis nulla velit sint.
+          </p>
+          <p className="text-sm text-gray-800">
+            Est reprehenderit irure consequat aliquip qui dolore cillum eu ut
+            veniam. Id officia consequat qui duis laboris minim ipsum excepteur
+            sint dolor anim elit. Ut mollit duis Lorem sunt dolor qui non
+            deserunt consectetur minim duis officia. Magna nisi proident id
+            culpa aliquip nostrud non in do in incididunt. Exercitation
+            cupidatat magna voluptate consequat incididunt dolore amet qui non
+            consectetur. Anim anim aliqua fugiat ut amet occaecat proident enim
+            quis nulla velit sint.
+          </p>
+          <p className="text-sm text-gray-800">
+            Est reprehenderit irure consequat aliquip qui dolore cillum eu ut
+            veniam. Id officia consequat qui duis laboris minim ipsum excepteur
+            sint dolor anim elit. Ut mollit duis Lorem sunt dolor qui non
+            deserunt consectetur minim duis officia. Magna nisi proident id
+            culpa aliquip nostrud non in do in incididunt.
+          </p>
         </div>
       </motion.div>
       <AnimatePresence>
