@@ -79,28 +79,28 @@ const About: NextPage = () => (
             </li>
             <li className="marker:text-secondary">
               <p className="text-base leading-7 text-zinc-700 dark:text-zinc-300">
+                With my team building a new Sportsbook application with a
+                front-end from scratch and integrating live odds-feed from
+                third-parties via Kafka and websocket
+              </p>
+            </li>
+            <li className="marker:text-secondary">
+              <p className="text-base leading-7 text-zinc-700 dark:text-zinc-300">
                 Developing new backend features in Java and designing clear,
                 developer friendly REST APIs
               </p>
             </li>
             <li className="marker:text-secondary">
               <p className="text-base leading-7 text-zinc-700 dark:text-zinc-300">
-                Closely working with designers to develop a brand new UI for the
-                Sportsbook product by creating reusable, high quality components
-                in React and Typescript
+                Closely working with designers to develop a brand new UI library
+                for the developers by creating reusable, high quality components
+                in React, Typescript and Storybook
               </p>
             </li>
             <li className="marker:text-secondary">
               <p className="text-base leading-7 text-zinc-700 dark:text-zinc-300">
                 Increasing the Sportsbook application Web Vitals score by 20% by
                 implementing UX best practices
-              </p>
-            </li>
-            <li className="marker:text-secondary">
-              <p className="text-base leading-7 text-zinc-700 dark:text-zinc-300">
-                Writing unit, integration and end-to-end tests with the Cypress
-                and Jest frameworks to ensure code confidence and smooth
-                releases
               </p>
             </li>
           </ul>
