@@ -32,12 +32,12 @@ const Tracks: React.FC = () => {
   return (
     <>
       <h2 className="mb-2 text-xl font-bold">Top Tracks</h2>
-      <p className="text-base">
+      <p className="text-base text-zinc-300">
         I love listening to all kinds of music. Here is a daily updated list of
         my favourite jams!
       </p>
 
-      <div className="my-6 flex flex-col rounded-md sm:w-fit">
+      <div className="my-4 flex flex-col rounded-md sm:w-fit">
         <ListBox
           options={options}
           onChange={onChangePeriod}

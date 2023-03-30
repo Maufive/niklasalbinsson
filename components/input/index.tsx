@@ -28,7 +28,7 @@ const Input: React.FC<InputProps> = ({
       onChange={onChange}
       aria-label={ariaLabel}
     />
-    <SearchIcon className="absolute left-3 h-5 w-5 stroke-zinc-600 dark:stroke-zinc-600" />
+    <SearchIcon className="absolute left-3 h-5 w-5 stroke-zinc-600" />
   </div>
 );
 

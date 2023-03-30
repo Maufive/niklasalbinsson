@@ -68,10 +68,10 @@ const SimpleList: React.FC = () => {
 
   return (
     <div className="not-prose flex h-full flex-col overflow-auto rounded-md md:h-96 md:flex-row">
-      <div className="flex-shink flex flex-grow basis-64 flex-col justify-between bg-zinc-200 p-3 dark:bg-zinc-800 md:p-6">
+      <div className="flex-shink flex flex-grow basis-64 flex-col justify-between bg-zinc-800 p-3 md:p-6">
         <motion.button
           type="button"
-          className="flex w-fit cursor-pointer items-center justify-center rounded-full border-none bg-transparent p-2 text-zinc-600 dark:text-zinc-400"
+          className="flex w-fit cursor-pointer items-center justify-center rounded-full border-none bg-transparent p-2 text-zinc-400"
           onClick={onClickRefresh}
           whileHover={{ scale: 1.1 }}
         >
@@ -82,7 +82,7 @@ const SimpleList: React.FC = () => {
             {items.map((item) => (
               <motion.li
                 key={item}
-                className="flex cursor-pointer items-center bg-zinc-100 p-3 text-sm shadow-sm dark:bg-zinc-900"
+                className="flex cursor-pointer items-center bg-zinc-900 p-3 text-sm shadow-sm "
                 onClick={() => onClickItem(item)}
                 layout
                 exit={{ opacity: 0 }}

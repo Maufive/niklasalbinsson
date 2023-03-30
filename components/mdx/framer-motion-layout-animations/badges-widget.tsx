@@ -77,7 +77,7 @@ const BadgesWidget: React.FC = () => {
 
   return (
     <div className="not-prose flex flex-col overflow-auto rounded-t-md">
-      <div className="flex flex-col bg-zinc-200 p-3 dark:bg-zinc-800 md:p-6">
+      <div className="flex flex-col bg-zinc-800 p-3 md:p-6">
         {position ? (
           <ul className="flex gap-3">
             {filters.map((filter) => (
@@ -139,7 +139,7 @@ const BadgesWidget: React.FC = () => {
           />
           <motion.button
             type="button"
-            className="flex w-fit cursor-pointer items-center justify-center rounded-full border-none bg-transparent p-2 text-base text-zinc-600 dark:text-zinc-400"
+            className="flex w-fit cursor-pointer items-center justify-center rounded-full border-none bg-transparent p-2 text-base text-zinc-400"
             onClick={onClickRefresh}
           >
             <RefreshIcon />

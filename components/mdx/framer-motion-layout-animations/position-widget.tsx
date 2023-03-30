@@ -46,7 +46,7 @@ const PositionWidget: React.FC = () => {
 
   return (
     <div className="not-prose flex flex-col overflow-auto rounded-md">
-      <div className="flex flex-col bg-zinc-200 p-3 dark:bg-zinc-800 md:p-6">
+      <div className="flex flex-col bg-zinc-800 p-3 md:p-6">
         <div className="grid">
           {isLayout ? (
             <motion.div
