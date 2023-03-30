@@ -40,7 +40,7 @@ class MyDocument extends Document {
             type="image/png"
           />
         </Head>
-        <body className="bg-zinc-100 text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100">
+        <body className="bg-zinc-900 text-zinc-100">
           <Main />
           <NextScript />
         </body>

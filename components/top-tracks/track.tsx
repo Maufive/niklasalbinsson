@@ -13,7 +13,7 @@ const Track: React.FC<TrackProps> = ({
   images,
 }) => (
   <li className="flex items-center">
-    <p className="text-base font-bold text-zinc-600 dark:text-zinc-400">
+    <p className="text-base font-bold text-zinc-400">
       {ranking}
     </p>
     <div className="relative mx-4 h-10 w-10 overflow-hidden rounded-md shadow-md">
@@ -32,7 +32,7 @@ const Track: React.FC<TrackProps> = ({
       >
         {title}
       </a>
-      <p className="max-w-full text-ellipsis text-base text-zinc-700 dark:text-zinc-200 md:max-w-md">
+      <p className="max-w-full text-ellipsis text-base text-zinc-200 md:max-w-md">
         {artist}
       </p>
     </div>

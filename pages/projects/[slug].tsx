@@ -42,9 +42,7 @@ const ProjectPage: NextPage<{ project: Project }> = ({ project }) => {
           <ul className="flex flex-wrap">
             {STACK.map((technology) => (
               <li key={technology} className="mr-4 mb-2 lg:mb-0">
-                <p className="text-base text-zinc-700 dark:text-zinc-300">
-                  {technology}
-                </p>
+                <p className="text-base text-zinc-300">{technology}</p>
               </li>
             ))}
           </ul>
@@ -79,7 +77,7 @@ const ProjectPage: NextPage<{ project: Project }> = ({ project }) => {
         )}
       </div>
 
-      <article className="prose prose-zinc mt-10 dark:prose-invert sm:px-4 2xl:prose-xl 2xl:my-20">
+      <article className="prose prose-invert mt-10 sm:prose-invert sm:px-4 lg:prose-lg 2xl:my-20">
         <Component components={MDX_COMPONENTS} />
       </article>
     </Page>

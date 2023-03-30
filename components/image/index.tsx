@@ -19,7 +19,7 @@ const BlurImage: React.FC<Props> = ({ src, alt, className, height, width }) => {
   return (
     <div
       className={cn(
-        'aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-zinc-200 dark:bg-zinc-800 md:aspect-w-2 md:aspect-h-1',
+        'aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-zinc-800 md:aspect-w-2 md:aspect-h-1',
         className || ''
       )}
     >
