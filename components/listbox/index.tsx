@@ -18,10 +18,7 @@ const ListBox: React.FC<ListBoxType> = ({
       <Listbox.Button className="relative mt-1 w-full cursor-default rounded-lg bg-zinc-800 py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-green-300 sm:text-sm">
         <span className="block truncate">{selectedValue}</span>
         <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-          <SelectorIcon
-            className="h-5 w-5 text-zinc-200"
-            aria-hidden="true"
-          />
+          <SelectorIcon className="h-5 w-5 text-zinc-200" aria-hidden="true" />
         </span>
       </Listbox.Button>
       <Transition
@@ -36,9 +33,7 @@ const ListBox: React.FC<ListBoxType> = ({
               key={option.value}
               className={({ active }) =>
                 `relative cursor-default select-none py-2 pl-10 pr-4 text-sm ${
-                  active
-                    ? 'bg-indigo-900/40 text-indigo-100'
-                    : 'text-zinc-200'
+                  active ? 'bg-indigo-900/40 text-indigo-100' : 'text-zinc-200'
                 }`
               }
               value={option.label}
