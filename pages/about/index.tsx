@@ -43,8 +43,9 @@ const About: NextPage = () => (
           My name is Niklas, and I am currently working as a frontend developer
           at <span className="font-bold text-secondary">ComeOn Group</span>{' '}
           where me and my team are building a Sportsbook application. In my
-          day-to-day work I write <span className="font-bold">React</span> components with <span className="font-bold">TypeScript</span>{' '}
-          and <span className="font-bold">Redux</span>.
+          day-to-day work I write <span className="font-bold">React</span>{' '}
+          components with <span className="font-bold">TypeScript</span> and{' '}
+          <span className="font-bold">Redux</span>.
         </p>
         <p className="mb-4 text-base leading-7">
           I am proud to be able to call my self a self-taught developer. In 2017
@@ -66,10 +67,8 @@ const About: NextPage = () => (
             Frontend Developer @{' '}
             <span className="font-bold text-secondary">ComeOn Group</span>
           </h4>
-          <p className="text-sm text-zinc-400">
-            May 2019 - present
-          </p>
-          <ul className="mt-4 list-disc space-y-4 px-4 lg:space-y-6 lg:px-0 text-zinc-300">
+          <p className="text-sm text-zinc-400">May 2019 - present</p>
+          <ul className="mt-4 list-disc space-y-4 px-4 text-zinc-300 lg:space-y-6 lg:px-0">
             <li className="marker:text-secondary">
               <p className="text-base leading-7">
                 Leading initiative to implement Typescript and surrounding

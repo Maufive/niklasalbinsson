@@ -13,9 +13,7 @@ const Track: React.FC<TrackProps> = ({
   images,
 }) => (
   <li className="flex items-center">
-    <p className="text-base font-bold text-zinc-400">
-      {ranking}
-    </p>
+    <p className="text-base font-bold text-zinc-400">{ranking}</p>
     <div className="relative mx-4 h-10 w-10 overflow-hidden rounded-md shadow-md">
       <Image
         layout="fill"

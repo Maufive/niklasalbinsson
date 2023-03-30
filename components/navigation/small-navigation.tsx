@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import { UserIcon, HomeIcon, BookOpenIcon } from '@heroicons/react/outline';
 import SubMenu from './mobile-sub-menu';
 
-
 type NavItemProps = {
   isActive: boolean;
   href: string;
@@ -27,12 +26,11 @@ export const NavItemIcon: React.FC<NavItemProps> = ({
   </Link>
 );
 
-
 const SmallNavigation: React.FC = () => {
   const { pathname } = useRouter();
 
   return (
-    <div className="backdrop-blur-md bg-zinc-900/50 fixed bottom-2 left-1/2 z-10 flex w-11/12 -translate-x-1/2 items-center justify-between rounded-2xl border border-zinc-600  p-2  md:w-fit md:rounded-lg">
+    <div className="fixed bottom-2 left-1/2 z-10 flex w-11/12 -translate-x-1/2 items-center justify-between rounded-2xl border border-zinc-600 bg-zinc-900/50 p-2  backdrop-blur-md  md:w-fit md:rounded-lg">
       <div className="flex items-center space-x-4">
         <NavItemIcon href="/" isActive={pathname === '/'}>
           <HomeIcon className="h-5 w-5" />

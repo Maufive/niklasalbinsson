@@ -1,10 +1,7 @@
 import React, { Fragment } from 'react';
 import { Menu } from '@headlessui/react';
 import { motion } from 'framer-motion';
-import {
-  MenuIcon,
-  AtSymbolIcon
-} from '@heroicons/react/outline';
+import { MenuIcon, AtSymbolIcon } from '@heroicons/react/outline';
 import { TwitterIcon, GithubIcon } from '../icons';
 
 const CHILD_VARIANTS = {
@@ -113,7 +110,7 @@ const Submenu: React.FC = () => (
           variants={CONTAINER_VARIANTS}
           initial="closed"
           animate="open"
-          className="fixed right-0 bottom-20 flex origin-bottom-right flex-col items-center space-y-4 rounded-2xl border border-zinc-600 bg-zinc-900/90 p-2 shadow-xlmd:bottom-16 md:rounded-lg"
+          className="shadow-xlmd:bottom-16 fixed right-0 bottom-20 flex origin-bottom-right flex-col items-center space-y-4 rounded-2xl border border-zinc-600 bg-zinc-900/90 p-2 md:rounded-lg"
         >
           {EXTERNAL_LINKS.map((link) => (
             <MenuItem
