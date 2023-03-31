@@ -124,7 +124,7 @@ const CollapsingHeaderWidget = () => {
                 </NavigationItem>
               </div>
               <motion.button
-                className="rounded-md bg-zinc-50 py-1 px-2 text-xs text-zinc-800 shadow-md"
+                className="rounded-md bg-zinc-50 px-2 py-1 text-xs text-zinc-800 shadow-md"
                 type="button"
                 onClick={() => setShowCode(!showCode)}
                 whileHover={{ scale: 1.05 }}

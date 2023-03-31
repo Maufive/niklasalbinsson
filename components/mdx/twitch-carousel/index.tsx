@@ -194,7 +194,7 @@ const TwitchCarousel = () => (
             }}
             key={item.title}
           >
-            <h2 className="text-sm font-bold text-stone-100 md:text-lg lg:text-xl">
+            <h2 className="font-serif text-sm font-bold text-stone-100 md:text-lg lg:text-xl">
               {item.title}
             </h2>
           </div>

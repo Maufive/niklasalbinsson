@@ -6,7 +6,7 @@ const Badge: React.FC<Props> = ({ children, variant }) => (
   <div
     className={`${
       variant === 'primary' ? 'bg-primary' : 'bg-secondary'
-    } flex items-center rounded-md py-1 px-2`}
+    } flex items-center rounded-md px-2 py-1`}
   >
     {children}
   </div>

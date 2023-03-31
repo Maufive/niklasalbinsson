@@ -18,14 +18,14 @@ const Home: NextPage<{ posts: Post[] }> = ({ posts }) => (
           to get a little better every day
         </>
       }
-      description="I'm currently working as a Frontend developer at ComeOn Group. This is my personal website - a place for me to share my personal projects, thoughts and ideas."
+      description="I'm currently working as a developer at ComeOn Group. This is my personal website - a place for me to share my personal projects, thoughts and ideas."
     >
       <InternalLink href="/about">Learn more about me</InternalLink>
     </PageHeader>
 
     <section className="mb-20 flex flex-col md:px-4 2xl:mb-32">
       <div className="mb-6">
-        <h2 className="text-2xl font-bold">Featured Project</h2>
+        <h2 className="font-serif text-2xl font-bold">Featured Project</h2>
       </div>
 
       <div className="px-2 lg:px-0">

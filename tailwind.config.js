@@ -1,4 +1,7 @@
 /* eslint-disable global-require */
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { fontFamily } = require('tailwindcss/defaultTheme');
+
 module.exports = {
   darkMode: 'class',
   content: [
@@ -10,6 +13,10 @@ module.exports = {
   },
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-inter)', ...fontFamily.sans],
+        serif: ['var(--font-playfair-display)', ...fontFamily.serif],
+      },
       typography: {
         DEFAULT: {
           css: {
@@ -34,9 +41,7 @@ module.exports = {
       },
     },
   },
-  variants: {
-    typography: ['dark'],
-  },
+  variants: {},
   plugins: [
     require('@tailwindcss/typography'),
     require('@tailwindcss/aspect-ratio'),

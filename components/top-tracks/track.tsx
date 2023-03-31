@@ -16,6 +16,7 @@ const Track: React.FC<TrackProps> = ({
     <p className="text-base font-bold text-zinc-400">{ranking}</p>
     <div className="relative mx-4 h-10 w-10 overflow-hidden rounded-md shadow-md">
       <Image
+        alt="Album cover"
         layout="fill"
         src={images[2]?.url || images[1]?.url || images[0]?.url}
       />

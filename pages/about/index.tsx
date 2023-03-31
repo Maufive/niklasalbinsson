@@ -36,7 +36,7 @@ const About: NextPage = () => (
     <PageHeader title={ABOUT_TITLE} />
     <article className="space-y-20 md:px-4 2xl:space-y-32">
       <section className="text-zinc-200">
-        <h2 className="mb-6 text-2xl font-bold">
+        <h2 className="mb-6 font-serif text-2xl font-bold">
           Hi there! <WavingHand />
         </h2>
         <p className="mb-4 text-base leading-7">

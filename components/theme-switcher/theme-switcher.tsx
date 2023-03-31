@@ -213,7 +213,7 @@ const LightDarkSwitcher: React.FC = () => {
         </div>
       </motion.button>
       <motion.span
-        className="tooltip pointer-events-none absolute right-0 z-10 whitespace-nowrap rounded-md bg-zinc-200 py-1 px-3 text-sm font-bold text-zinc-800 shadow-md dark:bg-zinc-800 dark:text-zinc-200 dark:shadow-zinc-800"
+        className="tooltip pointer-events-none absolute right-0 z-10 whitespace-nowrap rounded-md bg-zinc-200 px-3 py-1 text-sm font-bold text-zinc-800 shadow-md dark:bg-zinc-800 dark:text-zinc-200 dark:shadow-zinc-800"
         id="lightDarkSwitcherTooltip"
         aria-hidden
         ref={tooltipRef}

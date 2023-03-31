@@ -110,7 +110,7 @@ const Submenu: React.FC = () => (
           variants={CONTAINER_VARIANTS}
           initial="closed"
           animate="open"
-          className="shadow-xlmd:bottom-16 fixed right-0 bottom-20 flex origin-bottom-right flex-col items-center space-y-4 rounded-2xl border border-zinc-600 bg-zinc-900/90 p-2 md:rounded-lg"
+          className="shadow-xlmd:bottom-16 fixed bottom-20 right-0 flex origin-bottom-right flex-col items-center space-y-4 rounded-2xl border border-zinc-600 bg-zinc-900/90 p-2 md:rounded-lg"
         >
           {EXTERNAL_LINKS.map((link) => (
             <MenuItem

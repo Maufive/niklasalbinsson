@@ -15,16 +15,16 @@ const StyledLink: React.FC<StyledLinksProps> = ({
   isActive,
   href,
 }) => (
-  <Link href={href} passHref>
-    <a
-      className={`rounded-md py-2 px-3 text-base font-normal transition-colors hover:bg-zinc-700 focus:ring focus:ring-primary-light ${
-        isActive
-          ? 'bg-zinc-700 text-zinc-100 hover:text-zinc-300'
-          : 'text-zinc-400'
-      }`}
-    >
-      {children}
-    </a>
+  <Link
+    href={href}
+    passHref
+    className={`rounded-md px-3 py-2 text-base font-normal transition-colors hover:bg-zinc-700 focus:ring focus:ring-primary-light ${
+      isActive
+        ? 'bg-zinc-700 text-zinc-100 hover:text-zinc-300'
+        : 'text-zinc-400'
+    }`}
+  >
+    {children}
   </Link>
 );
 
@@ -35,7 +35,7 @@ const DesktopMenu: React.FC<{ pathname: string; showProgressBar: boolean }> = ({
   const scrollProgress = useProgress();
 
   return (
-    <header className="fixed top-0 bottom-0 z-20 flex h-16 w-full items-center justify-center border-b border-zinc-800 bg-zinc-800/50 shadow-md backdrop-blur-md">
+    <header className="fixed bottom-0 top-0 z-20 flex h-16 w-full items-center justify-center border-b border-zinc-800 bg-zinc-800/50 shadow-md backdrop-blur-md">
       {showProgressBar && (
         <motion.div
           className="absolute bottom-0 h-1 w-full origin-left bg-primary"

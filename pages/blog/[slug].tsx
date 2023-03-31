@@ -28,7 +28,7 @@ const PostPage: NextPage<{ post: Post }> = ({ post }) => {
           <span>&middot;</span> {post.readingTime.text}
         </p>
       </PageHeader>
-      <article className="prose prose-invert mt-10 sm:prose-invert sm:px-4 lg:prose-lg 2xl:my-20">
+      <article className="prose prose-invert mt-10 sm:prose-invert lg:prose-lg sm:px-4 2xl:my-20">
         <Component components={MDX_COMPONENTS} />
       </article>
     </Page>
