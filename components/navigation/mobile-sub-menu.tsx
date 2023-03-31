@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Menu } from '@headlessui/react';
 import { motion } from 'framer-motion';
-import { MenuIcon, AtSymbolIcon } from '@heroicons/react/24/outline';
+import { Bars3Icon, AtSymbolIcon } from '@heroicons/react/24/outline';
 import { TwitterIcon, GithubIcon } from '../icons';
 
 const CHILD_VARIANTS = {
@@ -103,7 +103,9 @@ const Submenu: React.FC = () => (
                    : ''
                }`}
         >
-          <MenuIcon className={`h-5 w-5 transition-colors ${open ? '' : ''}`} />
+          <Bars3Icon
+            className={`h-5 w-5 transition-colors ${open ? '' : ''}`}
+          />
         </Menu.Button>
         <Menu.Items
           as={motion.ul}
