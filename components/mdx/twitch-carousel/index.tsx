@@ -1,5 +1,5 @@
 import { motion, Variants, AnimatePresence } from 'framer-motion';
-import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/outline';
+import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import React, { Children } from 'react';
 import { data } from './data';
 import { useResizeObserver } from '../../../utils/hooks';

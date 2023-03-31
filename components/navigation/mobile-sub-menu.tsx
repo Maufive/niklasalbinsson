@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Menu } from '@headlessui/react';
 import { motion } from 'framer-motion';
-import { MenuIcon, AtSymbolIcon } from '@heroicons/react/outline';
+import { MenuIcon, AtSymbolIcon } from '@heroicons/react/24/outline';
 import { TwitterIcon, GithubIcon } from '../icons';
 
 const CHILD_VARIANTS = {

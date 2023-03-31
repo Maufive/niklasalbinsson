@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { UserIcon, HomeIcon, BookOpenIcon } from '@heroicons/react/outline';
+import { UserIcon, HomeIcon, BookOpenIcon } from '@heroicons/react/24/outline';
 import SubMenu from './mobile-sub-menu';
 
 type NavItemProps = {
