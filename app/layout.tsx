@@ -56,10 +56,11 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
   },
   icons: {
-    shortcut: '/favicon.ico',
+    shortcut: '/favicons/favicon.ico',
   },
   verification: {
-    google: 'eZSdmzAXlLkKhNJzfgwDqWORghxnJ8qR9_CHdAh5-xw',
+    google:
+      'google-site-verification=RoXuvAgVQRhlffV9frHbM_e194zGwTJJpGyDARLwzkQ',
   },
 };
 
