@@ -5,7 +5,7 @@ export default function robots() {
         userAgent: '*',
       },
     ],
-    sitemap: 'https://www.niklas.albinsson.dev/sitemap.xml',
-    host: 'https://www.niklas.albinsson.dev',
+    sitemap: 'https://niklas.albinsson.dev/sitemap.xml',
+    host: 'https://niklas.albinsson.dev',
   };
 }
