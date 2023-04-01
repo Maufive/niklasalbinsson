@@ -1,5 +1,14 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
-import { GetRefreshedAccessTokenResponse, TopTracksOptions } from './types';
+import {
+  GetRefreshedAccessTokenResponse,
+  SimpleTrack,
+  TopTracksOptions,
+  Track,
+} from './types';
+
+type ResponseJSON = {
+  items: Track[];
+};
 
 const CLIENT_ID = process.env.NEXT_PUBLIC_ENV_SPOTIFY_CLIENT_ID || '';
 const CLIENT_SECRET = process.env.NEXT_PUBLIC_ENV_SPOTIFY_CLIENT_SECRET || '';
@@ -30,7 +39,7 @@ export const getAccessToken =
 export const getTopTracks = async (options: TopTracksOptions) => {
   const { access_token } = await getAccessToken();
 
-  return fetch(
+  const response = await fetch(
     `${TOP_TRACKS_ENDPOINT}?limit=${options.limit}&time_range=${options.period}`,
     {
       headers: {
@@ -38,6 +47,17 @@ export const getTopTracks = async (options: TopTracksOptions) => {
       },
     }
   );
+
+  const { items } = (await response.json()) as unknown as ResponseJSON;
+
+  const simpleTracks = items.map<SimpleTrack>((track) => ({
+    artist: track.artists.map((_artist) => _artist.name).join(', '),
+    songUrl: track.external_urls.spotify,
+    title: track.name,
+    images: track.album.images,
+  }));
+
+  return simpleTracks;
 };
 export const getNowPlaying = async () => {
   const { access_token } = await getAccessToken();

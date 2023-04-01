@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import { GithubIcon, TwitterIcon, AtIcon } from 'components/icons';
 import NowPlaying from '../now-playing/now-playing';

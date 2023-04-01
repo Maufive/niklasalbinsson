@@ -1,3 +1,4 @@
+import { useMDXComponent } from 'next-contentlayer/hooks';
 import dynamic from 'next/dynamic';
 
 /* / Framer Motion Layout Animations widgets */
@@ -46,3 +47,13 @@ const MDXComponents = {
 };
 
 export default MDXComponents;
+
+type MdxProps = {
+  code: string;
+};
+
+export function Mdx({ code }: MdxProps) {
+  const Component = useMDXComponent(code);
+
+  return <Component components={MDXComponents} />;
+}

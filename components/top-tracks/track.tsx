@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import { SimpleTrack as TrackType } from 'lib/types';
 

@@ -1,3 +1,5 @@
+'use client';
+
 import { motion, Variants, AnimatePresence } from 'framer-motion';
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import React, { Children } from 'react';

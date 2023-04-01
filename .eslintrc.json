@@ -4,7 +4,8 @@
     "react/prop-types": "off",
     "@typescript-eslint/naming-convention": "off",
     "camelcase": "off",
-    "import/no-extraneous-dependencies": 0
+    "import/no-extraneous-dependencies": 0,
+    "@typescript-eslint/require-await": "off"
   },
   "plugins": ["eslint-plugin-tailwindcss"]
 }
