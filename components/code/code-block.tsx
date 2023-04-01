@@ -14,6 +14,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
   highlightLine,
 }) => (
   <Highlight
+    key="Highlight"
     {...defaultProps}
     theme={theme}
     code={codeString}

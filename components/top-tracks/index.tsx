@@ -1,8 +1,9 @@
+'use client';
+
 import { useState } from 'react';
-import useSWR from 'swr';
-import fetcher from 'lib/fetcher';
-import { TopTracks } from 'lib/types';
+import { SimpleTrack } from 'lib/types';
 import ListBox, { ListBoxOption } from 'components/listbox';
+import { getTopTracks } from 'lib/spotify';
 import Track from './track';
 
 const options = [
@@ -11,22 +12,32 @@ const options = [
   { value: 'long_term', label: 'All time' },
 ];
 
-const Tracks: React.FC = () => {
-  const [period, setPeriod] = useState<string | undefined>('short_term');
+type Props = {
+  initialTracks: SimpleTrack[];
+};
+
+const Tracks: React.FC<Props> = ({ initialTracks }) => {
   const [periodLabel, setPeriodLabel] = useState<string | undefined>(
     'Last month'
   );
-  const { data } = useSWR<TopTracks>(
-    `/api/top-tracks?limit=5&period=${period || 'short_term'}`,
-    fetcher
-  );
 
-  const onChangePeriod = (value: string) => {
+  const [topTracks, setTopTracks] = useState<SimpleTrack[]>(initialTracks);
+
+  const onChangePeriod = async (value: string) => {
     const selectedOption = options.find(
       (option: ListBoxOption) => option.label === value
     );
-    setPeriod(selectedOption?.value);
+
+    if (!selectedOption) {
+      return;
+    }
+
+    const newTracks = await getTopTracks({
+      limit: '5',
+      period: selectedOption.value,
+    });
     setPeriodLabel(selectedOption?.label);
+    setTopTracks(newTracks);
   };
 
   return (
@@ -47,7 +58,7 @@ const Tracks: React.FC = () => {
       </div>
 
       <ul className="mt-4 list-decimal space-y-10">
-        {data?.tracks.map((track, index) => (
+        {topTracks.map((track, index) => (
           <Track ranking={index + 1} key={track.songUrl} {...track} />
         ))}
       </ul>

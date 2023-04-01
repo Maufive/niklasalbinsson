@@ -1,5 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/anchor-is-valid */
+
+'use client';
+
 import { useState, useRef, FC } from 'react';
 import {
   motion,
