@@ -26,8 +26,8 @@ function AppContainer({ Component, pageProps }: AppProps) {
       className={`bg-zinc-900 text-zinc-100 ${FONT_INTER.variable} ${FONT_PLAYFAIR_DISPLAY.variable} font-sans`}
     >
       <Navigation />
-      <AnimatePresence initial={false}>
-        <Component {...pageProps} key={router.route} />
+      <AnimatePresence mode="wait" initial={false}>
+        <Component {...pageProps} key={router.asPath} />
       </AnimatePresence>
       <Footer />
     </div>

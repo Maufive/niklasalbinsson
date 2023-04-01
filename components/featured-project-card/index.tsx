@@ -1,10 +1,8 @@
-import { ChevronRightIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
-const ListItem: React.FC = ({ children }) => (
-  <li className="flex items-center  text-xs font-bold text-zinc-300 transition duration-200 group-hover:text-zinc-300 md:text-sm">
-    <ChevronRightIcon className="mr-1 h-4 w-4 text-secondary" />
-    {children}
+const Badge: React.FC = ({ children }) => (
+  <li className="inline-flex items-center rounded-full bg-zinc-800 px-2.5 py-1">
+    <h5 className="text-xs font-semibold text-zinc-100">{children}</h5>
   </li>
 );
 
@@ -29,17 +27,17 @@ export const FeaturedProjectCard: React.FC<Props> = ({
   >
     <div className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-primary to-secondary px-4 opacity-50 blur group-focus:opacity-100 lg:transition lg:duration-1000 lg:group-hover:opacity-100 lg:group-hover:duration-200 lg:group-focus:duration-200" />
     <div className="w-full transform cursor-pointer rounded-xl bg-transparent p-1">
-      <div className="flex h-full flex-col justify-between rounded-xl bg-zinc-900 p-6 transition-colors">
-        <h3 className="mb-2 text-xl font-semibold text-zinc-200 transition duration-200 lg:group-hover:text-zinc-50 lg:group-focus:text-zinc-50 xl:mb-4">
+      <div className="prose prose-invert flex h-full flex-col justify-between rounded-xl bg-zinc-900 p-6 transition-colors sm:prose-invert lg:prose-lg">
+        <h3 className="text-xl font-semibold text-zinc-200 transition duration-200 lg:group-hover:text-zinc-50 lg:group-focus:text-zinc-50">
           {title}
         </h3>
         <p className="text-base text-zinc-300 transition duration-200 lg:group-hover:text-zinc-200 lg:group-focus:text-zinc-200">
           {description}
         </p>
-        <div className="mt-6">
-          <ul className="flex list-none flex-col space-y-2 sm:flex-row sm:items-center sm:space-x-6 sm:space-y-0">
+        <div className="not-prose mt-6">
+          <ul className="flex list-none gap-2">
             {stack.map((item) => (
-              <ListItem key={item}>{item}</ListItem>
+              <Badge key={item}>{item}</Badge>
             ))}
           </ul>
         </div>

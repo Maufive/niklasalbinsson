@@ -33,13 +33,12 @@ const ABOUT_TITLE = 'About Me';
 const About: NextPage = () => (
   <Page>
     <CustomSeo title={ABOUT_TITLE} />
-    <PageHeader title={ABOUT_TITLE} />
     <article className="space-y-20 md:px-4 2xl:space-y-32">
-      <section className="text-zinc-200">
-        <h2 className="mb-6 font-serif text-2xl font-bold">
+      <section className="prose prose-invert text-zinc-200 sm:prose-invert lg:prose-lg">
+        <h3 className="font-serif font-bold">
           Hi there! <WavingHand />
-        </h2>
-        <p className="mb-4 text-base leading-7">
+        </h3>
+        <p className="">
           My name is Niklas, and I am currently working as a frontend developer
           at <span className="font-bold text-secondary">ComeOn Group</span>{' '}
           where me and my team are building a Sportsbook application. In my
@@ -47,21 +46,21 @@ const About: NextPage = () => (
           components with <span className="font-bold">TypeScript</span> and{' '}
           <span className="font-bold">Redux</span>.
         </p>
-        <p className="mb-4 text-base leading-7">
+        <p className="">
           I am proud to be able to call my self a self-taught developer. In 2017
           I started out by learning basic web development while working a
           full-time job in a warehouse. I spent all of my free time reading,
           watching tutorials and building projects trying to soak up every
           single drop of knowledge possible.
         </p>
-        <p className="text-base leading-7">
+        <p className="">
           My geniune interest for web development is what has kept me focused,
           and to this day I strive to get a little better every day.
         </p>
       </section>
 
       <section>
-        <h3 className="mb-6 text-xl font-bold">Experience</h3>
+        <h2 className="mb-2 font-serif text-xl font-bold">Experience</h2>
         <div>
           <h4 className="text-base font-normal">
             Frontend Developer @{' '}
@@ -107,9 +106,7 @@ const About: NextPage = () => (
       </section>
     </article>
 
-    <section className="mt-20 md:px-4 2xl:mt-32">
-      <TopTracks />
-    </section>
+    <TopTracks />
   </Page>
 );
 

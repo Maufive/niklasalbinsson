@@ -1,5 +1,6 @@
 /* eslint-disable global-require */
 // eslint-disable-next-line @typescript-eslint/no-var-requires
+const colors = require('tailwindcss/colors');
 const { fontFamily } = require('tailwindcss/defaultTheme');
 
 module.exports = {
@@ -32,12 +33,12 @@ module.exports = {
         },
       },
       colors: {
-        primary: '#6366f1',
-        'primary-light': '#818cf8',
-        'primary-dark': '#4f46e5',
-        secondary: '#10b981',
-        'secondary-light': '#34d399',
-        'secondary-dark': '#059669',
+        primary: colors.indigo[500],
+        'primary-light': colors.indigo[400],
+        'primary-dark': colors.indigo[600],
+        secondary: colors.emerald[500],
+        'secondary-light': colors.emerald[400],
+        'secondary-dark': colors.emerald[600],
       },
     },
   },

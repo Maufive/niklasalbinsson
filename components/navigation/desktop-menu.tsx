@@ -42,7 +42,7 @@ const DesktopMenu: React.FC<{ pathname: string; showProgressBar: boolean }> = ({
           style={{ scaleX: scrollProgress }}
         />
       )}
-      <div className="relative mx-auto flex w-full max-w-2xl items-center justify-between px-2">
+      <div className="relative mx-auto flex w-full max-w-2xl items-center justify-between px-4 md:px-0">
         <nav>
           <ol className="flex py-0">
             <li className="mr-4 cursor-pointer transition-colors">

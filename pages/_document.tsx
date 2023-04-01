@@ -6,20 +6,6 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <meta name="robots" content="all" />
-          <link
-            rel="preload"
-            href="/fonts/Inter-Regular.ttf"
-            as="font"
-            type="font/ttf"
-            crossOrigin="anonymous"
-          />
-          <link
-            rel="preload"
-            href="/fonts/FiraCode-Regular.ttf"
-            as="font"
-            type="font/ttf"
-            crossOrigin="anonymous"
-          />
           <link href="/favicons/favicon.ico" rel="icon" />
 
           <link

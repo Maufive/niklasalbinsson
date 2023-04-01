@@ -11,19 +11,20 @@ import { allPosts, type Post } from 'contentlayer/generated';
 const Home: NextPage<{ posts: Post[] }> = ({ posts }) => (
   <Page>
     <Seo />
-    <PageHeader
-      title={
-        <>
-          Hi there, I'm Niklas. <br /> A curious software developer who's trying
-          to get a little better every day
-        </>
-      }
-      description="I'm currently working as a developer at ComeOn Group. This is my personal website - a place for me to share my personal projects, thoughts and ideas."
-    >
+    <div className="prose prose-invert sm:prose-invert lg:prose-lg sm:mb-20">
+      <h1 className="font-serif text-3xl font-bold">
+        Hi there, I'm Niklas. <br /> A curious software developer who's trying
+        to get a little better every day
+      </h1>
+      <p className="text-zinc-300">
+        I'm currently working as a developer at ComeOn Group. This is my
+        personal website - a place for me to share my personal projects,
+        thoughts and ideas.
+      </p>
       <InternalLink href="/about">Learn more about me</InternalLink>
-    </PageHeader>
+    </div>
 
-    <section className="mb-20 flex flex-col md:px-4 2xl:mb-32">
+    <section className="flex flex-col">
       <div className="mb-6">
         <h2 className="font-serif text-2xl font-bold">Featured Project</h2>
       </div>
