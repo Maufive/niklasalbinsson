@@ -14,9 +14,33 @@ One of the most significant benefits of using Typescript is how much easier it i
 
 Generics are a powerful feature of Typescript that can make your code more reusable and maintainable. When writing types for shared components in a UI library, using generics can be especially important. Instead of repeating yourself by specifying the same type for different components, you can use generics to create more flexible and adaptable code. Think of them as function arguments for your types.
 
+A very basic example on generics:
+
+```tsx
+function getFirstItem<T>(items: T[]): T {
+  return items[0];
+}
+
+const numbers = [1, 2, 3];
+const firstNumber = getFirstItem(numbers); // type of firstNumber is number
+
+const strings = ['foo', 'bar', 'baz'];
+const firstString = getFirstItem(strings); // type of firstString is string
+```
+
+To learn more, I highly recommend reading <ExternalLink href="https://www.typescriptlang.org/docs/handbook/2/generics.html">the official documentation on generics.</ExternalLink>
+
 ### Baby Steps to Typescript: Incremental Adoption
 
 One of the great things about Typescript is that you can adopt it incrementally. You don't have to convert your entire codebase to Typescript overnight. You can start by using it in specific areas of your application and gradually expand from there. I was able to bring in Typescript as a proof of concept into our codebase at work and convert more and more Javascript to Typescript over time.
+
+Here are some tips if you are considering starting to adopt Typescript into your codebase:
+
+1. Start with APIs, state-stores and leaf components. This can be the most tricky to work with, but making sure that your data is typed correctly will save you a lot of time during this process.
+
+2. Gradually work your way towards the center of your application. As you convert your APIs and leaf components to Typescript, you can slowly work your way towards the more complex, central components of your application.
+
+3. This is a little contradictive to what I said earlier about strict mode but: Allowing the use of `any` can be useful if you are not sure what your types will be yet. I would strongly advice not shipping this to production, but working locally during the incremental adoption-phase it can absolutley be useful.
 
 ### Intellisense: The Sidekick Every Typescript Developer Needs
 
@@ -29,3 +53,23 @@ Typescript provides utility functions like Pick and Omit that make it easy to cr
 ### Conclusion
 
 In conclusion, Typescript has a lot to offer, and focusing on these aspects can help you make the most out of it. From easier refactoring with strict-mode to powerful generics, incremental adoption, time-saving intellisense, and useful utility functions, Typescript can make your code more scalable, maintainable, and enjoyable to write.
+
+#### Hungry for more?
+
+Here is a list of external resources related to TypeScript that you may find helpful:
+
+<ExternalLink href="https://www.totaltypescript.com/">
+  Total Typescript by Matt Popcock
+</ExternalLink>
+Matt is a Typescript wizard and will teach you production-grade Typescript.
+
+<ExternalLink href="https://www.youtube.com/@WesBos">
+  Wes Bos on Youtube
+</ExternalLink>
+Wes has been cranking out great Shorts videos with really useful Typescript tips
+and has an upcoming Typescript course on the way.
+
+<ExternalLink href="https://www.typescriptlang.org/docs/">
+  The official documentation on Typescript.
+</ExternalLink>
+Of course the go-to place for anything Typescript-related
