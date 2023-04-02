@@ -2,10 +2,20 @@
 
 import { Fragment } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
-import { CheckIcon, SelectorIcon } from '../icons';
-import ListBoxType, { ListBoxOption } from './types';
+import { CheckIcon, SelectorIcon } from './icons';
 
-export type { ListBoxType, ListBoxOption };
+export type ListBoxOption = {
+  label: string;
+  value: string;
+};
+
+type ListBoxType = {
+  options: ListBoxOption[];
+  selectedValue: string | undefined;
+  defaultValue?: string;
+  onChange: (value: string) => void;
+  title?: string;
+};
 
 const ListBox: React.FC<ListBoxType> = ({
   options,

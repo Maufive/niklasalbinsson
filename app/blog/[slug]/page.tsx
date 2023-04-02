@@ -3,7 +3,7 @@
 import type { Metadata } from 'next';
 import PageHeader from 'components/page-header';
 import { formatDate } from 'utils/formatDate';
-import Page from 'components/page/page';
+import Page from 'components/page';
 import { Mdx } from 'components/mdx';
 import { BreadcrumbLink } from 'components/navigation/breadcrumb-link';
 import { allPosts } from 'contentlayer/generated';

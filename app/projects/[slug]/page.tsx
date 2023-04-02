@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-unresolved
 import type { Metadata } from 'next';
 import PageHeader from 'components/page-header';
-import Page from 'components/page/page';
+import Page from 'components/page';
 import { ExternalLink } from 'components/links';
 import { Mdx } from 'components/mdx';
 import BlurImage from 'components/image';

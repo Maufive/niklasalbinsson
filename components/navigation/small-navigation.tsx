@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { UserIcon, HomeIcon, BookOpenIcon } from '@heroicons/react/24/outline';
-import SubMenu from './mobile-sub-menu';
+import SubMenu from './small-sub-menu';
 
 type NavItemProps = {
   isActive: boolean;

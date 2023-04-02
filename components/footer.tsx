@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { GithubIcon, TwitterIcon, AtIcon } from 'components/icons';
-import NowPlaying from '../now-playing/now-playing';
-import useIsIosSafari from '../../utils/hooks/use-is-ios-safari';
+import NowPlaying from './now-playing';
+import useIsIosSafari from '../utils/hooks/use-is-ios-safari';
 
 const CURRENT_YEAR = new Date().getFullYear();
 

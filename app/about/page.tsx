@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Page from 'components/page/page';
+import Page from 'components/page';
 import TopTracks from 'components/top-tracks';
 import { getTopTracks } from 'lib/spotify';
 import { InternalLink } from 'components/links';

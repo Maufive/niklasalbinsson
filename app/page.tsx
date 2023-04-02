@@ -1,4 +1,4 @@
-import Page from 'components/page/page';
+import Page from 'components/page';
 import { PostList } from 'components/blog';
 import { InternalLink } from 'components/links';
 import { FeaturedProjectCard } from 'components/featured-project-card';

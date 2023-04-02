@@ -29,7 +29,7 @@ const Link = dynamic(() => import('../links'));
 const ExternalLink = dynamic(() => import('../links/external-link'));
 const InternalLink = dynamic(() => import('../links/internal-link'));
 const RoundedImage = dynamic(() => import('./images'));
-const BlurImage = dynamic(() => import('../image/index'));
+const BlurImage = dynamic(() => import('../image'));
 
 const MDXComponents = {
   SimpleListWidget,

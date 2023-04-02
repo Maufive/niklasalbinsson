@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { allPosts } from 'contentlayer/generated';
-import Page from 'components/page/page';
+import Page from 'components/page';
 import PostList from 'components/blog/post-list';
 
 export const metadata: Metadata = {

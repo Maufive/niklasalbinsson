@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useProgress } from 'utils/hooks';
 import React from 'react';
-import { LINKS } from './links';
 
 type StyledLinksProps = {
   children?: React.ReactNode | React.ReactNode[];
@@ -52,20 +51,16 @@ const DesktopMenu: React.FC<{ pathname: string; showProgressBar: boolean }> = ({
                 Home
               </StyledLink>
             </li>
-
-            {LINKS.map((link) => (
-              <li
-                key={link.href}
-                className="mr-4 cursor-pointer transition-colors"
-              >
-                <StyledLink
-                  isActive={pathname.includes(link.href)}
-                  href={link.href}
-                >
-                  {link.label}
-                </StyledLink>
-              </li>
-            ))}
+            <li className="mr-4 cursor-pointer transition-colors">
+              <StyledLink isActive={pathname.includes('/blog')} href="/blog">
+                Blog
+              </StyledLink>
+            </li>
+            <li className="mr-4 cursor-pointer transition-colors">
+              <StyledLink isActive={pathname.includes('/about')} href="/about">
+                About
+              </StyledLink>
+            </li>
           </ol>
         </nav>
       </div>

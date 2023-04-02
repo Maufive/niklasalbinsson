@@ -4,7 +4,7 @@ import '../styles/prism-theme.css';
 import { Metadata } from 'next';
 import { Analytics } from '@vercel/analytics/react';
 import Navigation from 'components/navigation';
-import Footer from 'components/footer/footer';
+import Footer from 'components/footer';
 import { Inter, Playfair_Display } from 'next/font/google';
 
 const FONT_INTER = Inter({
