@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import { UserIcon, HomeIcon, BookOpenIcon } from '@heroicons/react/24/outline';
 import SubMenu from './mobile-sub-menu';
 
@@ -29,7 +29,7 @@ export const NavItemIcon: React.FC<NavItemProps> = ({
 );
 
 const SmallNavigation: React.FC = () => {
-  const { pathname } = useRouter();
+  const pathname = usePathname() ?? '/';
 
   return (
     <div className="fixed bottom-2 left-1/2 z-10 flex w-11/12 -translate-x-1/2 items-center justify-between rounded-2xl border border-zinc-600 bg-zinc-900/50 p-2  backdrop-blur-md  md:w-fit md:rounded-lg">
