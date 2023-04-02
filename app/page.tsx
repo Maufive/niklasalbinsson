@@ -16,16 +16,12 @@ export default function Home() {
   return (
     <Page>
       <div className="prose prose-invert sm:prose-invert lg:prose-lg sm:mb-20">
-        <h1 className="font-serif text-3xl font-bold">
-          Hi there, I'm Niklas. <br /> A curious software developer who's trying
-          to get a little better every day
-        </h1>
+        <h1 className="font-serif text-3xl font-bold">Hi there, I'm Niklas</h1>
         <p className="text-zinc-300">
-          I'm currently working as a developer at ComeOn Group. This is my
-          personal website - a place for me to share my personal projects,
-          thoughts and ideas.
+          I am a self-taught developer with a passion for pretty interfaces. My
+          story starts with a reddit post from 2016 about new-years resolutions.
+          <InternalLink href="/about">Learn more</InternalLink>
         </p>
-        <InternalLink href="/about">Learn more about me</InternalLink>
       </div>
 
       <section className="flex flex-col">
