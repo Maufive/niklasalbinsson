@@ -67,7 +67,7 @@ export default async function Blog({ params }: Props) {
     <Page>
       <BreadcrumbLink href="/blog">All posts</BreadcrumbLink>
       <PageHeader title={post.title} compact>
-        <p>
+        <p className="text-zinc-400">
           Published on{' '}
           <time dateTime={post.publishedAt}>{formattedPublishDate}</time>
           <span>&middot;</span> {post.readingTime.text}

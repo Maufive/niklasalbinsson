@@ -1,0 +1,31 @@
+---
+title: 'Typescript: What I Wish I Had Learned Sooner'
+publishedAt: '2023-04-02'
+summary: "In this blog post, I share some valuable lessons I've learned about Typescript through my own experience"
+---
+
+As a developer who has been using Typescript for a while now, I can confidently say that it has made a significant impact on the way I write and maintain code. If you're new to Typescript, here are some things I wish I had focused on learning sooner.
+
+### Refactor Without Fear: Typescript's Strict-mode
+
+One of the most significant benefits of using Typescript is how much easier it is to refactor code. In large-scale applications, refactoring can be a daunting task, but with Typescript's strong typing, it's more manageable. The ability to identify errors during compile time, rather than runtime, allows for more scalability and maintainability of your application. Using strict-mode, which disallows the type any, can increase the confidence in your code and types, making it even easier to refactor.
+
+### Get Generic with Typescript: Don't Repeat Yourself
+
+Generics are a powerful feature of Typescript that can make your code more reusable and maintainable. When writing types for shared components in a UI library, using generics can be especially important. Instead of repeating yourself by specifying the same type for different components, you can use generics to create more flexible and adaptable code. Think of them as function arguments for your types.
+
+### Baby Steps to Typescript: Incremental Adoption
+
+One of the great things about Typescript is that you can adopt it incrementally. You don't have to convert your entire codebase to Typescript overnight. You can start by using it in specific areas of your application and gradually expand from there. I was able to bring in Typescript as a proof of concept into our codebase at work and convert more and more Javascript to Typescript over time.
+
+### Intellisense: The Sidekick Every Typescript Developer Needs
+
+As someone who primarily works on the frontend but also does backend development with Java and IntelliJ, I always envied the intellisense that those tools provide. With Typescript, you get the same level of intellisense, which is a huge time-saver. The ability to quickly see available properties and methods can make a significant difference in your workflow.
+
+### Utility Functions: Picking and Choosing What You Need
+
+Typescript provides utility functions like Pick and Omit that make it easy to create new types from existing ones. For example, you can use Pick to create a new type that only includes certain properties from an existing type, or use Omit to create a new type that excludes certain properties. These functions can be especially useful when working with complex types and can help make your code more readable and maintainable.
+
+### Conclusion
+
+In conclusion, Typescript has a lot to offer, and focusing on these aspects can help you make the most out of it. From easier refactoring with strict-mode to powerful generics, incremental adoption, time-saving intellisense, and useful utility functions, Typescript can make your code more scalable, maintainable, and enjoyable to write.
