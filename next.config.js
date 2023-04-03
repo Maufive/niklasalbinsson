@@ -9,6 +9,7 @@ module.exports = withContentlayer({
   reactStrictMode: true,
   experimental: {
     appDir: true,
+    optimizeCss: true, // enable SSR for Tailwind
   },
   images: {
     domains: [

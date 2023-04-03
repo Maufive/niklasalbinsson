@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const Badge: React.FC = ({ children }) => (
   <li className="inline-flex items-center rounded-full bg-zinc-800 px-2.5 py-1">
-    <h5 className="text-xs font-semibold text-zinc-100">{children}</h5>
+    <p className="text-xs font-semibold text-zinc-100">{children}</p>
   </li>
 );
 

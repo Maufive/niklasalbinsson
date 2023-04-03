@@ -58,7 +58,7 @@ const DesktopMenu: React.FC<{ pathname: string; showProgressBar: boolean }> = ({
             </li>
             <li className="mr-4 cursor-pointer transition-colors">
               <StyledLink isActive={pathname.includes('/about')} href="/about">
-                About
+                About me
               </StyledLink>
             </li>
           </ol>
