@@ -10,12 +10,12 @@ const InternalLink: React.FC<Props> = ({ children, href, hideIcon }) => (
   <Link
     href={href}
     passHref
-    className="group inline-flex items-center overflow-hidden pr-4 text-primary transition hover:text-primary-light"
+    className="group inline-flex items-center overflow-hidden pr-4 text-primary transition hover:text-primary-dark"
   >
     {children}
     {!hideIcon && (
       <svg
-        className="-mr-1 ml-2 mt-0.5 stroke-primary stroke-1 transition group-hover:stroke-primary-light"
+        className="-mr-1 ml-2 mt-0.5 stroke-primary stroke-1 transition group-hover:stroke-primary-dark"
         fill="none"
         viewBox="0 0 10 10"
         aria-hidden="true"

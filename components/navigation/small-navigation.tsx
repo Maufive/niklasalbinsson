@@ -20,9 +20,9 @@ export const NavItemIcon: React.FC<NavItemProps> = ({
     href={href}
     className={`${
       isActive
-        ? 'border-2 border-primary-light bg-zinc-900 text-primary-light'
+        ? 'border-2 border-primary-dark bg-zinc-900 text-primary-dark'
         : 'border border-zinc-700 bg-zinc-900 text-zinc-300'
-    } overflow-hidden rounded-lg px-3 py-3 text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-primary-light focus:ring-opacity-75  md:rounded-lg md:px-6 md:py-2`}
+    } overflow-hidden rounded-lg px-3 py-3 text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-primary-dark focus:ring-opacity-75  md:rounded-lg md:px-6 md:py-2`}
   >
     {children}
   </Link>

@@ -58,7 +58,7 @@ const MenuItem: React.FC<{
       <a
         className={`flex items-center rounded-lg border  p-3 transition-colors md:rounded-lg md:p-2  ${
           active
-            ? 'border-primary-light text-primary-light'
+            ? 'border-primary-dark text-primary-dark'
             : 'border-zinc-700 bg-zinc-900 text-zinc-300'
         }`}
         href={href}
@@ -97,9 +97,9 @@ const Submenu: React.FC = () => (
         <Menu.Button
           aria-label="Submenu button"
           className={`flex items-center rounded-lg border  border-zinc-700 bg-zinc-900 p-3 text-zinc-300 transition-colors focus:outline-none
-               focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:ring-opacity-75 md:rounded-lg md:p-2 ${
+               focus-visible:ring-2 focus-visible:ring-primary-dark focus-visible:ring-opacity-75 md:rounded-lg md:p-2 ${
                  open
-                   ? 'outline-none ring-2 ring-primary-light ring-opacity-75'
+                   ? 'outline-none ring-2 ring-primary-dark ring-opacity-75'
                    : ''
                }`}
         >

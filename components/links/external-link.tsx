@@ -5,7 +5,7 @@ const ExternalLink: React.FC<{ href: string; className?: string }> = ({
 }) => (
   <a
     href={href}
-    className={`text-base font-bold text-primary transition-colors hover:text-primary-light focus:text-primary-light focus:ring focus:ring-primary-light ${
+    className={`text-base font-bold text-primary transition-colors hover:text-primary-dark focus:text-primary-dark focus:ring focus:ring-primary-dark ${
       className || ''
     }`}
   >

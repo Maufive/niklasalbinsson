@@ -19,7 +19,7 @@ const StyledLink: React.FC<StyledLinksProps> = ({
   <Link
     href={href}
     passHref
-    className={`rounded-md px-3 py-2 text-base font-normal transition-colors hover:bg-zinc-700 focus:ring focus:ring-primary-light ${
+    className={`rounded-md px-3 py-2 text-base font-normal transition-colors hover:bg-zinc-700 focus:ring focus:ring-primary-dark ${
       isActive
         ? 'bg-zinc-700 text-zinc-100 hover:text-zinc-300'
         : 'text-zinc-400'

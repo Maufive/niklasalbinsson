@@ -22,7 +22,7 @@ const NowPlaying: React.FC = (): JSX.Element => {
             href={data.songUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-fit rounded-md p-1 text-base font-bold focus:ring focus:ring-primary-light"
+            className="w-fit rounded-md p-1 text-base font-bold focus:ring focus:ring-primary-dark"
           >
             {data.title}
           </a>
