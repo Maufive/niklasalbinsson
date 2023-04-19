@@ -10,7 +10,7 @@ const InternalLink: React.FC<Props> = ({ children, href, hideIcon }) => (
   <Link
     href={href}
     passHref
-    className="group inline-flex items-center overflow-hidden pr-4 text-primary transition hover:text-primary-dark"
+    className="group ml-2 inline-flex items-center overflow-hidden pr-4 text-primary transition hover:text-primary-dark lg:ml-0"
   >
     {children}
     {!hideIcon && (
