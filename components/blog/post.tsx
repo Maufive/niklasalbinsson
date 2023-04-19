@@ -8,7 +8,7 @@ const Post: React.FC<{ post: PostType }> = ({ post }) => (
     <Link
       href={`/blog/${post.slug}`}
       passHref
-      className="flex h-full w-full transform cursor-pointer flex-col justify-between rounded-xl bg-zinc-900 p-6 transition-all hover:scale-[1.03] hover:bg-zinc-800 focus:scale-[1.03] xl:p-6"
+      className="flex h-full w-full transform cursor-pointer flex-col justify-between"
     >
       <h3 className="mb-2 font-serif text-xl font-bold text-zinc-50">
         {post.title}

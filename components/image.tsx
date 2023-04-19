@@ -27,15 +27,14 @@ const BlurImage: React.FC<Props> = ({ src, alt, className, height, width }) => {
     >
       <Image
         alt={alt}
-        layout="fill"
-        objectFit="cover"
+        fill
         height={height}
         width={width}
         src={src}
         onLoadingComplete={() => setIsLoading(false)}
         loading="lazy"
         className={cn(
-          'duration-700 ease-in-out',
+          'object-fill duration-700 ease-in-out',
           isLoading
             ? 'scale-110 blur-2xl grayscale'
             : 'scale-100 blur-0 grayscale-0'

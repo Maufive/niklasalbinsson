@@ -19,7 +19,7 @@ const Track: React.FC<TrackProps> = ({
     <div className="relative mx-4 h-10 w-10 overflow-hidden rounded-md shadow-md">
       <Image
         alt="Album cover"
-        layout="fill"
+        fill
         src={images[2]?.url || images[1]?.url || images[0]?.url}
       />
     </div>

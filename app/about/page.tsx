@@ -53,35 +53,35 @@ export default async function AboutPage() {
               <span className="font-bold text-secondary">ComeOn Group</span>
             </h4>
             <p className="text-sm text-zinc-400">May 2019 - present</p>
-            <ul className="mt-4 list-disc space-y-4 px-4 text-zinc-300 lg:space-y-6 lg:px-0">
-              <li className="marker:text-secondary">
+            <ul className="mt-4 list-disc space-y-4 px-4 text-zinc-300 marker:text-secondary lg:space-y-6 lg:px-0">
+              <li>
                 <p className="text-base leading-7">
                   Leading initiative to implement Typescript and surrounding
                   tooling into an already existing codebase shared by some 25
                   developers by gradually refactoring features and components
                 </p>
               </li>
-              <li className="marker:text-secondary">
+              <li>
                 <p className="text-base leading-7">
                   With my team building a new Sportsbook application with a
                   front-end from scratch and integrating live odds-feed from
                   third-parties via Kafka and websocket
                 </p>
               </li>
-              <li className="marker:text-secondary">
+              <li>
                 <p className="text-base leading-7">
                   Developing new backend features in Java and designing clear,
                   developer friendly REST APIs
                 </p>
               </li>
-              <li className="marker:text-secondary">
+              <li>
                 <p className="text-base leading-7">
                   Closely working with designers to develop a brand new UI
                   library for the developers by creating reusable, high quality
                   components in React, Typescript and Storybook
                 </p>
               </li>
-              <li className="marker:text-secondary">
+              <li>
                 <p className="text-base leading-7">
                   Increasing the Sportsbook application Web Vitals score by 20%
                   by implementing UX best practices

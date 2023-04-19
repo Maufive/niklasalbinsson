@@ -66,8 +66,8 @@ ol {
 }
 
 *::selection {
-  background-color: var(--primary);
-  color: var(--colors-typeface-primary);
+  background-color: #6ee7b7;
+  color: #064e3b;
 }
 
 .branded-gradient {
