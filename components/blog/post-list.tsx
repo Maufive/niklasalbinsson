@@ -12,9 +12,9 @@ const BlogPostList: React.FC<BlogPostListProps> = ({
   children,
 }) => (
   <section>
-    <h2 className="mb-8 font-serif text-2xl font-bold">{title}</h2>
+    <h2 className="mb-6 font-serif text-2xl font-bold">{title}</h2>
     {posts.length > 0 ? (
-      <ul className="mb-6 space-y-12">
+      <ul className="mb-8 space-y-8">
         {posts.map((post) => (
           <Post post={post} key={post.slug} />
         ))}

@@ -29,14 +29,12 @@ export default function Home() {
           <h2 className="font-serif text-2xl font-bold">Featured Project</h2>
         </div>
 
-        <div className="px-2 lg:px-0">
-          <FeaturedProjectCard
-            link="/projects/emoji-picker"
-            title="Emoji Picker ✨"
-            description="Making it easy to bring more fun into your daily writing. This macOS app is made to make it simpler to add emojis to your texts."
-            stack={['TypeScript', 'Electron', 'React']}
-          />
-        </div>
+        <FeaturedProjectCard
+          link="/projects/emoji-picker"
+          title="Emoji Picker ✨"
+          description="Making it easy to bring more fun into your daily writing. This macOS app is made to make it simpler to add emojis to your texts."
+          stack={['TypeScript', 'Electron', 'React']}
+        />
       </section>
 
       <PostList title="Latest posts" posts={posts}>
