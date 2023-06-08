@@ -23,9 +23,9 @@ export const FeaturedProjectCard: React.FC<Props> = ({
     passHref
     href={link}
     title={`Check out my project ${title}`}
-    className="relative block rounded-xl border border-zinc-50/10 shadow-md backdrop-blur-0"
+    className="relative block rounded-xl border border-zinc-50/10 shadow-md backdrop-blur-0 transition-colors hover:border-primary-dark"
   >
-    <div className="prose prose-invert flex h-full flex-col justify-between rounded-xl bg-zinc-900/60 p-6 backdrop-blur-3xl sm:prose-invert lg:prose-lg">
+    <div className="flex h-full flex-col justify-between rounded-xl bg-zinc-900/60 p-6 backdrop-blur-3xl">
       <h3 className="text-xl font-semibold text-zinc-200 transition duration-200 lg:group-hover:text-zinc-50 lg:group-focus:text-zinc-50">
         {title}
       </h3>

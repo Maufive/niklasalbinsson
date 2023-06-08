@@ -19,7 +19,7 @@ export default function Home() {
         <h1 className="font-serif text-3xl font-bold">Hi there, I'm Niklas</h1>
         <p className="text-zinc-300">
           I am a self-taught developer with a passion for pretty interfaces. My
-          story starts with a reddit post from 2016 about new-years resolutions.
+          story starts with a reddit post from 2016 about new-years resolutions.{' '}
           <InternalLink href="/about">Learn more</InternalLink>
         </p>
       </div>
@@ -30,10 +30,10 @@ export default function Home() {
         </div>
 
         <FeaturedProjectCard
-          link="/projects/emoji-picker"
-          title="Emoji Picker ✨"
-          description="Making it easy to bring more fun into your daily writing. This macOS app is made to make it simpler to add emojis to your texts."
-          stack={['TypeScript', 'Electron', 'React']}
+          link="/projects/bookmarked"
+          title="Bookmarked"
+          description="Save and share bookmarks between devices and browsers"
+          stack={['TypeScript', 'React', 'Next 13', 'Server Components']}
         />
       </section>
 

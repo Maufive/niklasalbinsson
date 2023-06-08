@@ -77,9 +77,9 @@ export default async function Project({ params }: Props) {
   return (
     <Page>
       <BreadcrumbLink href="/">Home</BreadcrumbLink>
-      <BlurImage alt="Project Image" src={project.image} className="mb-10" />
+      <BlurImage alt="Project Image" src={project.image} className="mb-12" />
       <PageHeader title={project.title} compact description={project.summary} />
-      <div className="flex flex-col space-y-4 sm:px-4">
+      <div className="flex flex-col space-y-4 px-2 sm:px-0">
         <ProjectDetail title="Stack" column>
           <ul className="flex flex-wrap">
             {STACK.map((technology) => (
@@ -119,7 +119,7 @@ export default async function Project({ params }: Props) {
         )}
       </div>
 
-      <article className="prose prose-invert mt-10 sm:prose-invert lg:prose-lg sm:px-4 2xl:my-20">
+      <article className="prose prose-invert mt-10 px-2 sm:prose-invert lg:prose-lg sm:px-0 2xl:my-20">
         <Mdx code={project.body.code} />
       </article>
     </Page>

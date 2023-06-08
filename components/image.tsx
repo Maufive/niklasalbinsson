@@ -21,20 +21,17 @@ const BlurImage: React.FC<Props> = ({ src, alt, className, height, width }) => {
   return (
     <div
       className={cn(
-        'aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-zinc-800 md:aspect-h-1 md:aspect-w-2',
-        className || ''
+        'relative h-[330px] overflow-hidden rounded-lg sm:h-[350px] md:h-[380px] lg:h-[400px]'
       )}
     >
       <Image
         alt={alt}
-        fill
-        height={height}
-        width={width}
         src={src}
+        fill
         onLoadingComplete={() => setIsLoading(false)}
         loading="lazy"
         className={cn(
-          'object-fill duration-700 ease-in-out',
+          'rounded-lg object-contain shadow-lg duration-700 ease-in-out',
           isLoading
             ? 'scale-110 blur-2xl grayscale'
             : 'scale-100 blur-0 grayscale-0'

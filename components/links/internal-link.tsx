@@ -15,7 +15,7 @@ const InternalLink: React.FC<Props> = ({ children, href, hideIcon }) => (
     {children}
     {!hideIcon && (
       <svg
-        className="-mr-1 ml-2 mt-0.5 stroke-primary stroke-1 transition group-hover:stroke-primary-dark"
+        className="-mr-1 ml-2 mt-0.5 h-4 w-4 stroke-primary stroke-1 no-underline transition group-hover:stroke-primary-dark"
         fill="none"
         viewBox="0 0 10 10"
         aria-hidden="true"

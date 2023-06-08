@@ -4,7 +4,7 @@ import { formatDate } from 'utils/formatDate';
 import type { Post as PostType } from 'contentlayer/generated';
 
 const Post: React.FC<{ post: PostType }> = ({ post }) => (
-  <li className="rounded-xl border border-zinc-50/10 shadow-md backdrop-blur-0">
+  <li className="rounded-xl border border-zinc-50/10 shadow-md backdrop-blur-0 transition-colors hover:border-primary-dark">
     <Link
       href={`/blog/${post.slug}`}
       passHref
