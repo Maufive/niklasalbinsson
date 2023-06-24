@@ -1,0 +1,128 @@
+---
+title: 'React Server Components'
+publishedAt: '2023-06-24'
+summary: 'React Server Components is one of the new features enabled by NextJS 13 and in this post I try to explain the difference between Server and Client components and other common misconseptions'
+---
+
+NextJS recently launched their new App router and thanks to this router they are able to expose modern React features such as React Server Components and Streaming. These features aren't readily available to all React users because of the need of a server and so to be able to use these features it is recommended that you turn to a framework.
+
+Recently I have seen a lot of misconseptions and misunderstanding online of what server components are, how they work and what the difference is between them and server-side rendering. It is expected as the new technology will require a significant mental shift for the community. React used to only be run on the client but that is no longer the case.
+
+Let's begin trying to clarify some of these misconseptions.
+
+## What's the difference between RSC and SSR?
+
+<b>React Server Components is not server-side rendering.</b> This seems to be a very
+common misunderstanding that I see a lot online at the moment. My best guess for
+the reason why is because they both have the word "server" in the name, and they
+do stuff on the server. It's a scary word for a front-end developer (like me!). To
+understand the difference between the two we first need to understand what server-side
+rendering does for us.
+
+### What is Server-side Rendering?
+
+Server-side rendering (SSR) is a technique where web pages are generated on the server and sent as fully rendered HTML to the client's browser. The server processes the request, fetches data, generates the HTML, and sends it to the client. The client's browser then displays the rendered page to the user. SSR improves performance, SEO, and user experience, but it can be more server-intensive compared to client-side rendering (CSR). This is not something new and has been a feature of NextJS for a long time.
+
+#### Drawbacks of Server-side Rendering
+
+Let's identify some of the problems with SSR so we then can learn how Server Components can help us solve them.
+
+Having the HTML ready when it reaches the users browser is definately a good thing we do still need to load Javascript to make the page interactive. This is what is known as <b>hydration.</b> When the Javascript has been downloaded to the users browser the hydration process will kick in and start applying event handlers to the existing HTML elements on the page and replace the static HTML elements with interactive ones.
+
+Here is an example of a step-by-step process:
+
+1. The data for a given page is fetched on the server
+2. The server renders the HTML for the page
+3. The HTML, Javascript and CSS gets sent to the client
+4. The user is shown a non-interactive page with the HTML and CSS that we just got and starts executing the Javascript
+5. React hydrates the interface and the page will become interactive once it is done
+
+### React Server Components
+
+React Server Components are React components that are rendered on the server. With it comes a new mental model for building hybrid applications that can make use of both the server and the client.
+
+The Server Component is a layer that sits behind the rendering process and when the component has finished doing whatever it is tasked to do (get data from a database for example) it will then pass that information along to the rendering process - this is where SSR comes in.
+
+Before Server Components we were never able to do stuff like database queries directly inside of our components or fetching data asynchronously. You would need to call your fetch function inside a `useEffect` or use a library like `tanstack-query` or something similar. If you're used to NextJS page router you would be used to doing this kind of thing inside the `getServerSideProps()` API which would then pass the data over to the component. While this worked fine it's not really ideal beacuse it's an API limited to the NextJS framework and not React.
+
+Now that React Components can be asynchronous (on the server) it allows for another really neat API which is Web Streaming. This is where we will try to swing back to explaning how Server Components differ from SSR.
+
+### Streaming
+
+In the section for SSR we saw that in order for it to work there are a series of steps that is required to be followed in order for the page to "finish loading" even though the page might look like it is done.
+
+Let's imagine we have a website made up of a few basic elements. Our markup looks something like this:
+
+```tsx
+<Layout>
+  <Navigation />
+  <Content>
+    <Articles />
+    <ForumPosts />
+  </Content>
+</Layout>
+```
+
+To make use of SSR without Server Components in this case we would need to fetch all the data on the server for these components. It's not ideal because the `<ForumPosts />` component doesn't really care about the data for `<Articles />` but it still needs to wait for it. So this can become problematic if the query to get articles takes longer or the other way around. Fortunately this problem is solved thanks to the async nature of RSC!
+
+Because RSC can be asynchronous we can deal with each component individually instead. This means that `<Articles />` and `<ForumPosts />` can be executed in parallel and React doesn't really care to wait for them. In the meantime it can start rendering the surrounding elements that does not require any waiting to be rendered to the page and as the async components finish executing they will get streamed into the page of the client.
+
+If you have more questions about this topic I highly recommend checking out this <ExternalLink href="https://www.youtube.com/watch?v=Q98l5o1y3ao">talk from the Reactathon conference by Shaundai Person about Streaming Server Rendering with Suspense.</ExternalLink>
+
+## How to use the Context API with React Server Components
+
+Another common question I see a lot online right now is how to use the Context API with Server Components. A simplified version of what the markup would look like is something like this:
+
+```tsx
+<UserContext>
+  <Page>
+    <Navigation user={user} />
+    <Products />
+  </Page>
+</UserContext>
+```
+
+Because the Context API is limited to the client you are required to use the `use client` directive at the top of your file and this is confusing to people:
+
+> If I put `use client` in my `<UserContext>` component which wraps the rest of the page won't it make the page entirely a client page? Will I loose SSR? Does it not defeat the purpose of RSC?
+
+The short answer is <b>no</b>, it doesn't actually. As long as you follow the recommended patterns for nesting server components inside client components:
+
+```tsx
+'use client';
+
+import { useContext } from 'react';
+import UserContext from './user-context.ts';
+
+export default function ClientComponent({
+  children, // Server component passed as children
+}: {
+  children: React.ReactNode;
+}) {
+  const user = useContext(UserContext);
+
+  return (
+    <>
+      {user.isAuthenticated ? <UserMenu /> : <LoginButton />}
+      {children}
+    </>
+  );
+}
+```
+
+With this pattern the children prop (a server component in this example) would be rendered on the server and when the client component is rendered on the client. The client component doesn't know what the `children` prop is and has no idea if it is a client or server component. The only thing the client component cares about is <i>where</i> it is supposed to render the `children` prop.
+
+This means that the following would be totally fine:
+
+```tsx
+import ClientComponent from './client-component.tsx';
+import ServerComponent from './server-component.tsx';
+
+export default function Page() {
+  return (
+    <ClientComponent>
+      <ServerComponent />
+    </ClientComponent>
+  );
+}
+```
