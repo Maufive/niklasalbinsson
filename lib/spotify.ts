@@ -45,6 +45,9 @@ export const getTopTracks = async (options: TopTracksOptions) => {
       headers: {
         Authorization: `Bearer ${access_token}`,
       },
+      next: {
+        revalidate: 300,
+      },
     }
   );
 
