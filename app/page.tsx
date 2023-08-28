@@ -1,8 +1,8 @@
 import Page from 'components/page';
 import { PostList } from 'components/blog';
-import { InternalLink } from 'components/links';
 import { FeaturedProjectCard } from 'components/featured-project-card';
 import { allPosts } from 'contentlayer/generated';
+import Link from 'next/link';
 
 export default function Home() {
   const posts = allPosts
@@ -15,19 +15,19 @@ export default function Home() {
 
   return (
     <Page>
-      <div className="prose prose-invert sm:prose-invert lg:prose-lg sm:mb-20">
+      <div className="prose prose-invert sm:prose-invert lg:prose-lg sm:mb-20 lg:px-6">
         <h1 className="font-serif text-3xl font-bold">Hi there, I'm Niklas</h1>
         <p className="text-zinc-300">
-          I am a self-taught developer with a passion for pretty interfaces. My
-          story starts with a reddit post from 2016 about new-years resolutions.{' '}
-          <InternalLink href="/about">Learn more</InternalLink>
+          I am a developer from Umeå and I like to create great user
+          experiences. This is my personal playground where I get to try out new
+          tech, share my knowledge and host my side projects.
         </p>
       </div>
 
       <section className="flex flex-col">
-        <div className="mb-6">
-          <h2 className="font-serif text-2xl font-bold">Featured Project</h2>
-        </div>
+        <h2 className="mb-6 font-serif text-2xl font-bold lg:px-6">
+          Featured Project
+        </h2>
 
         <FeaturedProjectCard
           link="/projects/bookmarked"
@@ -38,7 +38,27 @@ export default function Home() {
       </section>
 
       <PostList title="Latest posts" posts={posts}>
-        <InternalLink href="/blog">All posts</InternalLink>
+        <Link
+          className="group flex items-center underline transition-colors hover:text-primary lg:px-6"
+          href="/blog"
+        >
+          All posts
+          <svg
+            className="-mr-1 ml-2 mt-0.5 h-3 w-3 stroke-1 no-underline"
+            fill="none"
+            viewBox="0 0 10 10"
+            aria-hidden="true"
+          >
+            <path
+              className="translate-x-[-2px] stroke-primary opacity-0 transition group-hover:translate-x-[0px] group-hover:opacity-100"
+              d="M0 5h7"
+            />
+            <path
+              className="stroke-zinc-300 transition group-hover:translate-x-[3px] group-hover:stroke-primary"
+              d="M1 1l4 4-4 4"
+            />
+          </svg>
+        </Link>
       </PostList>
     </Page>
   );

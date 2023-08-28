@@ -21,7 +21,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sass": "^1.54.9",
-    "swr": "^1.2.1"
+    "swr": "^1.2.1",
+    "tailwind-merge": "^1.14.0"
   },
   "devDependencies": {
     "@babel/core": "^7.16.12",

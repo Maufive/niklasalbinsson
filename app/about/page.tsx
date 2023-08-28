@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Page from 'components/page';
 import TopTracks from 'components/top-tracks';
 import { getTopTracks } from 'lib/spotify';
-import { InternalLink } from 'components/links';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'About',
@@ -35,9 +35,7 @@ export default async function AboutPage() {
             full-time job in a warehouse. I spent all of my free time reading,
             watching tutorials and building projects trying to soak up every
             single drop of knowledge possible. You can read the full story{' '}
-            <InternalLink hideIcon href="/blog/hello-world">
-              here.
-            </InternalLink>
+            <Link href="/blog/hello-world">here.</Link>
           </p>
           <p>
             My geniune interest for web development is what has kept me focused,

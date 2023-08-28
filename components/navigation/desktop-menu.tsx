@@ -45,7 +45,7 @@ const DesktopMenu: React.FC<{ pathname: string; showProgressBar: boolean }> = ({
       )}
       <div className="relative mx-auto flex w-full max-w-2xl items-center justify-between px-4 md:px-0">
         <nav>
-          <ol className="flex py-0">
+          <ol className="flex py-0 lg:px-6">
             <li className="mr-4 cursor-pointer transition-colors">
               <StyledLink isActive={pathname === '/'} href="/">
                 Home

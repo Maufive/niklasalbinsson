@@ -5,9 +5,10 @@ import PageHeader from 'components/page-header';
 import { formatDate } from 'utils/formatDate';
 import Page from 'components/page';
 import { Mdx } from 'components/mdx';
-import { BreadcrumbLink } from 'components/navigation/breadcrumb-link';
 import { allPosts } from 'contentlayer/generated';
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
+import { ArrowLeftIcon } from '@heroicons/react/24/outline';
 
 type Params = {
   slug: string;
@@ -65,7 +66,14 @@ export default async function Blog({ params }: Props) {
 
   return (
     <Page>
-      <BreadcrumbLink href="/blog">All posts</BreadcrumbLink>
+      <Link
+        passHref
+        href="/blog"
+        className="flex w-fit items-center text-zinc-400 transition-colors hover:text-zinc-300 lg:px-6"
+      >
+        <ArrowLeftIcon className="mr-2 h-4 w-4" />
+        All posts
+      </Link>
       <PageHeader title={post.title} compact>
         <p className="text-zinc-400">
           Published on{' '}

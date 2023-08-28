@@ -11,7 +11,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({
   compact,
 }) => (
   <div
-    className={`prose prose-invert sm:prose-invert lg:prose-lg sm:mb-20 ${
+    className={`prose prose-invert sm:prose-invert lg:prose-lg sm:mb-20 lg:px-6 ${
       compact ? 'mb-0 sm:mb-10' : ''
     }`}
   >

@@ -5,9 +5,10 @@ import Page from 'components/page';
 import { ExternalLink } from 'components/links';
 import { Mdx } from 'components/mdx';
 import BlurImage from 'components/image';
-import { BreadcrumbLink } from 'components/navigation/breadcrumb-link';
 import { allProjects } from 'contentlayer/generated';
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
+import { ArrowLeftIcon } from '@heroicons/react/24/outline';
 
 type Params = {
   slug: string;
@@ -76,7 +77,14 @@ export default async function Project({ params }: Props) {
 
   return (
     <Page>
-      <BreadcrumbLink href="/">Home</BreadcrumbLink>
+      <Link
+        passHref
+        href="/"
+        className="flex w-fit items-center text-zinc-400 transition-colors hover:text-zinc-300"
+      >
+        <ArrowLeftIcon className="mr-2 h-4 w-4" />
+        Home
+      </Link>
       <BlurImage alt="Project Image" src={project.image} className="mb-12" />
       <PageHeader title={project.title} compact description={project.summary} />
       <div className="flex flex-col space-y-4 px-2 sm:px-0">
