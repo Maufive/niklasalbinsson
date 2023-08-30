@@ -7,7 +7,7 @@ import {
 } from './types';
 
 type ResponseJSON = {
-  items: Track[];
+  items?: Track[];
 };
 
 const CLIENT_ID = process.env.NEXT_PUBLIC_ENV_SPOTIFY_CLIENT_ID || '';
@@ -48,16 +48,20 @@ export const getTopTracks = async (options: TopTracksOptions) => {
     }
   );
 
-  const { items } = (await response.json()) as unknown as ResponseJSON;
+  const data = (await response.json()) as unknown as ResponseJSON;
 
-  const simpleTracks = items.map<SimpleTrack>((track) => ({
+  if (!data || !data.items) {
+    console.log('No items from response. Status: ', response.status);
+    console.log(data.items);
+    return [];
+  }
+
+  return data.items?.map<SimpleTrack>((track) => ({
     artist: track.artists.map((_artist) => _artist.name).join(', '),
     songUrl: track.external_urls.spotify,
     title: track.name,
     images: track.album.images,
   }));
-
-  return simpleTracks;
 };
 export const getNowPlaying = async () => {
   const { access_token } = await getAccessToken();
