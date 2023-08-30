@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 // eslint-disable-next-line import/no-unresolved
 import type { Metadata } from 'next';
-import PageHeader from 'components/page-header';
 import { formatDate } from 'utils/formatDate';
 import Page from 'components/page';
 import { Mdx } from 'components/mdx';
