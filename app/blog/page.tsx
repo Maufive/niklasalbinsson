@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { allPosts } from 'contentlayer/generated';
 import Page from 'components/page';
-import PostList from 'components/blog/post-list';
+import BlogPostList from 'components/blog-post-list';
 
 export const metadata: Metadata = {
   title: 'Blog',
@@ -16,7 +16,7 @@ export default async function BlogPage() {
 
   return (
     <Page>
-      <PostList title="All posts" posts={posts} />
+      <BlogPostList title="All posts" posts={posts} />
     </Page>
   );
 }

@@ -23,7 +23,7 @@ const Page: FC = ({ children }): JSX.Element => (
         className="hidden max-w-none opacity-30 lg:block"
       />
     </div>
-    <section className="mx-auto w-full max-w-2xl space-y-12 px-4 py-6 sm:pt-28 md:px-0 2xl:space-y-32">
+    <section className="mx-auto w-full max-w-2xl px-4 py-6 sm:pt-28 md:px-0">
       {children}
     </section>
   </main>
