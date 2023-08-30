@@ -40,13 +40,6 @@ export const getAccessToken =
 export const getTopTracks = async (options: TopTracksOptions) => {
   const { access_token } = await getAccessToken();
 
-  console.log('Fetching tracks...');
-  console.log('Access token: ', access_token);
-  console.log(
-    'URL: ',
-    `${TOP_TRACKS_ENDPOINT}?limit=${options.limit}&time_range=${options.period}`
-  );
-
   const response = await fetch(
     `${TOP_TRACKS_ENDPOINT}?limit=${options.limit}&time_range=${options.period}`,
     {
