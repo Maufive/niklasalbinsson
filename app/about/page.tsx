@@ -20,31 +20,23 @@ export default async function AboutPage() {
         <section className="prose prose-invert text-zinc-200 sm:prose-invert lg:prose-lg">
           <h1 className="font-serif font-bold">Hi there! 👋</h1>
           <p>
-            My name is Niklas, and I am currently working as a developer at{' '}
-            <span className="font-bold">ComeOn Group</span> where me and my team
-            are building a Sportsbetting application. In my day-to-day work I
-            work with <span className="font-bold">React</span>,{' '}
-            <span className="font-bold">TypeScript</span> and{' '}
-            <span className="font-bold">Java</span>.
+            I'm Niklas, a passionate software developer based in Umeå, Sweden.
+            With over 4 years of experience, I've been on a journey of crafting
+            modern web applications and creating user-friendly interfaces that
+            are enjoyed by tens of thousands of users each month.
           </p>
           <p>
-            My journey began as a developer, but with time I became more and
-            more interested with{' '}
-            <span className="font-bold">user experience</span> and the way users
-            interact with technology. I am an advocate for accessibility and
-            inclusion. I believe that technology should be a bridge, not a
-            barrier, and I strive to make my work{' '}
-            <span className="font-bold">accessible</span> to everyone,
-            regardless of their abilities or devices.
+            One of my proudest accomplishments was leading a project to
+            introduce Typescript into a collaborative codebase, where we boosted
+            scalability, improved the developer experience, and elevated code
+            quality. It was like giving our codebase a supercharge!
           </p>
           <p>
-            What sets me apart is my constant pursuit of knowledge. I stay
-            up-to-date with the latest trends and best practices in both
-            frontend development and UX design, allowing me to offer innovative
-            solutions that seamlessly marry aesthetics and functionality. I
-            thrive in collaborative environments, valuing open communication and
-            the exchange of ideas with designers, backend developers, and other
-            stakeholders.
+            At ComeOn Group, I am part of a fantastic team that built a
+            top-notch sports betting application from the ground up, saving the
+            company millions by transitioning from a third-party solution. Our
+            hard work paid off, resulting in a more stable and competitive
+            product.
           </p>
         </section>
 
@@ -59,41 +51,52 @@ export default async function AboutPage() {
             <ul className="marker mt-4 list-disc space-y-4 px-4 text-zinc-300 lg:space-y-6 lg:px-0">
               <li>
                 <p className="text-base leading-7">
-                  Leading initiative to implement Typescript and surrounding
-                  tooling into an already existing codebase shared by some 25
-                  developers by gradually refactoring features and components
+                  Led an initiative to implement Typescript into a collaborative
+                  codebase, resulting in significant improvements in
+                  scalability, developer experience, and code quality. This
+                  initiative notably reduced the occurrence of critical bugs,
+                  and substantial increase in overall product stability and it
+                  played a pivotal role in ensuring the quality of our sports
+                  betting application.
                 </p>
               </li>
               <li>
                 <p className="text-base leading-7">
-                  Creating a new frontend application for an in-house built CMS
-                  powered by <span className="font-bold">NextJS</span> and
-                  setting up{' '}
-                  <span className="font-bold">continous integration</span>{' '}
-                  pipelines to find bugs earlier, reduce human error and ensure
-                  code quality.
+                  Collaborated closely with my team of developers to
+                  successfully launch a large-scale sports betting application,
+                  delivering substantial cost savings for the company. This
+                  achievement was particularly significant as we transitioned
+                  from relying on a third-party application to our in-house
+                  solution, which was meticulously crafted by a team of five
+                  full-stack developers, including myself. Our collective effort
+                  also afforded us greater control over the application's
+                  features and performance, ultimately resulting in a more
+                  competitive and robust product offering.
                 </p>
               </li>
               <li>
                 <p className="text-base leading-7">
-                  With my team building a new Sportsbook application with a
-                  front-end from scratch and integrating live odds-feed from
-                  third-parties via <span className="font-bold">Kafka</span> and{' '}
-                  <span className="font-bold">websocket</span>
+                  Worked on building a 100% reusable component library in React,
+                  Typescript and Storybook ensuring consistent styling and APIs
+                  shared across all frontend teams across the organization. By
+                  providing this essential resource, developers were able to
+                  concentrate their efforts on feature development, resulting in
+                  increased efficiency and accelerated product delivery
                 </p>
               </li>
               <li>
                 <p className="text-base leading-7">
-                  Developing new backend features in Java and designing clear,
-                  developer friendly{' '}
-                  <span className="font-bold">REST APIs</span>
+                  Developed and designed the frontend for a CMS application
+                  using NextJS accompanied by a CI/CD pipeline allowing
+                  continuous updates and automated testing that results in a
+                  high-quality application
                 </p>
               </li>
               <li>
                 <p className="text-base leading-7">
-                  Closely working with designers to develop a brand new UI
-                  library for the developers by creating reusable, high quality
-                  components in React, Typescript and Storybook
+                  Increasing the sports betting application web vitals score by
+                  20% by implementing best practices resulting in a better user
+                  experience and improved SEO rankings
                 </p>
               </li>
             </ul>
