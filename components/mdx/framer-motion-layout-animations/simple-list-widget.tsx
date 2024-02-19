@@ -73,7 +73,7 @@ const SimpleList: React.FC = () => {
       <div className="flex-shink flex flex-grow basis-64 flex-col justify-between bg-zinc-800 p-3 md:p-6">
         <motion.button
           type="button"
-          className="flex w-fit cursor-pointer items-center justify-center rounded-full border-none bg-transparent p-2 text-zinc-400"
+          className="flex w-fit cursor-pointer items-center justify-center rounded-full border-none bg-transparent p-2 text-muted-foreground"
           onClick={onClickRefresh}
           whileHover={{ scale: 1.1 }}
         >

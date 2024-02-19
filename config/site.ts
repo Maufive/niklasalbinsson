@@ -26,7 +26,4 @@ export default {
   author: 'Niklas Albinsson', // Author for schemaORGJSONLD
   themeColor: '#000000',
   backgroundColor: '#ffffff',
-  twitter: '@albinssonniklas', // Twitter Username
-  twitterDesc:
-    'Niklas Albinsson is a frontend developer currently based in Umeå, Sweden',
 };

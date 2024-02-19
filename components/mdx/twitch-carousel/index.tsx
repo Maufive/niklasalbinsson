@@ -1,10 +1,10 @@
 'use client';
 
 import { motion, Variants, AnimatePresence } from 'framer-motion';
-import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import React, { Children } from 'react';
 import { data } from './data';
 import { useResizeObserver } from '../../../utils/hooks';
+import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react';
 
 const PADDING = 16;
 const NUMBER_OF_ITEMS_TO_SHOW = 5;

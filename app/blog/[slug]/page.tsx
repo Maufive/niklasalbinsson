@@ -1,13 +1,11 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-// eslint-disable-next-line import/no-unresolved
 import type { Metadata } from 'next';
-import { formatDate } from 'utils/formatDate';
+import { formatDate } from 'utils/format-date';
 import Page from 'components/page';
 import { Mdx } from 'components/mdx';
 import { allPosts } from 'contentlayer/generated';
-import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeftIcon } from '@heroicons/react/24/outline';
+import { ArrowLeftIcon } from 'lucide-react';
+import { notFound } from 'next/navigation';
 
 type Params = {
   slug: string;
@@ -46,11 +44,6 @@ export async function generateMetadata({
       publishedTime,
       url: `https://www.niklasalbinsson.dev/blog/${slug}`,
     },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description,
-    },
   };
 }
 
@@ -58,7 +51,7 @@ export default async function Blog({ params }: Props) {
   const post = allPosts.find((p) => p.slug === params.slug);
 
   if (!post) {
-    notFound();
+    return notFound();
   }
 
   const formattedPublishDate = formatDate(post.publishedAt);
@@ -68,14 +61,14 @@ export default async function Blog({ params }: Props) {
       <Link
         passHref
         href="/blog"
-        className="flex w-fit items-center text-zinc-400 transition-colors hover:text-zinc-300 lg:mb-6 lg:px-6"
+        className="flex w-fit items-center text-muted-foreground transition-colors hover:text-zinc-300 lg:mb-6 "
       >
         <ArrowLeftIcon className="mr-2 h-4 w-4" />
         All posts
       </Link>
-      <div className="mb-12 mt-6 lg:mb-24 lg:px-6 2xl:mb-32">
+      <div className="mb-12 mt-6 lg:mb-24  2xl:mb-32">
         <h1 className="mb-4 font-serif text-4xl font-bold">{post.title}</h1>
-        <p className="mb-6 text-base text-zinc-400">
+        <p className="mb-6 text-base text-foreground-muted">
           Published on{' '}
           <time dateTime={post.publishedAt}>{formattedPublishDate}</time>
           <span>&middot;</span> {post.readingTime.text}

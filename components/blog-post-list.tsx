@@ -1,19 +1,18 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import type { Post as PostType } from 'contentlayer/generated';
 import Link from 'next/link';
-import { formatDate } from 'utils/formatDate';
+import { formatDate } from 'utils/format-date';
 
 const Post: React.FC<{ post: PostType }> = ({ post }) => (
-  <li className="rounded-xl border border-zinc-50/10 shadow-md backdrop-blur-0 transition-colors hover:border-primary-dark">
+  <li className="rounded-xl border border-border shadow-md backdrop-blur-0 transition-colors hover:border-ring">
     <Link
       title={post.title}
       href={`/blog/${post.slug}`}
       passHref
-      className="flex h-full w-full transform cursor-pointer flex-col justify-between rounded-xl bg-zinc-900/80 p-6 backdrop-blur-3xl"
+      className="flex h-full w-full transform cursor-pointer flex-col justify-between rounded-xl bg-background/60 p-6 backdrop-blur-3xl"
     >
-      <h3 className="mb-2 text-xl font-semibold text-zinc-200">{post.title}</h3>
-      <p className="mb-6 text-base text-zinc-400">{post.summary}</p>
-      <p className="text-sm text-zinc-400">
+      <h3 className="mb-2 text-xl font-semibold text-card-foreground">{post.title}</h3>
+      <p className="mb-6 text-base text-card-muted">{post.summary}</p>
+      <p className="text-sm text-card-muted">
         Published on{' '}
         <time dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time>{' '}
         &middot; {post.readingTime.text}
@@ -35,7 +34,7 @@ const BlogPostList: React.FC<BlogPostListProps> = ({
   className,
 }) => (
   <section className={className}>
-    <h2 className="mb-6 font-serif text-3xl font-bold lg:px-6">{title}</h2>
+    <h2 className="mb-6 font-serif text-3xl font-bold ">{title}</h2>
     {posts.length > 0 ? (
       <ul className="mb-8 space-y-8">
         {posts.map((post) => (

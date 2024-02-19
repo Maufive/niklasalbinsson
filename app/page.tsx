@@ -15,9 +15,9 @@ export default function Home() {
 
   return (
     <Page>
-      <div className="prose prose-invert mb-12 sm:prose-invert lg:prose-lg lg:mb-24 lg:px-6 2xl:mb-32">
+      <div className="prose prose-invert mb-12 sm:prose-invert lg:prose-lg lg:mb-24  2xl:mb-32">
         <h1 className="font-serif text-3xl font-bold">Hi there, I'm Niklas</h1>
-        <p className="text-zinc-300">
+        <p className="text-foreground">
           I am a developer from Umeå and I like to create great user
           experiences. This is my personal playground where I get to try out new
           tech, share my knowledge and host my side projects.
@@ -25,8 +25,8 @@ export default function Home() {
       </div>
 
       <div className="mb-12 flex flex-col lg:mb-24 2xl:mb-32">
-        <h2 className="mb-6 font-serif text-3xl font-bold lg:px-6">
-          Featured Project
+        <h2 className="mb-6 font-serif text-3xl font-bold ">
+          Recent Project
         </h2>
 
         <FeaturedProjectCard
@@ -39,7 +39,7 @@ export default function Home() {
 
       <BlogPostList title="Latest posts" posts={posts}>
         <Link
-          className="group flex items-center underline transition-colors hover:text-primary lg:px-6"
+          className="group flex items-center underline transition-colors hover:text-primary "
           href="/blog"
         >
           All posts

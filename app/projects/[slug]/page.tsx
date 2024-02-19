@@ -7,7 +7,7 @@ import BlurImage from 'components/image';
 import { allProjects } from 'contentlayer/generated';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeftIcon } from '@heroicons/react/24/outline';
+import { ArrowLeftIcon } from 'lucide-react';
 
 type Params = {
   slug: string;
@@ -46,11 +46,6 @@ export async function generateMetadata({
       publishedTime,
       url: `https://www.niklasalbinsson.dev/blog/${slug}`,
     },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description,
-    },
   };
 }
 
@@ -69,7 +64,7 @@ export default async function Project({ params }: Props) {
   const project = allProjects.find((p) => p.slug === params.slug);
 
   if (!project) {
-    notFound();
+    return notFound();
   }
 
   const STACK = project.stack.split(' ');
@@ -79,7 +74,7 @@ export default async function Project({ params }: Props) {
       <Link
         passHref
         href="/"
-        className="flex w-fit items-center text-zinc-400 transition-colors hover:text-zinc-300 lg:mb-6 lg:px-6"
+        className="flex w-fit items-center text-muted-foreground transition-colors lg:mb-6 "
       >
         <ArrowLeftIcon className="mr-2 h-4 w-4" />
         Home
@@ -87,9 +82,9 @@ export default async function Project({ params }: Props) {
 
       <BlurImage alt="Project Image" src={project.image} />
 
-      <div className="mb-12 mt-6 lg:mb-24 lg:px-6 2xl:mb-32">
+      <div className="mb-12 mt-6 lg:mb-24  2xl:mb-32">
         <h1 className="mb-4 font-serif text-4xl font-bold">{project.title}</h1>
-        <p className="mb-6 text-base text-zinc-400">{project.summary}</p>
+        <p className="mb-6 text-base text-muted-foreground">{project.summary}</p>
         <div className="flex flex-col space-y-4">
           <ProjectDetail title="Stack" column>
             <ul className="flex flex-wrap">
@@ -130,7 +125,7 @@ export default async function Project({ params }: Props) {
           )}
         </div>
       </div>
-      <article className="prose prose-invert mt-10 px-2 sm:prose-invert lg:prose-lg sm:px-0 lg:px-6 2xl:my-20">
+      <article className="prose prose-invert mt-10 px-2 sm:prose-invert lg:prose-lg sm:px-0  2xl:my-20">
         <Mdx code={project.body.code} />
       </article>
     </Page>

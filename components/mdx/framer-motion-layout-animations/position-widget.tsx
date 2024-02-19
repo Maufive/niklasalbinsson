@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import { RadioGroup } from '@headlessui/react';
-import CodeBlock from 'components/code/code-block';
-import Radio from 'components/input/radio-button';
-import Switch from 'components/input/switch';
+import React from "react";
+import { motion } from "framer-motion";
+import CodeBlock from "components/code/code-block";
+import { Switch } from "components/ui/switch";
+import { RadioGroup, RadioGroupItem } from "components/ui/radio-group";
+import { Label } from "components/ui/label";
 
 const ExampleWithLayout = `
 import React from 'react';
@@ -43,22 +43,22 @@ export default PositionExample;
 `.trim();
 
 const PositionWidget: React.FC = () => {
-  const [position, setPosition] = React.useState<string>('start');
+  const [position, setPosition] = React.useState<string>("start");
   const [isLayout, setIsLayout] = React.useState<boolean>(false);
 
   return (
     <div className="not-prose flex flex-col overflow-auto rounded-md">
-      <div className="flex flex-col bg-zinc-800 p-3 md:p-6">
+      <div className="flex flex-col bg-zinc-950 p-3 md:p-6">
         <div className="grid">
           {isLayout ? (
             <motion.div
               layout={isLayout}
-              className="branded-gradient h-20 w-20 rounded-md shadow-md"
+              className="bg-violet-600 h-20 w-20 rounded-md shadow-md"
               style={{ justifySelf: position }}
             />
           ) : (
             <div
-              className="branded-gradient h-20 w-20 rounded-md shadow-md"
+              className="bg-violet-600 h-20 w-20 rounded-md shadow-md"
               style={{ justifySelf: position }}
             />
           )}
@@ -68,22 +68,33 @@ const PositionWidget: React.FC = () => {
           <div className="mb-3 flex">
             <RadioGroup
               value={position}
-              onChange={setPosition}
+              defaultValue="start"
+              onValueChange={setPosition}
               className="flex items-center"
             >
-              <RadioGroup.Label className="sr-only">Position</RadioGroup.Label>
-              <Radio.Item value="start" label="Start" />
-              <Radio.Item value="center" label="Center" />
-              <Radio.Item value="end" label="End" />
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="start" id="start" />
+                <Label htmlFor="start">Start</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="center" id="center" />
+                <Label htmlFor="center">Center</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="end" id="end" />
+                <Label htmlFor="end">End</Label>
+              </div>
             </RadioGroup>
           </div>
           <div>
-            <Switch
-              id="layout"
-              label="Enable layout animations"
-              onChange={() => setIsLayout((prev) => !prev)}
-              toggled={isLayout}
-            />
+            <div className="flex items-center space-x-2">
+              <Switch
+                id="layout"
+                onCheckedChange={(value) => setIsLayout(value)}
+                checked={isLayout}
+              />
+              <Label htmlFor="layout">Enable layout animations</Label>
+            </div>
           </div>
         </div>
       </div>
