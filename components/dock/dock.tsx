@@ -13,7 +13,7 @@ function Dock({ children }: { children: React.ReactNode }) {
 
   return (
     <footer
-      className="fixed bottom-6 z-10 flex w-auto justify-center left-1/2 h-16 px-3 rounded-lg border border-border bg-card"
+      className="fixed bottom-[-8px] z-10 flex w-auto justify-center left-1/2 h-16 px-3 rounded-lg border border-border bg-card shadow-lg"
       style={{ transform: "translate(-50%, -50%) translateY(0px)" }}
     >
       <div className="absolute w-[95%] z-[-1] -top-[1px] h-[1px] opacity-50 dock-border-gradient" />

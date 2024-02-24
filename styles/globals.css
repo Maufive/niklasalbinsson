@@ -24,6 +24,8 @@
     --input: 220 13% 91%;
     --ring: 262.1 83.3% 57.8%;
     --radius: 0.5rem;
+
+    --dock-marker: 218, 51%, 40%;
   }
 
   .dark {
@@ -47,26 +49,22 @@
     --border: 215 27.9% 16.9%;
     --input: 215 27.9% 16.9%;
     --ring: 263.4 70% 50.4%;
+
+    --dock: 215 27.9% 15.9%;
+    --dock-foreground: 209, 40%, 78%;
+    --dock-highlight: 219, 88%, 90%;
+    --dock-muted: 218, 51%, 40%;
   }
 }
 
 @layer base {
   * {
     @apply border-border;
-
-    --icon-foreground: #95adc6;
-    --icon-foreground-2: #b0c7dd;
-    --icon-foreground-3: #cfdffc;
   }
 
   .dock-item-gradient {
     --gradient-color-1: hsl(217.9 50.6% 14%);
     --gradient-color-2: hsl(215 27.9% 15.9%);
-
-    --test-foreground: #95adc6;
-    --test: #9ca3af;
-    --test-2: #9ca3af;
-    --darky: #32589a;
 
     background-image: linear-gradient(
       45deg,
@@ -107,13 +105,7 @@
 
   .dock-divider {
     --divider-color: hsl(217.9 50.6% 24%);
-
-    opacity: 1;
-    height: 36px;
-    width: 1px;
     background: var(--divider-color);
-    border: 0px;
-    flex-shrink: 0;
     mask-image: linear-gradient(
       0deg,
       transparent,

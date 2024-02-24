@@ -66,7 +66,7 @@ export default function RootLayout({
       lang="en"
       className={`dark bg-background/95 text-foreground ${FONT_INTER.variable} ${FONT_PLAYFAIR_DISPLAY.variable} font-sans`}
     >
-      <body className="flex flex-col antialiased">
+      <body className="flex flex-col antialiased gap-20">
         <Navigation />
         {children}
         <Footer />

@@ -1,49 +1,74 @@
-import { Button } from "components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "components/ui/dropdown-menu";
-import { BookOpenIcon, HomeIcon, UserIcon } from "lucide-react";
-import { HamburgerIcon } from "./icons";
+"use client";
+
 import Link from "next/link";
+import DockContainer from "./dock/dock";
+import DockItem from "./dock/dock-item";
+import { Blog, About, Home, Mail, Sparkle, Github } from "./dock/dock-icons";
+import { usePathname } from "next/navigation";
+
+function InternalLink({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <Link
+      href={href}
+      className="flex items-center justify-center w-full h-full"
+    >
+      {children}
+    </Link>
+  );
+}
 
 export function Navigation() {
+  const pathname = usePathname();
+
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger
-        className="fixed bottom-10 right-6 z-10 lg:bottom-16 md:right-12 lg:right-24 2xl:right-32"
-        asChild
+    <DockContainer>
+      <DockItem tooltipLabel="Home" isActive={pathname === "/"}>
+        <InternalLink href="/">
+          <Home />
+        </InternalLink>
+      </DockItem>
+      <DockItem
+        tooltipLabel="Projects"
+        isActive={pathname?.includes("/projects")}
       >
-        <Button variant="outline" size="icon" className="rounded-full p-4">
-          <HamburgerIcon className="absolute z-10" />
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-48" sideOffset={8} align="end">
-        <DropdownMenuLabel className="text-lg">Navigation</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem className="flex gap-2 text-lg" asChild>
-          <Link href="/">
-            <HomeIcon className="size-5" />
-            Home
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem className="flex gap-2 text-lg" asChild>
-          <Link href="/blog">
-            <BookOpenIcon className="size-5" />
-            My blog
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem className="flex gap-2 text-lg" asChild>
-          <Link href="/about">
-            <UserIcon className="size-5" />
-            About me
-          </Link>
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+        <InternalLink href="/projects">
+          <Sparkle />
+        </InternalLink>
+      </DockItem>
+      <DockItem tooltipLabel="Blog" isActive={pathname?.includes("/blog")}>
+        <InternalLink href="/blog">
+          <Blog />
+        </InternalLink>
+      </DockItem>
+      <DockItem tooltipLabel="About me" isActive={pathname === "/about"}>
+        <InternalLink href="/about">
+          <About />
+        </InternalLink>
+      </DockItem>
+      <hr className="h-[36px] w-[1px] shrink-0 dock-divider" />
+      <DockItem tooltipLabel="Github">
+        <a
+          href="https://github.com/maufive"
+          target="_blank"
+          className="flex items-center justify-center w-full h-full"
+        >
+          <Github />
+        </a>
+      </DockItem>
+      <DockItem tooltipLabel="Mail" isActive={false}>
+        <a
+          href="mailto:albinssonniklas@gmail.com"
+          className="flex items-center justify-center w-full h-full"
+        >
+          <Mail />
+        </a>
+      </DockItem>
+    </DockContainer>
   );
 }
