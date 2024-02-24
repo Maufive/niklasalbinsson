@@ -53,8 +53,73 @@
 @layer base {
   * {
     @apply border-border;
+
+    --icon-foreground: #95adc6;
+    --icon-foreground-2: #b0c7dd;
+    --icon-foreground-3: #cfdffc;
   }
-  /* body {
-    @apply bg-background text-foreground;
-  } */
+
+  .dock-item-gradient {
+    --gradient-color-1: hsl(217.9 50.6% 14%);
+    --gradient-color-2: hsl(215 27.9% 15.9%);
+
+    --test-foreground: #95adc6;
+    --test: #9ca3af;
+    --test-2: #9ca3af;
+    --darky: #32589a;
+
+    background-image: linear-gradient(
+      45deg,
+      var(--gradient-color-1),
+      var(--gradient-color-2),
+      var(--gradient-color-1),
+      var(--gradient-color-2)
+    );
+    background-size: 200% 100%;
+  }
+
+  .dock-item-top-gradient {
+    --gradient-color-1: hsl(217.9 50.6% 24%);
+    --gradient-color-2: hsl(215 27.9% 24%);
+
+    border-radius: calc(0.5rem - 2px);
+    background: linear-gradient(
+      100deg,
+      rgba(0, 0, 0, 0),
+      var(--gradient-color-1),
+      var(--gradient-color-2),
+      rgba(0, 0, 0, 0)
+    );
+  }
+
+  .dock-border-gradient {
+    --gradient-color-1: hsl(217.9 50.6% 24%);
+    --gradient-color-2: hsl(215 27.9% 40%);
+
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0),
+      var(--gradient-color-1),
+      var(--gradient-color-2),
+      rgba(0, 0, 0, 0)
+    );
+  }
+
+  .dock-divider {
+    --divider-color: hsl(217.9 50.6% 24%);
+
+    opacity: 1;
+    height: 36px;
+    width: 1px;
+    background: var(--divider-color);
+    border: 0px;
+    flex-shrink: 0;
+    mask-image: linear-gradient(
+      0deg,
+      transparent,
+      rgb(255, 255, 255) 16px,
+      rgb(255, 255, 255) calc(100% - 16px),
+      transparent
+    );
+  }
 }

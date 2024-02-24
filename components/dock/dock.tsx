@@ -1,51 +1,42 @@
-import { createContext, useContext, useEffect, useRef, useState } from 'react'
-import { MouseProvider } from './context'
-import DockItem from './item'
-import { GithubIcon, TwitterIcon } from 'components/icons'
+"use client";
 
-export type DockContextType = {
-    hovered: boolean
-    width: number | undefined
-  }
-
-/**
- * <DockContext> provider.
- * @param hovered - If is hovering <nav> element.
- * @param width - The width of <nav> element.
- */
-const DockContext = createContext<DockContextType | null>(null)
-
-export const useDock = () => {
-  return useContext(DockContext)
-}
+import { useEffect, useRef } from "react";
+import DockProvider, { useDockContext } from "./dock-context";
 
 function Dock({ children }: { children: React.ReactNode }) {
-  const ref = useRef<HTMLElement>(null)
-  const [hovered, setHovered] = useState(false)
-  const [width, setWidth] = useState<number | undefined>()
+  const ref = useRef<HTMLElement>(null);
+  const { setDockWidth, setIsDockHovered } = useDockContext();
 
   useEffect(() => {
-    setWidth(ref?.current?.clientWidth)
-  }, [])
+    setDockWidth(ref?.current?.clientWidth);
+  }, [setDockWidth]);
 
   return (
-    <MouseProvider>
-      <footer className="fixed inset-x-0 bottom-6 z-40 flex w-full justify-center">
-        <DockContext.Provider value={{ hovered, width }}>
-          <nav
-            ref={ref}
-            className="bg-grid flex justify-center rounded-md p-4"
-            onMouseOver={() => setHovered(true)}
-            onMouseOut={() => setHovered(false)}
-          >
-            <ul className="flex h-10 items-end justify-center space-x-3">
-              {children}
-            </ul>
-          </nav>
-        </DockContext.Provider>
-      </footer>
-    </MouseProvider>
-  )
+    <footer
+      className="fixed bottom-6 z-10 flex w-auto justify-center left-1/2 h-16 px-3 rounded-lg border border-border bg-card"
+      style={{ transform: "translate(-50%, -50%) translateY(0px)" }}
+    >
+      <div className="absolute w-[95%] z-[-1] -top-[1px] h-[1px] opacity-50 dock-border-gradient" />
+      <nav
+        ref={ref}
+        className="flex gap-3 items-end justify-center py-3"
+        onMouseOver={() => setIsDockHovered(true)}
+        onMouseOut={() => setIsDockHovered(false)}
+      >
+        {children}
+      </nav>
+    </footer>
+  );
 }
 
-export default Dock
+export default function DockContainer({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <DockProvider>
+      <Dock>{children}</Dock>
+    </DockProvider>
+  );
+}
