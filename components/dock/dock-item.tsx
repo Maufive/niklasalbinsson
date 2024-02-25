@@ -107,7 +107,7 @@ const DockItem = ({
         <TooltipTrigger asChild>
           <motion.div
             ref={ref}
-            className="relative rounded-md flex items-center justify-center dock-item-gradient"
+            className="relative rounded-md flex items-center justify-center dock-item-gradient focus:outline focus:outline-ring"
             custom={spring}
             animate={controls}
             whileTap={{ y: 8 }}

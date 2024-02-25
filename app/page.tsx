@@ -1,43 +1,47 @@
-import Page from 'components/page';
-import BlogPostList from 'components/blog-post-list';
-import { FeaturedProjectCard } from 'components/featured-project-card';
-import { allPosts } from 'contentlayer/generated';
-import Link from 'next/link';
+import Page from "components/page";
+import BlogPostList from "components/blog-post-list";
+import { FeaturedProjectCard } from "components/featured-project-card";
+import { allPosts } from "contentlayer/generated";
+import Link from "next/link";
 
 export default function Home() {
   const posts = allPosts
     .filter((post) => !post.archived)
     .sort(
       (a, b) =>
-        Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
+        Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt)),
     )
     .slice(0, 3);
 
   return (
     <Page>
-      <div className="prose prose-invert mb-12 sm:prose-invert lg:prose-lg lg:mb-24  2xl:mb-32">
-        <h1 className="font-serif text-3xl font-bold">Hi there, I'm Niklas</h1>
+      <div className="prose prose-invert sm:prose-invert lg:prose-lg">
+        <h1 className="font-serif">Hi there, I'm Niklas</h1>
         <p className="text-foreground">
-          I am a developer from Umeå and I like to create great user
-          experiences. This is my personal playground where I get to try out new
-          tech, share my knowledge and host my side projects.
+          I am a software developer from Umeå in the north of Sweden. This is my
+          personal website where I get to play with new technologies and
+          document my thoughts and projects. I am currently working as a full
+          stack developer at ComeOn Group where me and my team are building a
+          sports betting application
         </p>
       </div>
 
-      <div className="mb-12 flex flex-col lg:mb-24 2xl:mb-32">
-        <h2 className="mb-6 font-serif text-3xl font-bold ">
-          Recent Project
-        </h2>
+      <div className="flex flex-col gap-6 xl:gap-10">
+        <h2 className="font-serif text-3xl font-bold ">Recent Project</h2>
 
         <FeaturedProjectCard
           link="/projects/bookmarked"
           title="Bookmarked"
           description="Save and share bookmarks between devices and browsers"
-          stack={['TypeScript', 'React', 'Next 13', 'Server Components']}
+          stack={["TypeScript", "React", "Next 13", "Tailwind", "Planetscale"]}
         />
       </div>
 
-      <BlogPostList title="Latest posts" posts={posts}>
+      <BlogPostList
+        title="Latest posts"
+        posts={posts}
+        className="flex flex-col gap-6 xl:gap-10"
+      >
         <Link
           className="group flex items-center underline transition-colors hover:text-primary "
           href="/blog"

@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import {
   motion,
   useMotionValue,
   useTransform,
   AnimatePresence,
-} from 'framer-motion';
-import CodeBlock from 'components/code/code-block';
+} from "framer-motion";
+import CodeBlock from "components/code/code-block";
 
 const CODE_STRING = `
 import { motion, useMotionValue, useTransform } from 'framer-motion';
@@ -41,18 +41,18 @@ const MyComponent = () => {
 `;
 
 const UseTransformWidget = () => {
-  const [currentColor, setCurrentColor] = useState('rgba(236, 111, 102, 1)');
+  const [currentColor, setCurrentColor] = useState("rgba(236, 111, 102, 1)");
   const [showCode, setShowCode] = useState(false);
 
   const x = useMotionValue(0);
   const xInput = [-100, 0, 100];
   const background = useTransform(x, xInput, [
-    'linear-gradient(90deg, #ec6f66 0%, #f3a183 100%)',
-    'linear-gradient(90deg, #4776e6 0%, #8e54e9 100%)',
-    'linear-gradient(90deg, #f09819 0%, #edde5d 100%)',
+    "linear-gradient(90deg, #ec6f66 0%, #f3a183 100%)",
+    "linear-gradient(90deg, #4776e6 0%, #8e54e9 100%)",
+    "linear-gradient(90deg, #f09819 0%, #edde5d 100%)",
   ]);
 
-  const colorOutput = ['#f3a183', '#8e54e9', '#edde5d'];
+  const colorOutput = ["#f3a183", "#8e54e9", "#edde5d"];
   const color = useTransform(x, xInput, colorOutput);
 
   useEffect(
@@ -60,7 +60,7 @@ const UseTransformWidget = () => {
       color.onChange((update) => {
         setCurrentColor(update);
       }),
-    [color]
+    [color],
   );
 
   return (
@@ -69,8 +69,8 @@ const UseTransformWidget = () => {
         className="relative h-36 w-full p-2"
         style={{ background }}
         animate={{
-          borderBottomRightRadius: showCode ? '0px' : '12px',
-          borderBottomLeftRadius: showCode ? '0px' : '12px',
+          borderBottomRightRadius: showCode ? "0px" : "12px",
+          borderBottomLeftRadius: showCode ? "0px" : "12px",
         }}
       >
         <motion.button
@@ -79,16 +79,16 @@ const UseTransformWidget = () => {
           onClick={() => setShowCode(!showCode)}
           whileHover={{ scale: 1.05 }}
         >
-          {showCode ? 'Hide code' : 'Show code'}
+          {showCode ? "Hide code" : "Show code"}
         </motion.button>
         <motion.div
-          className="basic-drag-example__box-wrapper absolute flex cursor-pointer items-center justify-center rounded-lg bg-zinc-50 shadow-lg"
+          className="absolute left-1/3 top-12 flex cursor-pointer items-center justify-center rounded-lg bg-zinc-50 shadow-lg"
           style={{ x }}
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           whileHover={{ scale: 1.1 }}
         >
-          <motion.p className="text-sm" style={{ color }}>
+          <motion.p className="text-sm p-4" style={{ color }}>
             {currentColor}
           </motion.p>
         </motion.div>

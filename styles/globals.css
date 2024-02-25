@@ -35,7 +35,8 @@
     --card-foreground: 210 20% 98%;
     --popover: 224 71.4% 4.1%;
     --popover-foreground: 210 20% 98%;
-    --primary: 263.4 70% 50.4%;
+    /* --primary: 263.4 70% 50.4%; */
+    --primary: 221.2 83.2% 53.3%;
     --primary-foreground: 210 20% 98%;
     /* --secondary: 215 27.9% 16.9%; */
     --secondary: 160 84% 39%;
@@ -48,7 +49,8 @@
     --destructive-foreground: 210 20% 98%;
     --border: 215 27.9% 16.9%;
     --input: 215 27.9% 16.9%;
-    --ring: 263.4 70% 50.4%;
+    /* --ring: 263.4 70% 50.4%; */
+    --ring: 221.2 83.2% 53.3%;
 
     --dock: 215 27.9% 15.9%;
     --dock-foreground: 209, 40%, 78%;
@@ -63,6 +65,9 @@
   }
 
   .dock-item-gradient {
+    --base: hsl(262, 40%, 48%);
+    --highlight: #cdbaef;
+
     --gradient-color-1: hsl(217.9 50.6% 14%);
     --gradient-color-2: hsl(215 27.9% 15.9%);
 

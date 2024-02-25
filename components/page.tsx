@@ -1,8 +1,8 @@
-import { FC } from 'react';
-import Image from 'next/image';
-import DesktopBackground from 'public/images/bgs/glow-homepage-desktop.webp';
-import TabletBackground from 'public/images/bgs/glow-homepage-tablet.webp';
-import MobileBackground from 'public/images/bgs/glow-homepage-mobile.webp';
+import { FC } from "react";
+import Image from "next/image";
+import DesktopBackground from "public/images/bgs/glow-homepage-desktop.webp";
+import TabletBackground from "public/images/bgs/glow-homepage-tablet.webp";
+import MobileBackground from "public/images/bgs/glow-homepage-mobile.webp";
 
 const Page: FC = ({ children }): JSX.Element => (
   <main className="relative">
@@ -23,7 +23,7 @@ const Page: FC = ({ children }): JSX.Element => (
         className="hidden max-w-none opacity-30 lg:block"
       />
     </div>
-    <section className="mx-auto w-full max-w-2xl px-4 py-6 md:px-0">
+    <section className="mx-auto w-full max-w-2xl px-4 py-6 md:px-0 flex flex-col gap-16 xl:gap-20">
       {children}
     </section>
   </main>

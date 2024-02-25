@@ -16,7 +16,7 @@ function InternalLink({
   return (
     <Link
       href={href}
-      className="flex items-center justify-center w-full h-full"
+      className="flex items-center justify-center w-full h-full focus-visible:outline-red-500"
     >
       {children}
     </Link>

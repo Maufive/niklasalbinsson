@@ -1,11 +1,11 @@
-import type { Metadata } from 'next';
-import { formatDate } from 'utils/format-date';
-import Page from 'components/page';
-import { Mdx } from 'components/mdx';
-import { allPosts } from 'contentlayer/generated';
-import Link from 'next/link';
-import { ArrowLeftIcon } from 'lucide-react';
-import { notFound } from 'next/navigation';
+import type { Metadata } from "next";
+import { formatDate } from "utils/format-date";
+import Page from "components/page";
+import { Mdx } from "components/mdx";
+import { allPosts } from "contentlayer/generated";
+import Link from "next/link";
+import { ArrowLeftIcon } from "lucide-react";
+import { notFound } from "next/navigation";
 
 type Params = {
   slug: string;
@@ -40,7 +40,7 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
-      type: 'article',
+      type: "article",
       publishedTime,
       url: `https://www.niklasalbinsson.dev/blog/${slug}`,
     },
@@ -66,15 +66,15 @@ export default async function Blog({ params }: Props) {
         <ArrowLeftIcon className="mr-2 h-4 w-4" />
         All posts
       </Link>
-      <div className="mb-12 mt-6 lg:mb-24  2xl:mb-32">
+      <div>
         <h1 className="mb-4 font-serif text-4xl font-bold">{post.title}</h1>
-        <p className="mb-6 text-base text-foreground-muted">
-          Published on{' '}
+        <p className="text-base text-foreground-muted">
+          Published on{" "}
           <time dateTime={post.publishedAt}>{formattedPublishDate}</time>
           <span>&middot;</span> {post.readingTime.text}
         </p>
       </div>
-      <article className="prose prose-invert sm:prose-invert lg:prose-lg sm:px-4 2xl:my-20">
+      <article className="prose prose-invert sm:prose-invert lg:prose-lg">
         <Mdx code={post.body.code} />
       </article>
     </Page>

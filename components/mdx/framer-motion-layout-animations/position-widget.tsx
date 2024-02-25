@@ -53,12 +53,12 @@ const PositionWidget: React.FC = () => {
           {isLayout ? (
             <motion.div
               layout={isLayout}
-              className="bg-violet-600 h-20 w-20 rounded-md shadow-md"
+              className="bg-primary h-20 w-20 rounded-md shadow-md"
               style={{ justifySelf: position }}
             />
           ) : (
             <div
-              className="bg-violet-600 h-20 w-20 rounded-md shadow-md"
+              className="bg-primary h-20 w-20 rounded-md shadow-md"
               style={{ justifySelf: position }}
             />
           )}
