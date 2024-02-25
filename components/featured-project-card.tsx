@@ -1,6 +1,8 @@
 import Link from "next/link";
+import React from "react";
+import { AnimatedBorder } from "./animated-border";
 
-const Badge: React.FC = ({ children }) => (
+const Badge = ({ children }: { children: React.ReactNode }) => (
   <li className="inline-flex  items-center rounded-full bg-accent px-3 py-1">
     <p className="text-xs font-semibold text-foreground">{children}</p>
   </li>
@@ -13,29 +15,29 @@ type Props = {
   stack: string[];
 };
 
-export const FeaturedProjectCard: React.FC<Props> = ({
+export const FeaturedProjectCard = ({
   link,
   title,
   description,
   stack,
-}) => (
-  <Link
-    data-testid="featured-project-link"
-    passHref
-    href={link}
-    title={title}
-    className="relative block rounded-xl border border-border shadow-md backdrop-blur-0"
-  >
-    <div className="flex h-full flex-col justify-between rounded-xl bg-background/60 p-6 backdrop-blur-3xl">
-      <h3 className="text-card-foreground mb-2 text-xl font-semibold">
+}: Props) => (
+  <AnimatedBorder borderRadius="0.75rem" duration={30000}>
+    <Link
+      data-testid="featured-project-link"
+      passHref
+      href={link}
+      title={title}
+      className="flex rounded-xl h-full flex-col bg-background/60 backdrop-blur-3xl w-full p-6"
+    >
+      <h3 className="text-card-foreground mb-2 text-xl font-semibold text-left">
         {title}
       </h3>
-      <p className="text-base text-card-muted">{description}</p>
+      <p className="text-card-muted text-left text-base">{description}</p>
       <ul className="not-prose mt-6 flex list-none flex-wrap gap-2">
         {stack.map((item) => (
           <Badge key={item}>{item}</Badge>
         ))}
       </ul>
-    </div>
-  </Link>
+    </Link>
+  </AnimatedBorder>
 );
