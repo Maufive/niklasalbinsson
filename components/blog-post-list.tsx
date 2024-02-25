@@ -51,7 +51,7 @@ const BlogPostList = ({
   className,
 }: BlogPostListProps) => (
   <section className={className}>
-    <h2 className="font-serif text-3xl font-bold ">{title}</h2>
+    <h2 className="font-serif text-3xl font-bold">{title}</h2>
     {posts.length > 0 ? (
       <ul className="flex flex-col gap-8">
         {posts.map((post) => (

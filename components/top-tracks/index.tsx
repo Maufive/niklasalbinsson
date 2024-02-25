@@ -43,9 +43,9 @@ const Tracks: React.FC<Props> = ({ initialTracks }) => {
   };
 
   return (
-    <section className="mt-20 2xl:mt-32">
-      <h2 className="mb-2 font-serif text-2xl font-bold">Top Tracks</h2>
-      <p className="text-base text-muted-foreground">
+    <section>
+      <h2 className="mb-2 font-serif text-xl font-bold">Top Tracks</h2>
+      <p className="text-base text-foreground">
         I love listening to all kinds of music. Here is a daily updated list of
         my favourite jams!
       </p>
@@ -58,7 +58,7 @@ const Tracks: React.FC<Props> = ({ initialTracks }) => {
           <SelectTrigger className="w-[200px]">
             <SelectValue placeholder="Top tracks for period:">
               {period.label}
-              </SelectValue>
+            </SelectValue>
           </SelectTrigger>
           <SelectContent>
             {options.map((option) => (
@@ -70,7 +70,7 @@ const Tracks: React.FC<Props> = ({ initialTracks }) => {
         </Select>
       </div>
 
-      <ul className="mt-4 list-decimal space-y-10">
+      <ul className="list-decimal flex flex-col gap-6">
         {topTracks.map((track, index) => (
           <Track ranking={index + 1} key={track.songUrl} {...track} />
         ))}

@@ -15,18 +15,17 @@ export default function Home() {
 
   return (
     <Page>
-      <div className="prose prose-invert sm:prose-invert lg:prose-lg">
-        <h1 className="font-serif">Hi there, I'm Niklas</h1>
-        <p className="text-foreground">
-          I am a software developer from Umeå in the north of Sweden. This is my
-          personal website where I get to play with new technologies and
-          document my thoughts and projects. I am currently working as a full
-          stack developer at ComeOn Group where me and my team are building a
-          sports betting application
+      <div>
+        <h1 className="font-serif text-4xl font-bold mb-8">hey, I'm Niklas</h1>
+        <p className="prose prose-invert sm:prose-invert lg:prose-lg">
+          I am a software developer from Umeå and this is my personal website
+          where I get to play with new technologies and document my thoughts and
+          projects. I am currently working as a full stack developer at ComeOn
+          Group.
         </p>
       </div>
 
-      <div className="flex flex-col gap-6 xl:gap-10">
+      <div className="flex flex-col gap-4 xl:gap-6">
         <h2 className="font-serif text-3xl font-bold ">Recent Project</h2>
 
         <FeaturedProjectCard
@@ -40,7 +39,7 @@ export default function Home() {
       <BlogPostList
         title="Latest posts"
         posts={posts}
-        className="flex flex-col gap-6 xl:gap-10"
+        className="flex flex-col gap-4 xl:gap-6"
       >
         <Link
           className="group flex items-center underline transition-colors hover:text-primary "
