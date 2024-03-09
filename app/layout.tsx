@@ -6,6 +6,18 @@ import { Analytics } from "@vercel/analytics/react";
 import { Navigation } from "components/navigation";
 import Footer from "components/footer";
 import { Inter, Playfair_Display } from "next/font/google";
+import localFont from "next/font/local";
+
+const EDITORIAL_NEW = localFont({
+  src: [
+    {
+      path: "../public/fonts/editorial-new-regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-editorial-new",
+});
 
 const FONT_INTER = Inter({
   variable: "--font-inter",
@@ -64,7 +76,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`dark bg-background/95 text-foreground ${FONT_INTER.variable} ${FONT_PLAYFAIR_DISPLAY.variable} font-sans`}
+      className={`dark bg-background/95 text-foreground ${FONT_INTER.variable} ${EDITORIAL_NEW.variable} font-sans`}
     >
       <body className="flex flex-col antialiased gap-20">
         <Navigation />

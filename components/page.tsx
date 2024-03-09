@@ -4,7 +4,7 @@ import DesktopBackground from "public/images/bgs/glow-homepage-desktop.webp";
 import TabletBackground from "public/images/bgs/glow-homepage-tablet.webp";
 import MobileBackground from "public/images/bgs/glow-homepage-mobile.webp";
 
-const Page: FC = ({ children }): JSX.Element => (
+const Page: FC = ({ children }) => (
   <main className="relative">
     <div className="absolute -top-16 -z-10 flex w-full justify-center overflow-hidden lg:-top-20">
       <Image
@@ -23,7 +23,7 @@ const Page: FC = ({ children }): JSX.Element => (
         className="hidden max-w-none opacity-30 lg:block"
       />
     </div>
-    <section className="mx-auto w-full max-w-2xl px-4 py-6 md:px-0 flex flex-col gap-16 xl:gap-20">
+    <section className="mx-auto w-full max-w-2xl px-4 py-6 md:px-0 flex flex-col gap-10 xl:gap-16">
       {children}
     </section>
   </main>

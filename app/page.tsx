@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <Page>
       <div>
-        <h1 className="font-serif text-4xl font-bold mb-8">hey, I'm Niklas</h1>
+        <h1 className="font-serif text-4xl mb-4">Hey, I'm Niklas</h1>
         <p className="prose prose-invert sm:prose-invert lg:prose-lg">
           I am a software developer from Umeå and this is my personal website
           where I get to play with new technologies and document my thoughts and
@@ -26,7 +26,7 @@ export default function Home() {
       </div>
 
       <div className="flex flex-col gap-4 xl:gap-6">
-        <h2 className="font-serif text-3xl font-bold ">Recent Project</h2>
+        <h2 className="font-serif text-3xl">Recent Project</h2>
 
         <FeaturedProjectCard
           link="/projects/bookmarked"

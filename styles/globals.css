@@ -64,6 +64,11 @@
     @apply border-border;
   }
 
+  article h2,
+  h3 {
+    font-family: var(--font-editorial-new);
+  }
+
   .dock-item-gradient {
     --base: hsl(262, 40%, 48%);
     --highlight: #cdbaef;
