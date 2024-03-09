@@ -1,0 +1,62 @@
+---
+title: "Semantic CSS Variables"
+publishedAt: "2024-03-09"
+summary: "A personal reflection on the potential of semantic css variables in a multi-theme web application"
+---
+
+I recently gave a talk at my work about semantic css variables and the theming strategy we use at my place of work and I wanted to document some of the important points made in the presentation.
+
+## Background
+
+It’s important to understand the background and the context for this talk to understand why this topic was important to me and my team.
+
+At ComeOn Group we have a single codebase for 18 different sites. Each site is built as the same application but with different themes to give the sites it’s own identity. This means that each site needs to be styled independently and also being styled by all teams at the same time. The way we work is that each team has it’s own dedicated domain and no team has ownership over the general UI. I think that is the cause of a lot of problems but let’s stay on topic.
+
+The problem we have is that developers will create specific CSS variables for their components and their use-cases:
+
+```css
+--product-card-title: var(--gray-02);
+--product-card-subtitle: var(--gray-03);
+--product-card-background: var(--gray-10);
+```
+
+And while this would _probably_ be OK if there was only 1 theme but this gets very problematic because these three variables now need to be multiplied by 18 (assuming the feature is being implemented on all sites).
+
+Maintaining this is challenging due to the vast number of variables, and it's manual and error-prone to update. The lack of a robust system is leading to numerous bugs in our UI.
+
+How we came to this point is a whole story of it's own, but for the purpose of this post let's focus on the solution rather than the problem it self.
+
+## Semantic Variables to the rescue
+
+In my talk I am proposing a way to fix our problems by starting to use semantic variables instead of having component specific variables. Having worked with shadcn and Material UI I am pulling a lot of inspiration from them and I am suggesting a solution that would look something like this:
+
+```jsx
+--product-card-title: var(--foreground-on-surface);
+--product-card-subtitle: var(--supportive-foreground-on-surface);
+--product-card-background: var(--surface);
+```
+
+Let’s understand each piece of this basic example:
+
+- A surface is a layer that is placed on-top of a background like a card, or any container for that matter. It is a **_surface_** that has been placed on the background. A surface doesn’t have to be a “box”, but it can also be a button or any other type of element.
+- A foreground is something that sits on top of a surface, like a text. But not just text- it could also be an icon.
+  - There can be multiple variants of a foreground such as the “supportive” foreground. It could also be primary, secondary etc…
+- The `on-` keyword plays an important role in order to help the user understand that a foreground is placed over something. It could be on any type of background or surface.
+
+### Limiting the amount of variables
+
+While we are able to trim away the vast majority of our bloat using a system like this we will still need quite a few semantic variables. We need to think about different variations of both backgrounds and foregrounds. Primary, secondary, error and info are all semantic variants that all of our sites have and we need to create applicable variables for all of them and make sure that they work together. Time will tell how many it will be at the end of this project (if it will ever happen, I don’t even know that yet) but it will at least be a manageable amount and an incredible improvement to what we have today.
+
+## The choice is not yours
+
+The thing I am looking forward with the most with this system is that every decision for which color an element should have is already decided for me. While coding components, I don't need a Figma screen from designers, nor do they need to create numerous versions for correct colors. I just have to express what type of element it should be and I would be able to trust the system that it will in fact look good on all of our sites.
+
+Not only do we no longer have to think about taking these decisions as we go, we also don’t have to think about naming and naming conventions for our variables. And think about the time we will be saving! Maybe we will finally have time to write better tests! _… right?_
+
+## Implementing meaningful changes can be challenging
+
+At the time of writing this post, my current employer is my first development job. I’ve been with this company for 5 years now and for the most part I like it a lot. But it does have it’s flaws and some of them are things like these where we don’t have a standardised way of doing certain things- like CSS variables.
+
+I would like to think of my self as a solution-oriented person and a few times during my 5 years at the company have I suggested ways we need to improve. Using Typescript, better logging for client side errors and now semantic variables. But oh-boy is it difficult to make broader changes like these. It can be so exhausting with the amount of bureaucracy and politics involved when trying to do “major” changes. I wouldn’t expect it to be much different in other similar places of work but still.
+
+Maybe it’s a “me problem” and I just need to become better at arguing my case. This time I am sure I did good as most developers cheered for me and was excited about my proposal. Let’s see how it goes.
