@@ -1,5 +1,5 @@
 import Page from "components/page";
-import BlogPostList from "components/blog-post-list";
+import { Card } from "components/card";
 import { FeaturedProjectCard } from "components/featured-project-card";
 import { allPosts } from "contentlayer/generated";
 import Link from "next/link";
@@ -26,7 +26,7 @@ export default function Home() {
       </div>
 
       <div className="flex flex-col gap-4 xl:gap-6">
-        <h2 className="font-serif text-3xl">Recent Project</h2>
+        <h2 className="font-serif text-2xl">Recent Project</h2>
 
         <FeaturedProjectCard
           link="/projects/bookmarked"
@@ -36,11 +36,19 @@ export default function Home() {
         />
       </div>
 
-      <BlogPostList
-        title="Latest posts"
-        posts={posts}
-        className="flex flex-col gap-4 xl:gap-6"
-      >
+      <div className="flex flex-col gap-4 xl:gap-6">
+        <h2 className="font-serif text-2xl">Latest posts</h2>
+        <ul className="flex flex-col gap-4">
+          {posts.map((post) => (
+            <Card
+              title={post.title}
+              description={post.summary}
+              href={`/blog/${post.slug}`}
+              publishedAt={post.publishedAt}
+              key={post._id}
+            />
+          ))}
+        </ul>
         <Link
           className="group flex items-center underline transition-colors hover:text-primary "
           href="/blog"
@@ -62,7 +70,7 @@ export default function Home() {
             />
           </svg>
         </Link>
-      </BlogPostList>
+      </div>
     </Page>
   );
 }

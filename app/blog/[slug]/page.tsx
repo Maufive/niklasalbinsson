@@ -58,17 +58,9 @@ export default async function Blog({ params }: Props) {
 
   return (
     <Page>
-      <Link
-        passHref
-        href="/blog"
-        className="flex w-fit items-center text-muted-foreground transition-colors hover:text-zinc-300 lg:mb-6 "
-      >
-        <ArrowLeftIcon className="mr-2 h-4 w-4" />
-        All posts
-      </Link>
       <div>
-        <h1 className="mb-4 font-serif text-4xl font-bold">{post.title}</h1>
-        <p className="text-base text-foreground-muted">
+        <h1 className="mb-3 font-serif text-4xl">{post.title}</h1>
+        <p className="text-base text-muted-foreground">
           Published on{" "}
           <time dateTime={post.publishedAt}>{formattedPublishDate}</time>
           <span>&middot;</span> {post.readingTime.text}

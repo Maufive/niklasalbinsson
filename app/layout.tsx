@@ -30,28 +30,13 @@ const FONT_PLAYFAIR_DISPLAY = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://niklasalbinsson.dev"),
   title: {
     default: "Niklas Albinsson",
     template: "%s | Niklas Albinsson",
   },
   description:
-    "Developer from Umeå, Sweden with a passion for pretty interfaces.",
-  openGraph: {
-    title: "Niklas Albinsson",
-    description:
-      "Developer from Umeå, Sweden with a passion for pretty interfaces.",
-    url: "https://niklasalbinsson.dev",
-    siteName: "Niklas Albinsson",
-    images: [
-      {
-        url: "https://niklasalbinsson.dev/og.jpg",
-        width: 1920,
-        height: 1080,
-      },
-    ],
-    locale: "sv-SE",
-    type: "website",
-  },
+    "Developer from Umeå, Sweden with a passion for pretty interfaces and neat user experiences.",
   robots: {
     index: true,
     follow: true,

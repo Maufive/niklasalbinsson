@@ -1,4 +1,4 @@
-const { withContentlayer } = require('next-contentlayer');
+const { withContentlayer } = require("next-contentlayer");
 
 /**
  * @type {import('next').NextConfig}
@@ -7,14 +7,22 @@ module.exports = withContentlayer({
   swcMinify: true,
   reactStrictMode: true,
   images: {
-    domains: [
-      'i.scdn.co', // Spotify Album Art
-      'pbs.twimg.com', // Twitter Profile Picture
-      'res.cloudinary.com', // Personal uploads
+    remotePatterns: [
+      {
+        // Spotify Album Art
+        protocol: "https",
+        hostname: "i.scdn.co",
+        port: "",
+      },
+      {
+        // Personal uploads
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        port: "",
+      },
     ],
   },
 });
-
 
 // Injected content via Sentry wizard below
 
@@ -57,5 +65,5 @@ module.exports = withSentryConfig(
     // https://docs.sentry.io/product/crons/
     // https://vercel.com/docs/cron-jobs
     automaticVercelMonitors: true,
-  }
+  },
 );

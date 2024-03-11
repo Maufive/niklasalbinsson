@@ -23,7 +23,7 @@ const Page: FC = ({ children }) => (
         className="hidden max-w-none opacity-30 lg:block"
       />
     </div>
-    <section className="mx-auto w-full max-w-2xl px-4 py-6 md:px-0 flex flex-col gap-10 xl:gap-16">
+    <section className="mx-auto w-full max-w-2xl px-4 pb-6 pt-24 md:px-0 flex flex-col gap-10 xl:gap-16">
       {children}
     </section>
   </main>

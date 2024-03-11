@@ -1,13 +1,11 @@
 // eslint-disable-next-line import/no-unresolved
-import type { Metadata } from 'next';
-import Page from 'components/page';
-import { ExternalLink } from 'components/links';
-import { Mdx } from 'components/mdx';
-import BlurImage from 'components/image';
-import { allProjects } from 'contentlayer/generated';
-import { notFound } from 'next/navigation';
-import Link from 'next/link';
-import { ArrowLeftIcon } from 'lucide-react';
+import type { Metadata } from "next";
+import Page from "components/page";
+import { ExternalLink } from "components/links";
+import { Mdx } from "components/mdx";
+import BlurImage from "components/image";
+import { allProjects } from "contentlayer/generated";
+import { notFound } from "next/navigation";
 
 type Params = {
   slug: string;
@@ -42,7 +40,7 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
-      type: 'article',
+      type: "article",
       publishedTime,
       url: `https://www.niklasalbinsson.dev/blog/${slug}`,
     },
@@ -54,7 +52,7 @@ const ProjectDetail: React.FC<{ title: string; column?: boolean }> = ({
   children,
   column,
 }) => (
-  <div className={`flex ${column ? 'flex-col' : 'flex-start'}`}>
+  <div className={`flex ${column ? "flex-col" : "flex-start"}`}>
     <h3 className="mb-2 text-base font-bold">{title}:</h3>
     {children}
   </div>
@@ -67,34 +65,19 @@ export default async function Project({ params }: Props) {
     return notFound();
   }
 
-  const STACK = project.stack.split(' ');
+  const STACK = project.stack.split(" ");
 
   return (
     <Page>
-      <Link
-        passHref
-        href="/"
-        className="flex w-fit items-center text-muted-foreground transition-colors lg:mb-6 "
-      >
-        <ArrowLeftIcon className="mr-2 h-4 w-4" />
-        Home
-      </Link>
-
       <BlurImage alt="Project Image" src={project.image} />
-
-      <div className="mb-12 mt-6 lg:mb-24  2xl:mb-32">
-        <h1 className="mb-4 font-serif text-4xl font-bold">{project.title}</h1>
-        <p className="mb-6 text-base text-muted-foreground">{project.summary}</p>
+      <div className="flex flex-col gap-8">
+        <div>
+          <h1 className="font-serif text-4xl mb-3 text-foreground">
+            {project.title}
+          </h1>
+          <p className="text-xl text-foreground">{project.summary}</p>
+        </div>
         <div className="flex flex-col space-y-4">
-          <ProjectDetail title="Stack" column>
-            <ul className="flex flex-wrap">
-              {STACK.map((technology) => (
-                <li key={technology} className="mb-2 mr-4 lg:mb-0">
-                  <p className="text-base text-zinc-300">{technology}</p>
-                </li>
-              ))}
-            </ul>
-          </ProjectDetail>
           <ProjectDetail title="Code">
             <ExternalLink
               className="ml-2 font-normal"
@@ -125,7 +108,7 @@ export default async function Project({ params }: Props) {
           )}
         </div>
       </div>
-      <article className="prose prose-invert mt-10 px-2 sm:prose-invert lg:prose-lg sm:px-0  2xl:my-20">
+      <article className="prose prose-invert px-2 sm:prose-invert lg:prose-lg sm:px-0  2xl:my-20">
         <Mdx code={project.body.code} />
       </article>
     </Page>
