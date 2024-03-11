@@ -140,7 +140,7 @@ const DockItem = ({
           </motion.div>
         </TooltipTrigger>
         <TooltipContent sideOffset={8}>
-          <p className="text-sm text-muted-foreground">{tooltipLabel}</p>
+          <p className="text-sm text-foreground">{tooltipLabel}</p>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>

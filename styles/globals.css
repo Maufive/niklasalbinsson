@@ -64,8 +64,7 @@
     @apply border-border;
   }
 
-  article h2,
-  h3 {
+  article h2 {
     font-family: var(--font-editorial-new);
   }
 

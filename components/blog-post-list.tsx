@@ -13,7 +13,7 @@ const Post = ({ post }: { post: PostType }) => {
         passHref
         className="flex h-full w-full transform cursor-pointer flex-col justify-between rounded-xl bg-background/60 p-6 backdrop-blur-3xl text-left hover:ring-primary hover:ring-2"
       >
-        <h3 className="text-xl font-semibold text-card-foreground mb-2">
+        <h3 className="text-lg font-semibold text-card-foreground">
           {post.title}
         </h3>
         <p className="text-base text-card-muted mb-6">{post.summary}</p>

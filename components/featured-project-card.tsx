@@ -29,7 +29,7 @@ export const FeaturedProjectCard = ({
       title={title}
       className="flex rounded-xl h-full flex-col bg-background/60 backdrop-blur-3xl w-full p-6"
     >
-      <h3 className="text-card-foreground mb-2 text-xl font-semibold text-left">
+      <h3 className="text-card-foreground text-lg font-semibold text-left">
         {title}
       </h3>
       <p className="text-card-muted text-left text-base">{description}</p>
