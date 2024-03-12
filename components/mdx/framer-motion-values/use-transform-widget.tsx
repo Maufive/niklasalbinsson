@@ -7,7 +7,7 @@ import {
   useTransform,
   AnimatePresence,
 } from "framer-motion";
-import CodeBlock from "components/code/code-block";
+import CodeBlock from "components/code-block";
 
 const CODE_STRING = `
 import { motion, useMotionValue, useTransform } from 'framer-motion';

@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { RefreshIcon } from 'components/icons';
-import CodeBlock from 'components/code/code-block';
+import React from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { RefreshIcon } from "components/icons";
+import CodeBlock from "components/code-block";
 
 const exampleCode = `
 import React from 'react';
@@ -50,11 +50,11 @@ const SimpleList: React.FC = () => {
 `.trim();
 
 const INITIAL_STATE = [
-  'Apples 🍎',
-  'Bread 🥖',
-  'Cheese 🧀',
-  'Eggs 🥚',
-  'Cookies 🍪',
+  "Apples 🍎",
+  "Bread 🥖",
+  "Cheese 🧀",
+  "Eggs 🥚",
+  "Cookies 🍪",
 ];
 
 const SimpleList: React.FC = () => {

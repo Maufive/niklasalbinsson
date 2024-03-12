@@ -1,17 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
-'use client';
+"use client";
 
-import { useState, useRef, FC } from 'react';
+import { useState, useRef, FC } from "react";
 import {
   motion,
   useMotionTemplate,
   useTransform,
   AnimatePresence,
   useScroll,
-} from 'framer-motion';
-import CodeBlock from 'components/code/code-block';
+} from "framer-motion";
+import CodeBlock from "components/code-block";
 
 const CODE_STRING = `
 import {
@@ -70,8 +70,8 @@ const NavigationItem: FC<{ isActive?: boolean; className?: string }> = ({
   <a
     href="#"
     className={`rounded-md text-sm font-medium text-white ${
-      isActive ? '' : 'text-gray-400 hover:text-white'
-    } ${className ?? ''}`}
+      isActive ? "" : "text-gray-400 hover:text-white"
+    } ${className ?? ""}`}
     aria-current="page"
   >
     {children}
@@ -99,8 +99,8 @@ const CollapsingHeaderWidget = () => {
         className="not-prose h-96 w-full overflow-scroll rounded-xl bg-gradient-to-r from-primary to-primary-dark"
         ref={widgetRef}
         animate={{
-          borderBottomRightRadius: showCode ? '0px' : '12px',
-          borderBottomLeftRadius: showCode ? '0px' : '12px',
+          borderBottomRightRadius: showCode ? "0px" : "12px",
+          borderBottomLeftRadius: showCode ? "0px" : "12px",
         }}
       >
         <motion.nav
@@ -132,7 +132,7 @@ const CollapsingHeaderWidget = () => {
                 onClick={() => setShowCode(!showCode)}
                 whileHover={{ scale: 1.05 }}
               >
-                {showCode ? 'Hide code' : 'Show code'}
+                {showCode ? "Hide code" : "Show code"}
               </motion.button>
             </div>
           </div>

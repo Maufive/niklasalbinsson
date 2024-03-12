@@ -1,6 +1,6 @@
-import Highlight, { defaultProps, Language } from 'prism-react-renderer';
-import theme from 'prism-react-renderer/themes/nightOwl';
-import styles from './code-block.module.scss';
+import Highlight, { defaultProps, Language } from "prism-react-renderer";
+import theme from "prism-react-renderer/themes/nightOwl";
+import { cn } from "utils/classnames";
 
 type CodeBlockProps = {
   codeString: string;
@@ -10,7 +10,7 @@ type CodeBlockProps = {
 
 const CodeBlock: React.FC<CodeBlockProps> = ({
   codeString,
-  language = 'jsx',
+  language = "jsx",
   highlightLine,
 }) => (
   <Highlight
@@ -21,19 +21,21 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
     language={language}
   >
     {({ className, style, tokens, getLineProps, getTokenProps }) => (
-      <pre className={`${className} ${styles.pre}`}>
+      <pre className={cn("text-left, p-2, overflow-scroll, h-full", className)}>
         {tokens.map((line, index) => {
           const { className: lineClassName } = getLineProps({
             className:
-              highlightLine && highlightLine(index) ? 'highlight-line' : '',
+              highlightLine && highlightLine(index) ? "highlight-line" : "",
             key: index,
             line,
           });
 
           return (
-            <div key={index} className={`${lineClassName} ${styles.line}`}>
-              <span className={styles.lineNo}>{index + 1}</span>
-              <span className={styles.spanContent}>
+            <div key={index} className={cn("table-row", lineClassName)}>
+              <span className="table-cell text-right pr-4 select-none opacity-50">
+                {index + 1}
+              </span>
+              <span>
                 {line.map((token, key) => (
                   <span
                     data-testid="content-line"
