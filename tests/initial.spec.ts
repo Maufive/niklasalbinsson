@@ -1,7 +1,7 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from "@playwright/test";
 
-test('should navigate to the about page', async ({ page }) => {
+test("start page", async ({ page }) => {
   // Start from the index page (the baseURL is set via the webServer in the playwright.config.ts)
-  await page.goto('/');
-  await expect(page).toHaveTitle('Niklas Albinsson');
+  await page.goto("/");
+  await expect(page).toHaveTitle("Niklas Albinsson");
 });

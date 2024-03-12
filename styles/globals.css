@@ -64,8 +64,11 @@
     @apply border-border;
   }
 
-  article h2 {
+  /* override tailwind's prose weight */
+  article h2,
+  article h3 {
     font-family: var(--font-playfair-display);
+    font-weight: 400 !important;
   }
 
   .dock-item-gradient {

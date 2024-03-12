@@ -9,12 +9,15 @@ import { usePathname } from "next/navigation";
 function InternalLink({
   href,
   children,
+  title,
 }: {
   href: string;
   children: React.ReactNode;
+  title: string;
 }) {
   return (
     <Link
+      title={title}
       href={href}
       className="flex items-center justify-center w-full h-full focus-visible:outline-red-500"
     >
@@ -29,7 +32,7 @@ export function Navigation() {
   return (
     <DockContainer>
       <DockItem tooltipLabel="Home" isActive={pathname === "/"}>
-        <InternalLink href="/">
+        <InternalLink href="/" title="home">
           <Home />
         </InternalLink>
       </DockItem>
@@ -37,17 +40,17 @@ export function Navigation() {
         tooltipLabel="Projects"
         isActive={pathname?.includes("/projects")}
       >
-        <InternalLink href="/projects">
+        <InternalLink href="/projects" title="projects">
           <Sparkle />
         </InternalLink>
       </DockItem>
       <DockItem tooltipLabel="Blog" isActive={pathname?.includes("/blog")}>
-        <InternalLink href="/blog">
+        <InternalLink href="/blog" title="blog">
           <Blog />
         </InternalLink>
       </DockItem>
       <DockItem tooltipLabel="About me" isActive={pathname === "/about"}>
-        <InternalLink href="/about">
+        <InternalLink href="/about" title="about">
           <About />
         </InternalLink>
       </DockItem>
