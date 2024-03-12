@@ -3,6 +3,7 @@ import "../styles/fonts.css";
 import "../styles/prism-theme.css";
 import { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Navigation } from "components/navigation";
 import Footer from "components/footer";
 import { Inter, Playfair_Display } from "next/font/google";
@@ -56,6 +57,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
