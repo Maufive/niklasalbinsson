@@ -20,7 +20,7 @@ jobs:
           node-version: 18
           cache: "pnpm"
       - name: Install dependencies
-        run: pnpm ci
+        run: pnpm install
       - name: Run your tests
         run: npx playwright test
         env:
