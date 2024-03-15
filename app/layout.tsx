@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    shortcut: "/favicons/favicon.ico",
+    shortcut: "/favicons/favicon.ico?v=2",
   },
 };
 
