@@ -20,6 +20,7 @@ type DockContextType = {
   dockWidth: number | undefined;
   setDockWidth: Dispatch<SetStateAction<number | undefined>>;
   setIsDockHovered: Dispatch<SetStateAction<boolean>>;
+  config: DockConfig;
 };
 
 const InitialState = {
@@ -27,6 +28,11 @@ const InitialState = {
   dockWidth: undefined,
   setDockWidth: () => {},
   setIsDockHovered: () => {},
+  config: {
+    size: 40,
+    magnification: 30,
+    scale: 18,
+  },
 };
 
 export const DockContext = createContext<DockContextType>(InitialState);
@@ -47,18 +53,37 @@ const useMousePosition = () => {
   return useMemo(() => ({ x, y }), [x, y]);
 };
 
+export type DockConfig = {
+  size: number;
+  magnification: number;
+  scale: number;
+};
+
 export default function DockProvider({
   children,
+  config = {
+    size: 40,
+    magnification: 30,
+    scale: 18,
+  },
 }: {
   children: React.ReactNode;
+  config?: DockConfig;
 }) {
   const [isDockHovered, setIsDockHovered] = useState(false);
   const [dockWidth, setDockWidth] = useState<number | undefined>();
   const mouse = useMousePosition();
 
   const state = useMemo(
-    () => ({ mouse, isDockHovered, dockWidth, setDockWidth, setIsDockHovered }),
-    [mouse, isDockHovered, dockWidth],
+    () => ({
+      mouse,
+      isDockHovered,
+      dockWidth,
+      setDockWidth,
+      setIsDockHovered,
+      config,
+    }),
+    [mouse, isDockHovered, dockWidth, config],
   );
 
   return <DockContext.Provider value={state}>{children}</DockContext.Provider>;

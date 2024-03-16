@@ -18,10 +18,6 @@ import { ReactNode, useEffect, useRef, useState } from "react";
 import { useEvent } from "react-use";
 import { useDockContext } from "./dock-context";
 
-const BUTTON_SIZE = 40;
-const MAGNIFICATION_MULTIPLIER = 30;
-const SIBLING_SCALE_FACTOR = 18;
-
 const DockItem = ({
   children,
   tooltipLabel,
@@ -32,7 +28,8 @@ const DockItem = ({
   isActive?: boolean;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
-  const { dockWidth, mouse, isDockHovered } = useDockContext();
+  const { dockWidth, mouse, isDockHovered, config } = useDockContext();
+  const { size, magnification, scale } = config;
   const totalWidth = dockWidth ?? 0;
   const [centerXPosition, setCenterXPosition] = useState(0);
   const initialMouseX = useMotionValue(0);
@@ -46,10 +43,7 @@ const DockItem = ({
     const normalizedMouseX = (mouseX - centerXPosition) / totalWidth;
     const cosineValue = Math.cos((normalizedMouseX * Math.PI) / 2);
 
-    return (
-      BUTTON_SIZE +
-      MAGNIFICATION_MULTIPLIER * cosineValue ** SIBLING_SCALE_FACTOR
-    );
+    return size + magnification * cosineValue ** scale;
   }
 
   /**
@@ -62,7 +56,7 @@ const DockItem = ({
     calculateDockItemDimension,
   );
 
-  const spring = useSpring(BUTTON_SIZE, {
+  const spring = useSpring(size, {
     damping: 10,
     stiffness: 150,
     mass: 0.01,
@@ -76,10 +70,10 @@ const DockItem = ({
       if (isDockHovered) {
         spring.set(val);
       } else {
-        spring.set(BUTTON_SIZE);
+        spring.set(size);
       }
     });
-  }, [spring, dimension, isDockHovered]);
+  }, [spring, dimension, isDockHovered, size]);
 
   /**
    * Initialising the center x position of the button

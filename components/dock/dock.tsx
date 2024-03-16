@@ -1,9 +1,16 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import DockProvider, { useDockContext } from "./dock-context";
+import { cn } from "utils/classnames";
+import DockProvider, { useDockContext, DockConfig } from "./dock-context";
 
-function Dock({ children }: { children: React.ReactNode }) {
+function Dock({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   const ref = useRef<HTMLElement>(null);
   const { setDockWidth, setIsDockHovered } = useDockContext();
 
@@ -13,8 +20,10 @@ function Dock({ children }: { children: React.ReactNode }) {
 
   return (
     <footer
-      className="fixed bottom-[-8px] z-10 flex w-auto justify-center left-1/2 h-16 px-3 rounded-lg border border-border bg-card shadow-lg"
-      style={{ transform: "translate(-50%, -50%) translateY(0px)" }}
+      className={cn(
+        "fixed bottom-[-14px] z-10 flex w-auto justify-center left-1/2 h-16 px-3 rounded-lg border border-border bg-card shadow-lg translate-y-[-50%] translate-x-[-50%]",
+        className,
+      )}
     >
       <div className="absolute w-[95%] z-[-1] -top-[1px] h-[1px] opacity-50 dock-border-gradient" />
       <nav
@@ -31,12 +40,16 @@ function Dock({ children }: { children: React.ReactNode }) {
 
 export default function DockContainer({
   children,
+  config,
+  className,
 }: {
   children: React.ReactNode;
+  config?: DockConfig;
+  className?: string;
 }) {
   return (
-    <DockProvider>
-      <Dock>{children}</Dock>
+    <DockProvider config={config}>
+      <Dock className={className}>{children}</Dock>
     </DockProvider>
   );
 }
