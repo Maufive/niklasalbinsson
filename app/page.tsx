@@ -3,6 +3,7 @@ import { Card } from "components/card";
 import { FeaturedProjectCard } from "components/featured-project-card";
 import { allPosts } from "contentlayer/generated";
 import Link from "next/link";
+import NumberWheel from "components/number-wheel";
 
 export default function Home() {
   const posts = allPosts
@@ -15,6 +16,9 @@ export default function Home() {
 
   return (
     <Page>
+      <div className="flex flex-col gap-4 xl:gap-6">
+        <NumberWheel />
+      </div>
       <div>
         <h1 className="font-serif text-4xl mb-4">Hey, I'm Niklas</h1>
         <p className="prose prose-invert sm:prose-invert lg:prose-lg">
