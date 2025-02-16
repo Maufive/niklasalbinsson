@@ -65,7 +65,7 @@ export default async function Page() {
       />
       <PageLayout
         title={<AnimatedTitle text="Niklas Albinsson" />}
-        description="I build software for the web with a focus on creating polished user interfaces. I care about how a menu looks and how it feels to press a button"
+        description="I'm a web developer who gets excited about the little things - like that perfect transition when you open a menu, or the satisfying bounce of a button press. I strive to become a little bit better every day."
       >
         <div className="flex flex-col gap-8 md:gap-16">
           <div className="flex-1">
