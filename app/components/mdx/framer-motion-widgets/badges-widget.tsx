@@ -121,7 +121,7 @@ const BadgesWidget: React.FC = () => {
         <div className="flex flex-col">
           <AnimatePresence mode="popLayout">
             {position ? (
-              <ul className="flex gap-3">
+              <ul className="flex flex-wrap gap-2 sm:gap-3">
                 {filters.map((filter) => (
                   <motion.li
                     key={filter}
@@ -144,7 +144,8 @@ const BadgesWidget: React.FC = () => {
                           width: "100%",
                           display: "flex",
                           alignItems: "center",
-                          gap: "0.5rem",
+                          gap: "0.25rem",
+                          padding: "0.125rem",
                         }}
                       >
                         <motion.button
@@ -152,17 +153,18 @@ const BadgesWidget: React.FC = () => {
                           onClick={() => handleBadgeClick(filter)}
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.95 }}
+                          className="p-0.5"
                         >
-                          <XIcon className="h-4 w-4" />
+                          <XIcon className="h-3 w-3 sm:h-4 sm:w-4" />
                         </motion.button>
-                        <span className="text-sm">{filter}</span>
+                        <span className="text-xs sm:text-sm">{filter}</span>
                       </motion.div>
                     </Badge>
                   </motion.li>
                 ))}
               </ul>
             ) : (
-              <ul className="flex gap-3">
+              <ul className="flex flex-wrap gap-2 sm:gap-3">
                 {filters.map((filter) => (
                   <motion.li
                     key={filter}
@@ -184,7 +186,8 @@ const BadgesWidget: React.FC = () => {
                           width: "100%",
                           display: "flex",
                           alignItems: "center",
-                          gap: "0.5rem",
+                          gap: "0.25rem",
+                          padding: "0.125rem",
                         }}
                       >
                         <motion.button
@@ -192,10 +195,11 @@ const BadgesWidget: React.FC = () => {
                           onClick={() => handleBadgeClick(filter)}
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.95 }}
+                          className="p-0.5"
                         >
-                          <XIcon className="h-4 w-4" />
+                          <XIcon className="h-3 w-3 sm:h-4 sm:w-4" />
                         </motion.button>
-                        <span className="text-sm">{filter}</span>
+                        <span className="text-xs sm:text-sm">{filter}</span>
                       </div>
                     </Badge>
                   </motion.li>

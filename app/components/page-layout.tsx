@@ -21,7 +21,7 @@ export default function PageLayout({
   metadata,
 }: PageLayoutProps) {
   return (
-    <section className="flex flex-col gap-8 md:gap-16">
+    <section className="flex flex-col gap-6 sm:gap-8 md:gap-16">
       {metadata && (
         <script
           type="application/ld+json"
@@ -41,15 +41,15 @@ export default function PageLayout({
           }}
         />
       )}
-      <header className="flex flex-col gap-3">
+      <header className="flex flex-col gap-2 sm:gap-3">
         {backLink && <div className="flex justify-start">{backLink}</div>}
         {breadcrumbs && <Breadcrumb items={breadcrumbs} />}
         {typeof title === "string" ? (
-          <h1 className="text-2xl font-semibold tracking-tighter">{title}</h1>
+          <h1 className="text-xl sm:text-2xl font-semibold tracking-tighter">{title}</h1>
         ) : (
           title
         )}
-        <p className="mt-4 text-zinc-400">{description}</p>
+        <p className="mt-2 sm:mt-4 text-sm sm:text-base text-zinc-400">{description}</p>
       </header>
       {children}
     </section>

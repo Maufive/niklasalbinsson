@@ -90,8 +90,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         FONT_PLAYFAIR_DISPLAY.variable,
       )}
     >
-      <body className="antialiased max-w-xl mx-4 my-8 sm:mx-auto bg-zinc-900">
-        <main className="flex-auto min-w-0 my-10 flex flex-col px-2 md:px-0">
+      <body className="antialiased max-w-xl mx-3 my-6 sm:mx-4 sm:my-8 md:mx-auto bg-zinc-900">
+        <main className="flex-auto min-w-0 my-6 sm:my-10 flex flex-col px-1 sm:px-2 md:px-0">
           {children}
           <Analytics />
           <SpeedInsights />

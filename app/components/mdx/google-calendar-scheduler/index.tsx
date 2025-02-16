@@ -60,7 +60,7 @@ export default function CalendarWidget() {
   const intervals = getIntervals();
 
   return (
-    <div className="bg-[#1C1C1E] rounded-3xl shadow-lg p-24">
+    <div className="bg-[#1C1C1E] rounded-3xl shadow-lg p-4 sm:p-12 md:p-24">
       <div
         className="relative w-full h-[400px] border-0 overflow-hidden cursor-none touch-none"
         ref={calendarRef}

@@ -30,14 +30,19 @@ export default function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
         }}
       />
       <nav aria-label="Breadcrumb" className="mb-4">
-        <ol className="flex text-sm gap-2 text-zinc-400">
+        <ol className="flex flex-wrap text-sm gap-2 text-zinc-400">
           {breadcrumbList.map((item, index) => (
             <li key={item.path} className="flex items-center">
-              {index > 0 && <span className="mx-2">/</span>}
+              {index > 0 && <span className="mx-2 shrink-0">/</span>}
               {index === breadcrumbList.length - 1 ? (
-                <span className="text-zinc-200">{item.label}</span>
+                <span className="text-zinc-200 truncate max-w-[200px] sm:max-w-[300px]">
+                  {item.label}
+                </span>
               ) : (
-                <Link href={item.path} className="hover:text-zinc-200 transition-colors">
+                <Link
+                  href={item.path}
+                  className="hover:text-zinc-200 transition-colors truncate max-w-[200px] sm:max-w-[300px]"
+                >
                   {item.label}
                 </Link>
               )}
