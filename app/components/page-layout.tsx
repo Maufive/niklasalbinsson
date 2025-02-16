@@ -42,7 +42,7 @@ export default function PageLayout({
         />
       )}
       <header className="flex flex-col gap-2 sm:gap-3">
-        {backLink && <div className="flex justify-start">{backLink}</div>}
+        {backLink && <div className="flex justify-start mb-4">{backLink}</div>}
         {breadcrumbs && <Breadcrumb items={breadcrumbs} />}
         {typeof title === "string" ? (
           <h1 className="text-xl sm:text-2xl font-semibold tracking-tighter">{title}</h1>

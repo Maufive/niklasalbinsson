@@ -82,8 +82,11 @@ export default async function PostPage({
         title={post.metadata.title}
         description={post.metadata.description}
         backLink={
-          <Link href="/posts" className="text-sm hover:opacity-70 transition-colors">
-            ← back to posts
+          <Link
+            href="/posts"
+            className="text-xs text-zinc-400 hover:text-zinc-300 transition-colors"
+          >
+            ← Posts
           </Link>
         }
         breadcrumbs={[

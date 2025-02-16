@@ -43,7 +43,7 @@ export default async function CraftsPage() {
       backLink={
         <Link
           href="/"
-          className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+          className="text-xs text-zinc-400 hover:text-zinc-300 transition-colors"
         >
           ← Home
         </Link>

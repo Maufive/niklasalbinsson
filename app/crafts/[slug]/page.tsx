@@ -82,8 +82,11 @@ export default async function CraftPage({
         title={craft.metadata.title}
         description={craft.metadata.description}
         backLink={
-          <Link href="/crafts" className="text-sm hover:opacity-70 transition-colors">
-            ← back to crafts
+          <Link
+            href="/crafts"
+            className="text-xs text-zinc-400 hover:text-zinc-300 transition-colors"
+          >
+            ← Crafts
           </Link>
         }
         breadcrumbs={[
