@@ -1,7 +1,7 @@
 ---
-title: 'React Server Components'
-publishedAt: '2023-06-24'
-summary: 'React Server Components is one of the new features enabled by NextJS 13 and in this post I try to explain the difference between Server and Client components and other common misconseptions'
+title: "React Server Components"
+publishedAt: "2023-06-24"
+description: "React Server Components is one of the new features enabled by NextJS 13 and in this post I try to explain the difference between Server and Client components and other common misconseptions"
 ---
 
 NextJS recently launched their new App router and thanks to this router they are able to expose modern React features such as React Server Components and Streaming. These features aren't readily available to all React users because of the need of a server and so to be able to use these features it is recommended that you turn to a framework.
@@ -13,11 +13,11 @@ Let's begin trying to clarify some of these misconseptions.
 ## What's the difference between RSC and SSR?
 
 <b>React Server Components is not server-side rendering.</b> This seems to be a very
-common misunderstanding that I see a lot online at the moment. My best guess for
-the reason why is because they both have the word "server" in the name, and they
-do stuff on the server. It's a scary word for a front-end developer (like me!). To
-understand the difference between the two we first need to understand what server-side
-rendering does for us.
+common misunderstanding that I see a lot online at the moment. My best guess for the
+reason why is because they both have the word "server" in the name, and they do stuff on
+the server. It's a scary word for a front-end developer (like me!). To understand the
+difference between the two we first need to understand what server-side rendering does for
+us.
 
 ### What is Server-side Rendering?
 
@@ -67,7 +67,7 @@ To make use of SSR without Server Components in this case we would need to fetch
 
 Because RSC can be asynchronous we can deal with each component individually instead. This means that `<Articles />` and `<ForumPosts />` can be executed in parallel and React doesn't really care to wait for them. In the meantime it can start rendering the surrounding elements that does not require any waiting to be rendered to the page and as the async components finish executing they will get streamed into the page of the client.
 
-If you have more questions about this topic I highly recommend checking out this <ExternalLink href="https://www.youtube.com/watch?v=Q98l5o1y3ao">talk from the Reactathon conference by Shaundai Person about Streaming Server Rendering with Suspense.</ExternalLink>
+If you have more questions about this topic I highly recommend checking out this <a href="https://www.youtube.com/watch?v=Q98l5o1y3ao">talk from the Reactathon conference by Shaundai Person about Streaming Server Rendering with Suspense.</a>
 
 ## How to use the Context API with React Server Components
 
@@ -89,10 +89,10 @@ Because the Context API is limited to the client you are required to use the `us
 The short answer is <b>no</b>, it doesn't actually. As long as you follow the recommended patterns for nesting server components inside client components:
 
 ```tsx
-'use client';
+"use client";
 
-import { useContext } from 'react';
-import UserContext from './user-context.ts';
+import { useContext } from "react";
+import UserContext from "./user-context.ts";
 
 export default function ClientComponent({
   children, // Server component passed as children
@@ -115,8 +115,8 @@ With this pattern the children prop (a server component in this example) would b
 This means that the following would be totally fine:
 
 ```tsx
-import ClientComponent from './client-component.tsx';
-import ServerComponent from './server-component.tsx';
+import ClientComponent from "./client-component.tsx";
+import ServerComponent from "./server-component.tsx";
 
 export default function Page() {
   return (

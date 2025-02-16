@@ -1,0 +1,21 @@
+---
+title: "MacOS Dock with Framer Motion and Tailwind"
+publishedAt: "2024-03-16"
+description: "I built the MacOS Dock for my personal website to use as a menu using Tailwind and Framer Motion"
+---
+
+"The Dock" is a very prominent feature of the graphical interface of MacOS. It is a convenient place to place apps that you regularly use to keep them close at hand at all times. As I was looking for a fun project to practice I set out to try and recreate it using my go-to UI building tools: React, Framer Motion and Tailwind.
+
+In this post I will share a demo of the component and also the source code and show you how you can build the component your self.
+
+### Demo
+
+In this demo of the dock you can use the sliders to play around with some settings to understand how they play into the hover animation of the dock.
+
+<DockWidget />
+
+Similar when I tried to re-create the Twitch Carousel in [this blog post](https://www.niklasalbinsson.dev/blog/twitch-carousel-with-framer-motion) this was just a fun little project to do. In the end I got pretty happy with the results, so much so that I decided to add the dock as the navigation on this website. (When you are reading this the design of my website might have changed). It's not very good to use as a navigation for a "real website" but I think it looks cool and I don't really care for my own website.
+
+### Source code
+
+As the source code for my website is currently publicly available on Github you can see [here](https://github.com/Maufive/niklasalbinsson/tree/main/components/dock) exactly how I've done my implementation. All I did for this widget was to open up the API to allow passing the configuration from the widget above.

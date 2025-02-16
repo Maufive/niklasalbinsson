@@ -1,76 +1,116 @@
-import Page from "components/page";
-import { Card } from "components/card";
-import { FeaturedProjectCard } from "components/featured-project-card";
-import { allPosts } from "contentlayer/generated";
 import Link from "next/link";
+import AnimatedLink from "./components/animated-link";
+import AnimatedTitle from "./components/animated-title";
+import { getCrafts, getBlogPosts } from "./utils/mdx-utils";
+import PageLayout from "./components/page-layout";
+import { baseUrl } from "./sitemap";
 
-export default function Home() {
-  const posts = allPosts
-    .filter((post) => !post.archived)
-    .sort(
-      (a, b) =>
-        Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt)),
-    )
+export default async function Page() {
+  const [crafts, posts] = await Promise.all([getCrafts(), getBlogPosts()]);
+
+  const recentCrafts = crafts
+    .toSorted((a, b) => {
+      return (
+        new Date(b.metadata.publishedAt).getTime() -
+        new Date(a.metadata.publishedAt).getTime()
+      );
+    })
+    .slice(0, 3);
+
+  const recentPosts = posts
+    .toSorted((a, b) => {
+      return (
+        new Date(b.metadata.publishedAt).getTime() -
+        new Date(a.metadata.publishedAt).getTime()
+      );
+    })
     .slice(0, 3);
 
   return (
-    <Page>
-      <div>
-        <h1 className="font-serif text-4xl mb-4">Hey, I'm Niklas</h1>
-        <p className="prose prose-invert sm:prose-invert lg:prose-lg">
-          I am a software developer from Umeå and this is my personal website
-          where I get to play with new technologies and document my thoughts and
-          projects. I am currently working as a full stack developer at ComeOn
-          Group.
-        </p>
-      </div>
+    <>
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "WebSite",
+                "@id": `${baseUrl}/#website`,
+                url: baseUrl,
+                name: "Niklas Albinsson",
+                description:
+                  "Software developer crafting web applications with a focus on user experience and clean code.",
+                publisher: {
+                  "@type": "Person",
+                  "@id": `${baseUrl}/#person`,
+                  name: "Niklas Albinsson",
+                },
+              },
+              {
+                "@type": "Person",
+                "@id": `${baseUrl}/#person`,
+                name: "Niklas Albinsson",
+                url: baseUrl,
+                image: `${baseUrl}/og?title=Niklas Albinsson`,
+                jobTitle: "Software Developer",
+                description:
+                  "Software developer crafting web applications with a focus on user experience and clean code.",
+                sameAs: ["https://github.com/Maufive"],
+              },
+            ],
+          }),
+        }}
+      />
+      <PageLayout
+        title={<AnimatedTitle text="Niklas Albinsson" />}
+        description="I build software for the web with a focus on creating polished user interfaces. I care about how a menu looks and how it feels to press a button"
+      >
+        <div className="flex flex-col gap-8 md:gap-16">
+          <div className="flex-1">
+            <div className="flex items-baseline justify-between">
+              <h2 className="text-xl font-medium">Recent Crafts</h2>
+              <Link href="/crafts" className="text-sm hover:opacity-70 transition-colors">
+                view all →
+              </Link>
+            </div>
+            <ul className="mt-4 space-y-3">
+              {recentCrafts.map((craft) => (
+                <li key={craft.slug}>
+                  <AnimatedLink href={`/crafts/${craft.slug}`}>
+                    {craft.metadata.title}
+                  </AnimatedLink>
+                  <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+                    {craft.metadata.description}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-      <div className="flex flex-col gap-4 xl:gap-6">
-        <h2 className="font-serif text-2xl">Recent Project</h2>
-
-        <FeaturedProjectCard
-          link="/projects/bookmarked"
-          title="Bookmarked"
-          description="Save and share bookmarks between devices and browsers"
-          stack={["TypeScript", "React", "Next 13", "Tailwind", "Planetscale"]}
-        />
-      </div>
-
-      <div className="flex flex-col gap-4 xl:gap-6">
-        <h2 className="font-serif text-2xl">Latest posts</h2>
-        <ul className="flex flex-col gap-4">
-          {posts.map((post) => (
-            <Card
-              title={post.title}
-              description={post.summary}
-              href={`/blog/${post.slug}`}
-              publishedAt={post.publishedAt}
-              key={post._id}
-            />
-          ))}
-        </ul>
-        <Link
-          className="group flex items-center underline transition-colors hover:text-primary "
-          href="/blog"
-        >
-          All posts
-          <svg
-            className="-mr-1 ml-2 mt-0.5 h-3 w-3 stroke-1 no-underline"
-            fill="none"
-            viewBox="0 0 10 10"
-            aria-hidden="true"
-          >
-            <path
-              className="translate-x-[-2px] stroke-primary opacity-0 transition group-hover:translate-x-[0px] group-hover:opacity-100"
-              d="M0 5h7"
-            />
-            <path
-              className="stroke-zinc-300 transition group-hover:translate-x-[3px] group-hover:stroke-primary"
-              d="M1 1l4 4-4 4"
-            />
-          </svg>
-        </Link>
-      </div>
-    </Page>
+          <div className="flex-1">
+            <div className="flex items-baseline justify-between">
+              <h2 className="text-xl font-medium">Recent Posts</h2>
+              <Link href="/posts" className="text-sm hover:opacity-70 transition-colors">
+                view all →
+              </Link>
+            </div>
+            <ul className="mt-4 space-y-3">
+              {recentPosts.map((post) => (
+                <li key={post.slug}>
+                  <AnimatedLink href={`/posts/${post.slug}`}>
+                    {post.metadata.title}
+                  </AnimatedLink>
+                  <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+                    {post.metadata.description}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </PageLayout>
+    </>
   );
 }

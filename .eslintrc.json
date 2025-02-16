@@ -1,13 +1,12 @@
 {
-  "extends": ["next/core-web-vitals"],
-  // "extends": [ "next/core-web-vitals", "wesbos/typescript" ],
+  "extends": [
+    "next/core-web-vitals",
+    "next/typescript",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
   "rules": {
-    "react/prop-types": "off",
-    "@typescript-eslint/naming-convention": "off",
-    "camelcase": "off",
-    "import/no-extraneous-dependencies": 0,
-    "@typescript-eslint/require-await": "off",
-    "react/no-unescaped-entities": "off"
-  },
-  "plugins": ["eslint-plugin-tailwindcss"]
+    "@typescript-eslint/no-explicit-any": "error"
+  }
 }
