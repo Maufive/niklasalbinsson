@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://www.niklasalbinsson.dev
-
-# Sitemaps
-Sitemap: https://www.niklasalbinsson.dev/sitemap.xml

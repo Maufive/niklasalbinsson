@@ -1,7 +1,7 @@
 ---
 title: "Layout Animation basics with Framer Motion"
 publishedAt: "2022-03-20"
-summary: "Learn about layout animations and how we can use them to great advantages"
+description: "Learn about layout animations and how we can use them to great advantages"
 ---
 
 Framer Motion provides a lot of powerful tools that require minimum effort to use. I've used it for a couple of years now both in my professional work and also a lot in my hobby projects. I recently got to implement some layout animations at work, and I found it fascinating how easy it was to achieve so much with so little code. So I thought it would make a great blog post!
@@ -53,15 +53,15 @@ Now we know how we can use the `layout` prop to enable smooth transitions for la
 
 Let's take a look at a real world example of this happening. Let's imagine we have a couple of `<Badge />` components that acts as some type of filters on a shopping website.
 
-<BadgeWidget />
+<BadgesWidget />
 
 What happens is that when we remove a Badge from the list will change the size of each Badge, so when we only use `layout=true` we are telling Framer Motion to animate both the size and the position of the element. This is not always what you want. Luckily we can tell the component explicitly that we **only want to animate the position of the component**.
 
-<Aside>
-  Just like you can set `position="position"` you can also set it to
-  `position="size"` if your use-case is the other way around where you would
-  want to change the size but not the position of your element.
-</Aside>
+<aside>
+  Just like you can set `position="position"` you can also set it to `position="size"` if
+  your use-case is the other way around where you would want to change the size but not
+  the position of your element.
+</aside>
 
 ### Conclusion
 
@@ -69,4 +69,4 @@ We have now learned the basics of how to use the `layout` prop to achieve smooth
 
 #### Looking for more?
 
-If I have sparked your interest for Framer Motion and wondering what else is possible, make sure to check out <Link href="https://www.framer.com/docs/introduction/">their documentation.</Link> Also, make sure to check out this really cool example of how to achieve <Link href="https://codesandbox.io/s/framer-motion-5-drag-to-reorder-tabs-zd2q7?from-embed">this "drag to re-order" tabs component!</Link> Super cool stuff!
+If I have sparked your interest for Framer Motion and wondering what else is possible, make sure to check out <a href="https://www.framer.com/docs/introduction/">their documentation.</a> Also, make sure to check out this really cool example of how to achieve <a href="https://codesandbox.io/s/framer-motion-5-drag-to-reorder-tabs-zd2q7?from-embed">this "drag to re-order" tabs component!</a> Super cool stuff!

@@ -1,7 +1,7 @@
 ---
-title: 'Taking control of Motion Values'
-publishedAt: '2022-11-13'
-summary: 'In this post we will take a closer look at how to work with Motion values from Framer Motion'
+title: "Taking control of Motion Values"
+publishedAt: "2022-11-13"
+description: "In this post we will take a closer look at how to work with Motion values from Framer Motion"
 ---
 
 ## Introduction
@@ -51,7 +51,7 @@ The second argument will be the so-called "input" array. This is the range in wh
 ### 3. The output range
 
 ```jsx
-const colorOutput = ['rgb(211, 9, 225)', 'rgb(68, 0, 255)', 'rgb(3, 209, 0)'];
+const colorOutput = ["rgb(211, 9, 225)", "rgb(68, 0, 255)", "rgb(3, 209, 0)"];
 const background = useTransform(x, xInput, colorOutput);
 ```
 
@@ -85,11 +85,11 @@ Changing the background color to different gradients is nice and all, and makes 
 
 So the real world example I came up with was a header component. A header component that collapses in size as you scroll. And with this component we will use what we learned from the previous component and also see another example of how we can use `MotionValue`s together with another great helper hook from Framer Motion!
 
-<Aside>
-  useMotionTemplate creates a new **MotionValue** from a string template
-  containing other **MotionValues**. When one value in the template string
-  updates the new **MotionValue** will be updated.
-</Aside>
+<aside>
+  useMotionTemplate creates a new **MotionValue** from a string template containing other
+  **MotionValues**. When one value in the template string updates the new **MotionValue**
+  will be updated.
+</aside>
 
 Our component will have three main features all relying on `MotionValue`s.
 

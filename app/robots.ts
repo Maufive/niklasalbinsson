@@ -1,11 +1,14 @@
+import { baseUrl } from "app/sitemap";
+
 export default function robots() {
   return {
     rules: [
       {
-        userAgent: '*',
+        userAgent: "*",
+        allow: "/",
+        disallow: "/private/",
       },
     ],
-    sitemap: 'https://niklas.albinsson.dev/sitemap.xml',
-    host: 'https://niklas.albinsson.dev',
+    sitemap: `${baseUrl}/sitemap.xml`,
   };
 }
