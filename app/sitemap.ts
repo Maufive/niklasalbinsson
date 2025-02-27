@@ -1,7 +1,7 @@
 import { getBlogPosts, getCrafts } from "@/app/utils/mdx-utils";
 import type { MetadataRoute } from "next";
 
-export const baseUrl = "https://niklasalbinsson.dev";
+export const baseUrl = "https://www.niklasalbinsson.dev";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = (await getBlogPosts()).map((post) => ({
