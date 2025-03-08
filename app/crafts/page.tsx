@@ -3,6 +3,7 @@ import AnimatedLink from "../components/animated-link";
 import PageLayout from "../components/page-layout";
 import { getCrafts } from "../utils/mdx-utils";
 import { Metadata } from "next";
+import { baseUrl } from "../sitemap";
 
 type CraftMetadata = {
   title: string;
@@ -24,6 +25,9 @@ export const metadata: Metadata = {
       "A collection of web projects, interactive demos, and experiments showcasing modern web development techniques and creative coding.",
     url: "/crafts",
     type: "website",
+  },
+  alternates: {
+    canonical: `${baseUrl}/crafts`,
   },
 };
 

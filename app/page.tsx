@@ -4,6 +4,13 @@ import AnimatedTitle from "./components/animated-title";
 import { getCrafts, getBlogPosts } from "./utils/mdx-utils";
 import PageLayout from "./components/page-layout";
 import { baseUrl } from "./sitemap";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: baseUrl,
+  },
+};
 
 export default async function Page() {
   const [crafts, posts] = await Promise.all([getCrafts(), getBlogPosts()]);

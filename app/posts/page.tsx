@@ -3,6 +3,7 @@ import AnimatedLink from "../components/animated-link";
 import PageLayout from "../components/page-layout";
 import { getBlogPosts } from "../utils/mdx-utils";
 import { Metadata } from "next";
+import { baseUrl } from "../sitemap";
 
 export const metadata: Metadata = {
   title: "Blog Posts",
@@ -14,6 +15,9 @@ export const metadata: Metadata = {
       "Articles about web development, software engineering, and my journey as a developer.",
     url: "/posts",
     type: "website",
+  },
+  alternates: {
+    canonical: `${baseUrl}/posts`,
   },
 };
 
