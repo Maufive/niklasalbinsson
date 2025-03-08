@@ -5,6 +5,7 @@ import { getBlogPosts } from "app/utils/mdx-utils";
 import Link from "next/link";
 import PageLayout from "@/app/components/page-layout";
 import { generateBlogPostSchema } from "@/app/utils/structured-data";
+import RecommendedContent from "@/app/components/recommended-content";
 
 export async function generateStaticParams() {
   const posts = await getBlogPosts();
@@ -75,6 +76,12 @@ export default async function PostPage({
 
   const structuredData = generateBlogPostSchema(post);
 
+  // Transform posts for recommended content
+  const allContent = posts.map((p) => ({
+    ...p,
+    type: "post" as const,
+  }));
+
   return (
     <>
       <script
@@ -97,9 +104,15 @@ export default async function PostPage({
           { label: post.metadata.title, path: `/posts/${slug}` },
         ]}
       >
-        <article className="prose prose-zinc dark:prose-invert">
+        <article
+          className="prose prose-zinc dark:prose-invert"
+          itemScope
+          itemType="https://schema.org/BlogPosting"
+        >
           <CustomMDX source={post.content} />
         </article>
+
+        <RecommendedContent currentSlug={slug} currentType="post" items={allContent} />
       </PageLayout>
     </>
   );

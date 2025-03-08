@@ -5,6 +5,7 @@ import { getCrafts } from "app/utils/mdx-utils";
 import Link from "next/link";
 import PageLayout from "@/app/components/page-layout";
 import { generateCraftSchema } from "@/app/utils/structured-data";
+import RecommendedContent from "@/app/components/recommended-content";
 
 export async function generateStaticParams() {
   const crafts = await getCrafts();
@@ -44,7 +45,7 @@ export async function generateMetadata({
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: `${title} - Project by Niklas Albinsson`,
+          alt: `${title} - Craft by Niklas Albinsson`,
         },
       ],
     },
@@ -55,7 +56,7 @@ export async function generateMetadata({
       images: [ogImage],
     },
     alternates: {
-      canonical: `${baseUrl}/posts/${craft.slug}`,
+      canonical: `${baseUrl}/crafts/${craft.slug}`,
     },
   };
 }
@@ -74,6 +75,12 @@ export default async function CraftPage({
   }
 
   const structuredData = generateCraftSchema(craft);
+
+  // Transform crafts for recommended content
+  const allContent = crafts.map((c) => ({
+    ...c,
+    type: "craft" as const,
+  }));
 
   return (
     <>
@@ -97,9 +104,15 @@ export default async function CraftPage({
           { label: craft.metadata.title, path: `/crafts/${slug}` },
         ]}
       >
-        <article className="prose prose-zinc dark:prose-invert">
+        <article
+          className="prose prose-zinc dark:prose-invert"
+          itemScope
+          itemType="https://schema.org/CreativeWork"
+        >
           <CustomMDX source={craft.content} />
         </article>
+
+        <RecommendedContent currentSlug={slug} currentType="craft" items={allContent} />
       </PageLayout>
     </>
   );
