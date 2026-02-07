@@ -6,14 +6,14 @@ settings:
 
 dependencies:
   '@mdx-js/loader':
-    specifier: ^3.1.0
-    version: 3.1.0(acorn@8.14.0)
+    specifier: ^3.1.1
+    version: 3.1.1(acorn@8.15.0)
   '@mdx-js/react':
-    specifier: ^3.1.0
-    version: 3.1.0(@types/react@18.2.55)(react@19.0.0)
+    specifier: ^3.1.1
+    version: 3.1.1(@types/react@18.2.55)(react@19.0.0)
   '@next/mdx':
-    specifier: ^15.1.6
-    version: 15.1.6(@mdx-js/loader@3.1.0)(@mdx-js/react@3.1.0)
+    specifier: ^16.1.6
+    version: 16.1.6(@mdx-js/loader@3.1.1)(@mdx-js/react@3.1.1)
   '@radix-ui/react-label':
     specifier: ^2.1.2
     version: 2.1.2(@types/react-dom@18.2.19)(@types/react@18.2.55)(react-dom@19.0.0)(react@19.0.0)
@@ -67,7 +67,7 @@ dependencies:
     version: 16.0.7(@babel/core@7.26.0)(@playwright/test@1.50.1)(babel-plugin-react-compiler@19.0.0-beta-30d8a17-20250209)(react-dom@19.0.0)(react@19.0.0)
   next-mdx-remote:
     specifier: ^5.0.0
-    version: 5.0.0(@types/react@18.2.55)(acorn@8.14.0)(react@19.0.0)
+    version: 5.0.0(@types/react@18.2.55)(acorn@8.15.0)(react@19.0.0)
   postcss:
     specifier: ^8.5.6
     version: 8.5.6
@@ -761,22 +761,22 @@ packages:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  /@mdx-js/loader@3.1.0(acorn@8.14.0):
-    resolution: {integrity: sha512-xU/lwKdOyfXtQGqn3VnJjlDrmKXEvMi1mgYxVmukEUtVycIz1nh7oQ40bKTd4cA7rLStqu0740pnhGYxGoqsCg==}
+  /@mdx-js/loader@3.1.1(acorn@8.15.0):
+    resolution: {integrity: sha512-0TTacJyZ9mDmY+VefuthVshaNIyCGZHJG2fMnGaDttCt8HmjUF7SizlHJpaCDoGnN635nK1wpzfpx/Xx5S4WnQ==}
     peerDependencies:
       webpack: '>=5'
     peerDependenciesMeta:
       webpack:
         optional: true
     dependencies:
-      '@mdx-js/mdx': 3.1.0(acorn@8.14.0)
+      '@mdx-js/mdx': 3.1.0(acorn@8.15.0)
       source-map: 0.7.4
     transitivePeerDependencies:
       - acorn
       - supports-color
     dev: false
 
-  /@mdx-js/mdx@3.1.0(acorn@8.14.0):
+  /@mdx-js/mdx@3.1.0(acorn@8.15.0):
     resolution: {integrity: sha512-/QxEhPAvGwbQmy1Px8F899L5Uc2KZ6JtXwlCgJmjSTBedwOZkByYcBG4GceIGPXRDsmfxhHazuS+hlOShRLeDw==}
     dependencies:
       '@types/estree': 1.0.6
@@ -791,7 +791,7 @@ packages:
       hast-util-to-jsx-runtime: 2.3.2
       markdown-extensions: 2.0.0
       recma-build-jsx: 1.0.0
-      recma-jsx: 1.0.0(acorn@8.14.0)
+      recma-jsx: 1.0.0(acorn@8.15.0)
       recma-stringify: 1.0.0
       rehype-recma: 1.0.0
       remark-mdx: 3.1.0
@@ -808,8 +808,8 @@ packages:
       - supports-color
     dev: false
 
-  /@mdx-js/react@3.1.0(@types/react@18.2.55)(react@19.0.0):
-    resolution: {integrity: sha512-QjHtSaoameoalGnKDT3FoIl4+9RwyTmo9ZJGBdLOks/YOiWHoRDI3PUwEzOE7kEmGcV3AFcp9K6dYu9rEuKLAQ==}
+  /@mdx-js/react@3.1.1(@types/react@18.2.55)(react@19.0.0):
+    resolution: {integrity: sha512-f++rKLQgUVYDAtECQ6fn/is15GkEH9+nZPM3MS0RcxVqoTfawHvDlSCH7JbMhAM6uJ32v3eXLvLmLvjGu7PTQw==}
     peerDependencies:
       '@types/react': '>=16'
       react: '>=16'
@@ -823,8 +823,8 @@ packages:
     resolution: {integrity: sha512-gpaNgUh5nftFKRkRQGnVi5dpcYSKGcZZkQffZ172OrG/XkrnS7UBTQ648YY+8ME92cC4IojpI2LqTC8sTDhAaw==}
     dev: false
 
-  /@next/mdx@15.1.6(@mdx-js/loader@3.1.0)(@mdx-js/react@3.1.0):
-    resolution: {integrity: sha512-jt9b9ayY8z3F/oQa2YCK7NugxY6ttAiJ8Eu29OTwwW5rcYMjXohIRaqsSrgFWhCFkJA6/EccKO+1ApocCZnn5A==}
+  /@next/mdx@16.1.6(@mdx-js/loader@3.1.1)(@mdx-js/react@3.1.1):
+    resolution: {integrity: sha512-PT5JR4WPPYOls7WD6xEqUVVI9HDY8kY7XLQsNYB2lSZk5eJSXWu3ECtIYmfR0hZpx8Sg7BKZYKi2+u5OTSEx0w==}
     peerDependencies:
       '@mdx-js/loader': '>=0.15.0'
       '@mdx-js/react': '>=0.15.0'
@@ -834,8 +834,8 @@ packages:
       '@mdx-js/react':
         optional: true
     dependencies:
-      '@mdx-js/loader': 3.1.0(acorn@8.14.0)
-      '@mdx-js/react': 3.1.0(@types/react@18.2.55)(react@19.0.0)
+      '@mdx-js/loader': 3.1.1(acorn@8.15.0)
+      '@mdx-js/react': 3.1.1(@types/react@18.2.55)(react@19.0.0)
       source-map: 0.7.4
     dev: false
 
@@ -1637,7 +1637,7 @@ packages:
   /@types/hast@3.0.4:
     resolution: {integrity: sha512-WPs+bbQw5aCj+x6laNGWLH3wviHtoCv/P3+otBhbOhJgG8qtpdAMlTCxLtsTWA7LH1Oh/bFCHsBn0TPS5m30EQ==}
     dependencies:
-      '@types/unist': 2.0.10
+      '@types/unist': 3.0.3
     dev: false
 
   /@types/js-cookie@2.2.7:
@@ -1651,7 +1651,7 @@ packages:
   /@types/mdast@4.0.4:
     resolution: {integrity: sha512-kGaNbPh1k7AFzgpud/gMdvIm5xuECykRR+JnWKQno9TAXVa6WIVCGTPvYGekIDL4uwCZQSYbUxNBSb1aUo79oA==}
     dependencies:
-      '@types/unist': 2.0.10
+      '@types/unist': 3.0.3
     dev: false
 
   /@types/mdx@2.0.13:
@@ -1901,11 +1901,27 @@ packages:
       acorn: ^6.0.0 || ^7.0.0 || ^8.0.0
     dependencies:
       acorn: 8.14.0
+    dev: true
+
+  /acorn-jsx@5.3.2(acorn@8.15.0):
+    resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
+    peerDependencies:
+      acorn: ^6.0.0 || ^7.0.0 || ^8.0.0
+    dependencies:
+      acorn: 8.15.0
+    dev: false
 
   /acorn@8.14.0:
     resolution: {integrity: sha512-cl669nCJTZBsL97OF4kUQm5g5hC2uihk0NxY3WENAC0TYdILVkAyHymAntgxGkl7K+t0cXIrH5siy5S4XkFycA==}
     engines: {node: '>=0.4.0'}
     hasBin: true
+    dev: true
+
+  /acorn@8.15.0:
+    resolution: {integrity: sha512-NZyJarBfL7nWwIq+FDL6Zp/yHEhePMNnnJ0y3qfieCrmNvYct8uvtiV41UvlSe6apAfk0fY1FbWx+NwfmpvtTg==}
+    engines: {node: '>=0.4.0'}
+    hasBin: true
+    dev: false
 
   /ajv@6.12.6:
     resolution: {integrity: sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==}
@@ -2168,7 +2184,7 @@ packages:
     resolution: {integrity: sha512-8Ja+rNJ0Lt56Pcf3TAmpBZjmx8ZcK5Ts4cAzIOjsjevg9oSXJnl6SUQ2EevU8tv3h6ZLWmoKL5H4fgWvdvfETw==}
     dependencies:
       '@types/estree-jsx': 1.0.4
-      acorn: 8.14.0
+      acorn: 8.15.0
       esast-util-from-estree: 2.0.0
       vfile-message: 4.0.2
     dev: false
@@ -3071,8 +3087,8 @@ packages:
   /micromark-extension-mdxjs@3.0.0:
     resolution: {integrity: sha512-A873fJfhnJ2siZyUrJ31l34Uqwy4xIFmvPY1oj+Ean5PHcPBYzEsvqvWGaWcfEIr11O5Dlw3p2y0tZWpKHDejQ==}
     dependencies:
-      acorn: 8.14.0
-      acorn-jsx: 5.3.2(acorn@8.14.0)
+      acorn: 8.15.0
+      acorn-jsx: 5.3.2(acorn@8.15.0)
       micromark-extension-mdx-expression: 3.0.0
       micromark-extension-mdx-jsx: 3.0.1
       micromark-extension-mdx-md: 2.0.0
@@ -3330,15 +3346,15 @@ packages:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
 
-  /next-mdx-remote@5.0.0(@types/react@18.2.55)(acorn@8.14.0)(react@19.0.0):
+  /next-mdx-remote@5.0.0(@types/react@18.2.55)(acorn@8.15.0)(react@19.0.0):
     resolution: {integrity: sha512-RNNbqRpK9/dcIFZs/esQhuLA8jANqlH694yqoDBK8hkVdJUndzzGmnPHa2nyi90N4Z9VmzuSWNRpr5ItT3M7xQ==}
     engines: {node: '>=14', npm: '>=7'}
     peerDependencies:
       react: '>=16'
     dependencies:
       '@babel/code-frame': 7.26.2
-      '@mdx-js/mdx': 3.1.0(acorn@8.14.0)
-      '@mdx-js/react': 3.1.0(@types/react@18.2.55)(react@19.0.0)
+      '@mdx-js/mdx': 3.1.0(acorn@8.15.0)
+      '@mdx-js/react': 3.1.1(@types/react@18.2.55)(react@19.0.0)
       react: 19.0.0
       unist-util-remove: 3.1.1
       vfile: 6.0.3
@@ -3591,10 +3607,10 @@ packages:
       vfile: 6.0.3
     dev: false
 
-  /recma-jsx@1.0.0(acorn@8.14.0):
+  /recma-jsx@1.0.0(acorn@8.15.0):
     resolution: {integrity: sha512-5vwkv65qWwYxg+Atz95acp8DMu1JDSqdGkA2Of1j6rCreyFUE/gp15fC8MnGEuG1W68UKjM6x6+YTWIh7hZM/Q==}
     dependencies:
-      acorn-jsx: 5.3.2(acorn@8.14.0)
+      acorn-jsx: 5.3.2(acorn@8.15.0)
       estree-util-to-js: 2.0.0
       recma-parse: 1.0.0
       recma-stringify: 1.0.0

@@ -1,0 +1,401 @@
+---
+title: "Next.js Streaming: How It Actually Works"
+publishedAt: "2026-02-07"
+description: "Popping the hood to see what's actually happening when Next.js streams your HTML"
+---
+
+Me and my team are migrating a decently sized SPA app to Next.js and we wanted to lean heavily on streaming. As it turned out, none of us really understood how streaming works and what we should be able to expect in terms of SEO with streamed HTML. Does it require JavasScript or not? The docs say "streaming HTML" and show progressive rendering, but the details are in my opinion murky and leaves out some important details.
+
+This post covers how streaming actually works, what it requires, common misconceptions, and does it even work when you are self-hosting a Next.js app.
+
+**TL;DR:**
+
+- Streaming sends the page shell immediately, fills in slow parts later
+- The "filling in" mechanism requires JavaScript to work
+- Without JS: shell renders, but streamed content stays hidden forever
+  - "Hidden" means that content is all there in the HTML regardless but it's marked with the hidden attribute and potentially out of order a bit
+- Self-hosted Next.js applications need explicit configuration to make streaming work
+
+## Table of Contents
+
+- [Part 1: What is Streaming SSR?](#part-1-what-is-streaming-ssr)
+- [Part 2: How It Actually Works](#part-2-how-it-actually-works)
+- [Part 3: Common Misconceptions](#part-3-common-misconceptions)
+- [Part 4: Self-Hosting and Making Streaming Work](#part-4-self-hosting-and-making-streaming-work)
+- [Part 5: Key Takeaways](#part-6-key-takeaways)
+- [Conclusion](#conclusion)
+- [Resources & Sources](#resources--sources)
+
+---
+
+## Part 1: What is Streaming SSR?
+
+### Traditional SSR
+
+Server waits for everything → fetches all data → renders complete HTML → sends response.
+
+If your slowest database query takes 3 seconds, the user stares at a blank screen for 3 seconds.
+
+### Streaming SSR
+
+Server renders the shell → sends it immediately → keeps connection open → streams slow parts when ready.
+
+### The Key Misconception
+
+**Common belief:** "Streaming HTML means content progressively renders without JavaScript"
+
+**Reality:** The initial shell renders progressively. But the mechanism that "fills in" the slow parts requires JavaScript.
+
+This distinction matters for SEO, accessibility, and understanding why your production deployment might be broken.
+
+---
+
+## Part 2: How It Actually Works
+
+Streaming SSR sends the page shell immediately, keeps the connection open, and streams the slow parts later. Here's what happens when you request a page:
+
+```
+Browser                Server              Database
+   |                      |                    |
+   |--GET /page---------->|                    |
+   |                      |                    |
+   |<--HTML shell---------|                    |
+   | (renders now!)       |                    |
+   |                      |--Fetch comments--->|
+   | (shows spinner)      |                    |
+   |                      |<--Data ready-------|
+   |                      |                    |
+   |<--Hidden div+script--|                    |
+   | (script swaps it in) |                    |
+```
+
+Let's break down each step.
+
+#### Step 1: Send the Shell Immediately
+
+The server starts rendering and immediately sends anything it can without waiting for slow data.
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Blog Post</title>
+  </head>
+  <body>
+    <nav><a href="/">Home</a></nav>
+    <main>
+      <h1>Understanding Streaming</h1>
+      <p>This is the main post content...</p>
+
+      <section id="comments-spinner">
+        <img src="spinner.gif" alt="Loading..." />
+      </section>
+    <!-- Note: No closing </html> tag yet -->
+```
+
+Notice two things:
+
+1. The HTML isn't closed. The browser renders it anyway.
+2. There's a loading spinner where the comments should be. We wrapped comments in `<Suspense>`, so React sends the fallback.
+
+The user sees your page in milliseconds, even though the comments might take seconds to load.
+
+#### Step 2: Keep Connection Open
+
+The server doesn't close the response. It keeps working in the background, fetching that slow data.
+
+Meanwhile, the user is already reading your post.
+
+#### Step 3: Stream the Real Content
+
+When the database query finishes, the server sends more HTML down the same connection:
+
+```html
+<div hidden id="comments">
+  <div class="comment">
+    <strong>Alice:</strong>
+    <p>Great post! Really helped me understand streaming.</p>
+  </div>
+  <div class="comment">
+    <strong>Bob:</strong>
+    <p>Thanks for explaining this clearly.</p>
+  </div>
+</div>
+
+<script>
+  document
+    .getElementById("comments-spinner")
+    .replaceChildren(document.getElementById("comments"));
+</script>
+```
+
+The content arrives in a hidden div. A tiny inline script executes immediately and swaps the spinner with the real content—a simple DOM manipulation: find the spinner, find the hidden content, replace one with the other.
+
+**The key insight**: Content "popping in" requires JavaScript. It's not HTML magically appearing—it's JavaScript moving content from hidden divs into the right place.
+
+#### Step 4: Close the Stream
+
+```html
+    </main>
+  </body>
+</html>
+```
+
+Connection closes. Page complete.
+
+### What This Looks Like in Your Code
+
+You just write this:
+
+```jsx
+export default async function BlogPost() {
+  return (
+    <div>
+      <h1>My Blog Post</h1>
+      <p>Main content here...</p>
+
+      <Suspense fallback={<Spinner />}>
+        <Comments /> {/* This component fetches data */}
+      </Suspense>
+    </div>
+  );
+}
+```
+
+Wrap the slow part in `<Suspense>`. Next.js handles all the streaming magic behind the scenes.
+
+### What Happens Without JavaScript?
+
+Here's the part that surprised me: **if JavaScript is disabled, the user never sees the streamed content.** The inline `<script>` tag that swaps in the content doesn't run. So the user sees:
+
+- The initial shell (navbar, layout, post content)
+- The loading spinner (from the initial HTML)
+- The spinner stays there forever
+- The comments remain hidden
+
+**The streamed comments do arrive in the HTML** (in a hidden div), but without JavaScript, there's no mechanism to unhide and reposition them. This matters for accessibility and users with JavaScript errors or disabled JavaScript.
+
+---
+
+## Part 3: Common Misconceptions
+
+### Misconception #1: "Streaming doesn't require JavaScript"
+
+**The claim:** Streaming HTML works without JavaScript, just like traditional HTML streaming.
+
+**The reality:** The initial shell renders without JavaScript. But the mechanism that fills in the streamed content absolutely requires it.
+
+**The evidence:**
+
+- [React Working Group Discussion #37](https://github.com/reactwg/react-18/discussions/37) shows the hidden div + script approach
+- Testing with JavaScript disabled: you see infinite loading states
+
+### Misconception #2: "Streaming is great for SEO"
+
+**The claim:** Streaming improves SEO by getting content to search engines faster.
+
+**The reality:** It's complicated. Google can handle streaming (they execute JavaScript during indexing), but the content lives in hidden divs and may be out of DOM order. Baidu and Yandex don't execute JavaScript well. Google has separate crawl and render queues—rendering is much slower ([JS rendering takes ~9x longer than crawling HTML"](https://www.onely.com/blog/google-needs-9x-more-time-to-crawl-js-than-html/)).
+
+**Important note:** The 9x rendering slowdown doesn't mean streaming is bad for SEO. It just means JS-based content takes longer to fully index. Streaming still helps because your initial shell is server-rendered HTML.
+
+**Framework handling:** Next.js uses "dynamic rendering" to detect bots and serve non-streaming responses. So frameworks handle it, but raw React streaming requires careful bot detection.
+
+### Misconception #3: "It's just like traditional HTML streaming"
+
+**The claim:** Streaming HTML is the same as the HTTP streaming that's existed forever.
+
+**The reality:** Traditional streaming sends HTML in order, top to bottom. React streaming can send chunks in any order and uses JavaScript to position them correctly.
+
+**From the React docs:**
+
+> Unlike traditional HTML streaming, it doesn't have to happen in the top-down order. For example, if the sidebar needs some data, you can wrap it in Suspense, and React will emit a placeholder and continue with rendering the post.
+
+Traditional streaming is simpler and works without JavaScript, but you're limited to rendering top-to-bottom. React streaming is more complex and requires JavaScript, but you get flexibility in what renders first.
+
+---
+
+# Part 4: Self-Hosting and Making Streaming Work
+
+We noticed that streaming wasn't working early on in our migration. Instead of content appearing progressively, the entire page loaded at once—which completely defeated the purpose of streaming.
+
+It turned out buffering at the reverse proxy level was the culprit. Here's what you need to know about making streaming work when self-hosting Next.js or using a reverse proxy.
+
+### The Core Problem: Buffering
+
+When you self-host Next.js, you typically put a reverse proxy (nginx, Apache, Caddy) in front of your Node.js server. **These proxies buffer responses by default.**
+
+Buffering means the proxy waits for the complete response from your Next.js server before sending anything to the client. This completely defeats streaming—the proxy collects all your carefully streamed chunks and sends them all at once.
+
+### The Official Next.js Solution
+
+The [Next.js self-hosting documentation](https://nextjs.org/docs/app/guides/self-hosting#streaming-and-suspense) explicitly addresses this. You need to disable buffering.
+
+#### Option 1: Configure in Next.js (Recommended)
+
+Set the `X-Accel-Buffering` header in your Next.js config:
+
+```javascript
+// next.config.js
+module.exports = {
+  async headers() {
+    return [
+      {
+        source: "/:path*{/}?",
+        headers: [
+          {
+            key: "X-Accel-Buffering",
+            value: "no",
+          },
+        ],
+      },
+    ];
+  },
+};
+```
+
+This tells nginx (and other proxies that respect this header) not to buffer the response.
+
+**Why this approach:** Configuration stays with your app code. Works across different deployments without changing proxy configs.
+
+#### Option 2: Configure in nginx
+
+Add these directives to your nginx location block:
+
+```nginx
+location / {
+    proxy_pass http://localhost:3000;
+
+    # Disable buffering for streaming
+    proxy_buffering off;
+    proxy_set_header X-Accel-Buffering no;
+}
+```
+
+**When to use this:** You have full control over nginx config and want the setting at the infrastructure level.
+
+### Compression: Another Gotcha
+
+Compression (gzip, brotli) must analyze all data chunks before it can compress them. This requirement forces the proxy to buffer the entire response before sending anything to the client—which completely defeats streaming. Your carefully crafted chunks get collected and sent all at once.
+
+Next.js has compression **enabled by default** via the `compress` option. When self-hosting with a reverse proxy, you typically want to disable Next.js compression and handle it at the proxy level (for non-streaming routes) or disable it entirely.
+
+```javascript
+// next.config.js
+module.exports = {
+  compress: false,
+};
+```
+
+Then configure compression at the nginx level with exceptions for streaming routes, or skip compression entirely if streaming is critical.
+
+### Testing Your Setup
+
+**Use browser DevTools:**
+
+1. Open Network tab
+2. Load your page
+3. Look at the HTML document request
+4. Check for `Transfer-Encoding: chunked` in response headers
+5. Watch the Timeline—you should see content arriving in chunks, not all at once
+6. The "Size" column should show increasing bytes as chunks arrive
+
+**Command line test:**
+
+```bash
+# Make sure to use -N to disable curl's buffering
+curl -N https://yoursite.com
+```
+
+Without `-N`, even curl will buffer the response and you won't see streaming.
+
+### A Note on CDNs and Cloudflare (and Cloudflare Workers)
+
+If you're using a CDN like Cloudflare in front of your self-hosted Next.js app, there's another layer that can break streaming.
+
+**The issue:** CDNs may buffer responses before sending to end users. Cloudflare in particular has been reported to break streaming in various scenarios, especially:
+
+- When auto-minification is enabled
+- When compression settings change unexpectedly
+- For AI streaming responses (using Vercel AI SDK)
+
+**Quick fixes:**
+
+1. **Disable compression in Cloudflare dashboard** - Speed → Optimization → Turn off Auto Minify
+2. **Use DNS-only mode** (gray cloud) for routes that need streaming
+3. **Set bypass cache rules** for streaming routes using Page Rules
+
+If streaming works without Cloudflare but breaks with it enabled, start by disabling compression and auto-minification in the Cloudflare dashboard.
+
+### Why Vercel Doesn't Have These Problems
+
+When you deploy to Vercel, none of this matters. Their infrastructure is built for Next.js and handles streaming out of the box.
+
+Self-hosting gives you control but requires you to configure every layer correctly. Vercel is optimized for Next.js but locks you into their platform.
+
+Trade-offs.
+
+---
+
+## Part 5: Key Takeaways
+
+### 1. Streaming is a UX optimization, not a "no-JS" solution
+
+- Initial shell renders without JavaScript
+- Content replacement mechanism (inline scripts that unhide streamed content) requires JavaScript
+- Without JS: shell works, but streamed content stays hidden forever
+
+### 2. The marketing vs reality gap
+
+- "Streaming HTML" sounds like it works without JavaScript
+- The mechanism is actually: HTML + inline scripts + DOM manipulation
+- More complex than traditional HTML streaming
+
+### 3. SEO requires special handling
+
+- Frameworks like Next.js use bot detection to serve non-streaming responses to crawlers
+- Google can handle it, but many crawlers can't
+- Content in hidden divs, potentially out of DOM order
+- Not necessarily a drop-in solution for better SEO
+
+### 4. Reverse proxies and self-hosting add complexity
+
+- Reverse proxies buffer by default
+- CDNs (Cloudflare Workers) can break streaming unexpectedly
+- Compression silently breaks streaming
+- Always verify streaming is working in your environment
+
+### 5. It's still valuable
+
+- Significantly faster perceived performance
+- Better user experience on good connections
+- Solves real problems with slow data fetching
+- Just understand what you're getting and how to deploy it correctly
+
+---
+
+## Conclusion
+
+Streaming SSR is powerful, but it has sharp edges. The mechanism is more complex than "progressive HTML rendering" and requires JavaScript to work properly. If you must support users without JavaScript, traditional SSR without streaming is your only option.
+
+Your environment setup adds complexity too—pay extra attention if using reverse proxies like nginx or CDNs like Cloudflare.
+
+But when it works, it's great. Users see content faster, your app feels responsive, and slow data doesn't block fast data. Just understand the JavaScript requirement, configure your infrastructure correctly, and always test that streaming is actually working.
+
+---
+
+## Resources & Sources
+
+### Official Documentation
+
+- [React Working Group Discussion #37](https://github.com/reactwg/react-18/discussions/37) - "New Suspense SSR Architecture in React 18" (official React team explanation)
+- [Next.js Self-Hosting Guide](https://nextjs.org/docs/app/guides/self-hosting#streaming-and-suspense) - nginx configuration for streaming
+- [Next.js Discussion #50829](https://github.com/vercel/next.js/discussions/50829) - "Does component streaming and suspense hurt SEO?"
+
+### Community Deep Dives
+
+- [vadeen.com - "React Streaming SSR: How it works"](https://www.vadeen.com/posts/react-streaming-ssr/) - detailed technical breakdown with code examples
+- [Self-hosting Next.js YouTube video](https://youtu.be/sIVL4JMqRfc?t=1269) - Mentions nginx configuration for self hosted Next.js apps
+
+### Additional Reading
+
+- [Google Search Central - JavaScript SEO basics](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics) - how Google handles JavaScript rendering
